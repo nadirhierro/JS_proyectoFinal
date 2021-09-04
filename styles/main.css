@@ -1,3 +1,16 @@
+.header--nav {
+  font-family: "Roboto", sans-serif;
+  background-color: #103f3f;
+}
+
+.header--nav ul {
+  text-decoration: none;
+}
+
+.header--nav ul li a {
+  color: black;
+}
+
 .hero {
   position: relative;
   height: 50vh;
@@ -8,8 +21,22 @@
   font-family: "Roboto", sans-serif;
   font-weight: bold;
   text-align: center;
-  color: rgb(17, 29, 43);
+  color: #111d2b;
 }
+
+.hero h2, .hero p {
+  position: relative;
+}
+
+.productos {
+  padding: 2rem;
+  gap: 20px;
+}
+
+.productos .card {
+  flex-basis: 23%;
+}
+
 .hero::before {
   content: "";
   position: absolute;
@@ -21,22 +48,17 @@
   background-position: center;
   filter: opacity(0.9);
 }
-.hero h2,
-.hero p {
-  position: relative;
-}
-.productos {
-  padding: 2rem;
-  gap: 20px;
-}
-.productos .card {
-  flex-basis: 23%;
-}
-tr th td {
+
+.carrito tr, .carrito th, .carrito td {
   text-align: center;
 }
-.botonEliminar {
-  padding-left: 2rem !important;
-  text-align: start;
+
+.carrito .botonEliminar {
+  text-align: center;
   cursor: pointer;
 }
+
+.carrito .total, .carrito .precioTotal {
+  font-weight: bold;
+}
+/*# sourceMappingURL=main.css.map */

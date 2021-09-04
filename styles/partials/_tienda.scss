@@ -1,0 +1,59 @@
+.hero {
+  position: relative;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  color: rgb(17, 29, 43);
+
+  h2 {
+    position: relative;
+  }
+  p {
+    @extend h2;
+  }
+}
+.productos {
+  padding: 2rem;
+  gap: 20px;
+  .card {
+    flex-basis: 23%;
+  }
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url(https://picsum.photos/id/145/1920/1080);
+  background-position: center;
+  filter: opacity(0.9);
+}
+.carrito {
+  tr {
+    text-align: center;
+  }
+  th {
+    @extend tr;
+  }
+  td {
+    @extend tr;
+  }
+
+  .botonEliminar {
+    text-align: center;
+    cursor: pointer;
+  }
+  .total {
+    font-weight: bold;
+  }
+  .precioTotal {
+    @extend .total;
+  }
+}

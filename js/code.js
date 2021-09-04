@@ -68,13 +68,14 @@ const actualizarTotal = function (precioTotal) {
 };
 const borrarCarrito = function (event) {
   let productoCarrito = this.parentNode;
+  let productoCarritoID = productoCarrito.id;
   let productoCarritoPadre = productoCarrito.parentNode;
   let productoAborrarID = parseInt(productoCarrito.firstElementChild.innerHTML);
 
   //busco el producto, lo borro de sessionstorage y lo saco del carrito
   for (const producto of productos) {
     if (producto.id === productoAborrarID) {
-      sessionStorage.removeItem("Producto " + contar);
+      sessionStorage.removeItem("Producto " + productoCarritoID);
       contar--;
       productoCarritoPadre.removeChild(productoCarrito);
       let precioProducto = producto.precio;
@@ -101,7 +102,7 @@ const agregarCarrito = function (event) {
       );
 
       let filaCarrito = document.createElement("tr");
-      filaCarrito.id = contar + producto.id;
+      filaCarrito.id = contar;
       filaCarrito.innerHTML = `
       <th scope="row">${producto.id}</th>
       <td>${producto.tipo}</td>

@@ -1,0 +1,12 @@
+.header--nav {
+  font-family: $roboto;
+  background-color: rgb(16, 63, 63);
+  ul {
+    text-decoration: none;
+    li {
+      a {
+        color: black;
+      }
+    }
+  }
+}

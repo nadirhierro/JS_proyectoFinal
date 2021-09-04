@@ -25,7 +25,7 @@
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg header--nav">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Sincopado</a>
           <button
@@ -40,7 +40,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav w-100 justify-content-around">
               <li class="nav-item">
                 <a
                   class="nav-link active"
@@ -64,39 +64,46 @@
       </nav>
     </header>
     <main>
-      <div class="hero">
-        <h2>Bienvenido a nuestra tienda</h2>
-        <p class="pt-5">Aquí podrás encontrar los mejores instrumentos</p>
-      </div>
-      <div class="container productos"></div>
-      <div class="container carrito">
-        <div class="row">
-          <div class="col-12 text-center"><h2>Carrito</h2></div>
-          <table class="col-12 table">
-            <thead>
-              <tr>
-                <th scope="col">Producto ID</th>
-                <th scope="col">Instrumento</th>
-                <th scope="col">Marca</th>
-                <th scope="col">Modelo</th>
-                <th scope="col">Precio</th>
-                <th scope="col">Eliminar</th>
-              </tr>
-            </thead>
-            <tbody class="tbody">
-              <th scope="row"></th>
-              <td></td>
-              <td></td>
-              <td>TOTAL</td>
-              <td class="precioTotal"></td>
-              <td></td>
-            </tbody>
-          </table>
+      <section class="tienda">
+        <div class="hero">
+          <h2>Bienvenido a nuestra tienda</h2>
+          <p class="pt-5">Aquí podrás encontrar los mejores instrumentos</p>
         </div>
-      </div>
+        <div class="container productos"></div>
+        <div class="container carrito">
+          <div class="row">
+            <div class="col-12 text-center"><h2>Carrito</h2></div>
+            <table class="col-12 table">
+              <thead>
+                <tr>
+                  <th scope="col">Producto ID</th>
+                  <th scope="col">Instrumento</th>
+                  <th scope="col">Marca</th>
+                  <th scope="col">Modelo</th>
+                  <th scope="col">Precio</th>
+                  <th scope="col">Eliminar</th>
+                </tr>
+              </thead>
+              <tbody class="tbody">
+                <tr>
+                  <th scope="row"></th>
+                  <td></td>
+                  <td></td>
+                  <td class="total">TOTAL</td>
+                  <td class="precioTotal"></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+      <section class="nosotros"></section>
+      <section class="ubicacion"></section>
+      <section class="contacto"></section>
     </main>
     <footer></footer>
-    <script src="./js/code2.js"></script>
+    <script src="./js/code.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
       integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp"
