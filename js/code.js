@@ -66,7 +66,7 @@ const agregarCarrito = function (event) {
   contar++; // cuento el click
   // busco el ID del producto seleccionado dentro del id del nodo
   let productoID = this.parentNode.id;
-  console.log(productoID);
+  console.log("El ID del producto agregado es " + productoID);
 
   //busco el producto, lo guardo en sessionstorage y lo posteo en el carrito (DOM)
   for (const producto of productos) {
@@ -88,9 +88,10 @@ const agregarCarrito = function (event) {
       let tbody = document.querySelector(".tbody"); // selecciono en el tbody
       tbody.prepend(filaCarrito); // inserto la fila para que salga primera
       let precioProducto = producto.precio; // tomo el precio del producto
-      console.log(precioProducto);
+      console.log("El precio del producto agregado es $" + precioProducto);
       calcularTotal("agregarCarrito", precioProducto); // lo sumo al total
       actualizarTotal(precioTotal); // actualizo el total en el carrito
+      console.log("Precio total actual es $" + precioTotal);
     }
   }
 
@@ -106,7 +107,7 @@ const borrarCarrito = function (event) {
   let productoCarrito = this.parentNode; // selecciono al padre del botón eliminar, que tiene un id igual al id del producto y una class igual a contar
   let productoCarritoID = productoCarrito.id; // rescato el id
   let ProductoCarritoClass = productoCarrito.className; // rescato la clase para sessionStorage
-
+  console.log("El ID del producto borrado es " + productoCarritoID);
   // itero los productos para buscar el producto seleccionado
   // si doy con el id del producto sigo
   for (const producto of productos) {
@@ -118,9 +119,10 @@ const borrarCarrito = function (event) {
       let productoCarritoPadre = productoCarrito.parentNode; // voy al padre de la fila para luego eliminar la fila
       productoCarritoPadre.removeChild(productoCarrito); // elimino el producto del carrito
       let precioProducto = producto.precio; // capto el precio del producto
-      console.log(precioProducto);
+      console.log("El precio del producto borrado es $" + precioProducto);
       calcularTotal("borrarCarrito", precioProducto); // calculo el nuevo total
       actualizarTotal(precioTotal); // actualizo el total en el carrito
+      console.log("El precio total actual es $" + precioTotal);
     }
   }
 };
