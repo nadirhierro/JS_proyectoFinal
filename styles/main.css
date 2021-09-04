@@ -1,0 +1,42 @@
+.hero {
+  position: relative;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  color: rgb(17, 29, 43);
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url(https://picsum.photos/id/145/1920/1080);
+  background-position: center;
+  filter: opacity(0.9);
+}
+.hero h2,
+.hero p {
+  position: relative;
+}
+.productos {
+  padding: 2rem;
+  gap: 20px;
+}
+.productos .card {
+  flex-basis: 23%;
+}
+tr th td {
+  text-align: center;
+}
+.botonEliminar {
+  padding-left: 2rem !important;
+  text-align: start;
+  cursor: pointer;
+}
