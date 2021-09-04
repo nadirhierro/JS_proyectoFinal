@@ -46,6 +46,7 @@
   bottom: 0;
   background-image: url(https://picsum.photos/id/145/1920/1080);
   background-position: center;
+  background-attachment: fixed;
   filter: opacity(0.9);
 }
 
