@@ -4,7 +4,7 @@ html {
 }
 main {
   display: grid;
-  grid-template-columns: 2fr 6fr 2fr;
+  grid-template-columns: 1fr 6fr 2fr;
   grid-template-rows: 50vh 1fr;
   grid-template-areas:
     "hero hero hero"
@@ -49,7 +49,6 @@ main {
     gap: 2rem;
     justify-content: center;
     .card {
-      flex-basis: 20%;
       .card-title {
         text-align: center;
       }
@@ -95,4 +94,12 @@ html {
   padding-top: 2rem;
   display: flex;
   justify-content: space-between;
+}
+.filtros {
+  ul {
+    cursor: pointer;
+    ul {
+      display: none;
+    }
+  }
 }

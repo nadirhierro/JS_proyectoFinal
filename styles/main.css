@@ -18,7 +18,7 @@ html {
 
 main {
   display: grid;
-  grid-template-columns: 2fr 6fr 2fr;
+  grid-template-columns: 1fr 6fr 2fr;
   grid-template-rows: 50vh 1fr;
   grid-template-areas: "hero hero hero" "filtros productos carrito";
 }
@@ -64,10 +64,6 @@ main {
 .productos .row {
   gap: 2rem;
   justify-content: center;
-}
-
-.productos .row .card {
-  flex-basis: 20%;
 }
 
 .productos .row .card .card-title {
@@ -118,5 +114,13 @@ html {
   padding-top: 2rem;
   display: flex;
   justify-content: space-between;
+}
+
+.filtros ul {
+  cursor: pointer;
+}
+
+.filtros ul ul {
+  display: none;
 }
 /*# sourceMappingURL=main.css.map */

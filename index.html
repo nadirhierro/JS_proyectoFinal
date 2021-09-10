@@ -85,25 +85,86 @@
         <p class="pt-5">Aquí podrás encontrar los mejores instrumentos</p>
       </div>
       <div class="filtros">
+        <h3>Filtros</h3>
         <div class="destacados">
-          <input type="radio" name="filtro" id="destacados" />
-          <label for="Pianos">Destacados</label>
+          <ul>
+            <li name="filtro" id="destacados" clas>Destacados</li>
+            <ul>
+              <div class="porInstrumento">
+                <li name="subfiltro" id="guitarra">Guitarras</li>
+                <li name="subfiltro" id="bajo">Bajos</li>
+                <li name="subfiltro" id="piano">Pianos</li>
+              </div>
+            </ul>
+          </ul>
         </div>
-        <div class="guitarras">
-          <input type="radio" name="filtro" id="Guitarra" />
-          <label for="radio">Guitarras</label>
+        <div class="porInstrumento">
+          <p>Por Instrumentos</p>
+          <ul>
+            <li name="filtro" id="guitarra">Guitarras</li>
+            <ul>
+              <div class="porTipo">
+                <li name="subfiltro" id="electrico">Eléctricas</li>
+                <li name="subfiltro" id="acustico">Acústicas</li>
+              </div>
+              <div class="porMarca">
+                <li name="subfiltro" id="fender">Fender</li>
+                <li name="subfiltro" id="gibson">Gibson</li>
+              </div>
+            </ul>
+          </ul>
+          <ul>
+            <li name="filtro" id="bajo">Bajos</li>
+            <ul>
+              <div class="porTipo">
+                <li name="subfiltro" id="electrico">Eléctricas</li>
+                <li name="subfiltro" id="acustico">Acústicas</li>
+              </div>
+              <div class="porMarca">
+                <li name="subfiltro" id="Fender">Fender</li>
+                <li name="subfiltro" id="gibson">Gibson</li>
+              </div>
+            </ul>
+          </ul>
+          <ul>
+            <li name="filtro" id="piano">Piano</li>
+            <ul>
+              <div class="porTipo">
+                <li name="subfiltro" id="electrico">Eléctricos</li>
+                <li name="subfiltro" id="acustico">Acústicos</li>
+              </div>
+              <div class="porMarca">
+                <li name="subfiltro" id="yamaha">Yamaha</li>
+              </div>
+            </ul>
+          </ul>
         </div>
-        <div class="bajos">
-          <input type="radio" name="filtro" id="Bajo" />
-          <label for="Bajos">Bajos</label>
-        </div>
-        <div class="pianos">
-          <input type="radio" name="filtro" id="Piano" />
-          <label for="Pianos">Piano</label>
+        <div class="porMarca">
+          <p>Por Marca</p>
+          <ul>
+            <li name="filtro" id="fender">Fender</li>
+            <ul>
+              <div class="porInstrumento">
+                <li name="subfiltro" id="guitarra">Guitarras</li>
+                <li name="subfiltro" id="bajo">Bajos</li>
+              </div>
+            </ul>
+          </ul>
+          <ul>
+            <li name="filtro" id="gibson">Gibson</li>
+            <ul>
+              <div class="porInstrumento">
+                <li name="subfiltro" id="guitarra">Guitarras</li>
+                <li name="subfiltro" id="bajo">Bajos</li>
+              </div>
+            </ul>
+          </ul>
         </div>
       </div>
       <!-- Container para los productos -->
-      <div class="container productos"></div>
+      <div class="container productos">
+        <div class="row rowProductos"></div>
+      </div>
       <!-- offcanvas -->
       <div class="carritoContainer">
         <div class="titulo">Carrito</div>
@@ -117,9 +178,10 @@
     <footer></footer>
     <!-- Link a Script propio -->
     <script src="./js/productos.js"></script>
+    <script src="./js/funcionesGenerales.js"></script>
     <script src="./js/funcionesCarrito.js"></script>
-    <script src="./js/main.js"></script>
     <script src="js/filtros.js"></script>
+    <script src="./js/main.js"></script>
     <!-- Link a Scripts de Bootstrap -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"

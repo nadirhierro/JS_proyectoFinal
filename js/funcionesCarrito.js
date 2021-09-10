@@ -1,5 +1,5 @@
-//función para renderizar
-const renderizar = function (producto) {
+//función para renderizar en carrito
+const renderizarEnCarrito = function (producto) {
   let filaCarrito = document.createElement("div"); // variable para insertar el producto al carrito
   filaCarrito.id = `${producto.id}`;
   filaCarrito.classList = [`${producto.id}`, "productoCarrito"].join(" ");
@@ -8,9 +8,7 @@ const renderizar = function (producto) {
         producto.marca
       } ${producto.modelo}">
       <div class="${producto.id}-cantidad">${producto.cantidad}</div>
-      <div class="texto">${producto.tipo} ${producto.marca} ${
-    producto.modelo
-  }</div>
+      <div class="texto">${producto.nombre}</div>
       <div class="${producto.id}-precio">$${
     producto.precio * producto.cantidad
   } </div>
@@ -79,7 +77,7 @@ const agregarCarrito = function (event) {
         producto.agregar();
         carrito.push(producto); // guardo el producto en el carrito
         refreshLocalStorage(carrito);
-        renderizar(producto); // renderizo producto
+        renderizarEnCarrito(producto); // renderizo producto
         calcularTotal("agregarCarrito", producto.precio); // lo sumo al total
         actualizarTotal(precioTotal); // actualizo el total en el carrito
       } else if (productoAagregar.cantidad == 0) {
@@ -87,7 +85,7 @@ const agregarCarrito = function (event) {
         producto.agregar();
         refreshCarritoArray(producto, productoAagregar);
         refreshLocalStorage(carrito);
-        renderizar(producto); // renderizo producto
+        renderizarEnCarrito(producto); // renderizo producto
         calcularTotal("agregarCarrito", producto.precio); // lo sumo al total
         actualizarTotal(precioTotal); // actualizo el total en el carrito
       } else {
@@ -104,11 +102,7 @@ const agregarCarrito = function (event) {
       break;
     }
   }
-  // habiendo agregado el primer elemento al carrito, empiezo a escuchar los botones eliminar, porque antes no existían en el DOM.
-  let botonesEliminar = document.querySelectorAll(".botonEliminar");
-  botonesEliminar.forEach((boton) => {
-    boton.addEventListener("click", borrarCarrito);
-  });
+  escucharBotonesEliminar();
 };
 
 // función para borrar producto del carrito
@@ -118,7 +112,6 @@ const borrarCarrito = function (event) {
   let productoAborrar = carrito.find(
     (producto) => producto.id == productoCarritoID
   ); // lo busco en el carrito
-
   for (const producto of productos) {
     if (producto.id == productoCarritoID) {
       producto.borrar();
@@ -138,8 +131,5 @@ const borrarCarrito = function (event) {
       }
     }
   }
-  let botonesEliminar = document.querySelectorAll(".botonEliminar");
-  botonesEliminar.forEach((boton) => {
-    boton.addEventListener("click", borrarCarrito);
-  });
+  escucharBotonesEliminar();
 };

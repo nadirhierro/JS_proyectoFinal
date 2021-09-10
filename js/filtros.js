@@ -1,45 +1,82 @@
-let filtros = document.getElementsByName("filtro"); //escucho todos los filtros
+let filtros = document.getElementsByName("filtro");
+let subFiltros = document.getElementsByName("subfiltro"); // escucho todos los subfiltros
+let productosFiltrados = [];
 
-//función filtrar
-const filtrar = function (event) {
-  let productosAsacar = document.querySelectorAll(".card"); // selecciono los productos que se encuentran actualmente renderizados
-  for (const producto of productosAsacar) {
-    // elimino cada producto renderizado
-    let padre = producto.parentNode;
-    padre.removeChild(producto);
-  }
-  let productosFiltrados = [];
-  if (this.id.toString() == "destacados") {
-    productosFiltrados = productos.filter(
-      (producto) => producto.destacado == "si"
-    );
-  } else {
-    productosFiltrados = productos.filter(
-      (producto) => producto.instrumento == this.id
-    );
-  } // filtro los productos elegidos para renderizarlos
-  let divProductos = document.querySelector(".rowProductos"); // selecciono el row de productos
-  // para cada producto renderizo su tarjeta
-  for (const producto of productosFiltrados) {
-    // para cada producto filtrado inserto su tarjeta
-    divProductos.innerHTML += `
-    <div class="card col-md-3">
-    <img src="https://picsum.photos/id/1082/200/200" class="card-img-top" alt="${producto.marca} ${producto.modelo}">
-    <div id="${producto.id}" class="card-body d-flex flex-column align-items-center">
-        <h5 class="card-title tipo">${producto.tipo}</h5>
-        <h6 class="card-title">${producto.marca} ${producto.modelo}</h6>
-        <p id="precio" class="card-text text-center">$${producto.precio}</p>
-        <button class="btn btn-primary botonAgregar">Agregar a carrito</button>
-    </div>
-    </div>`;
-  }
-  //Escucho el click en el botón de agregar ya que son "nuevos"
-  let botonesAgregar = document.querySelectorAll(".botonAgregar");
-  botonesAgregar.forEach((boton) => {
-    boton.addEventListener("click", agregarCarrito);
+const escucharFiltros = function () {
+  filtros.forEach((filtro) => {
+    filtro.addEventListener("click", filtrar);
   });
 };
+const escucharSubFiltros = function () {
+  subFiltros.forEach((subfiltro) => {
+    subfiltro.addEventListener("click", subFiltrar);
+  });
+};
+const normalizarSubfiltros = function () {
+  subFiltros.forEach((subfiltro) => {
+    subfiltro.style.fontWeight = "normal";
+  });
+};
+const normalizarFiltros = function () {
+  filtros.forEach((filtro) => {
+    filtro.style.fontWeight = "normal";
+    filtro.nextElementSibling.style.display = "none";
+  }); // Le saco negrita a todos los filtros y saco del flujo sus respectivos subfiltros
+};
+//función filtrar
+const subFiltrar = function (event) {
+  normalizarSubfiltros();
+  this.style.fontWeight = "bold";
+  limpiarProductos();
+  let productosSubFiltrados = [];
+  let tipoFiltro = this.parentNode.className;
+  switch (tipoFiltro) {
+    case "porInstrumento":
+      productosSubFiltrados = productosFiltrados.filter(
+        (producto) => producto.instrumento == this.id
+      );
+      break;
+    case "porMarca":
+      productosSubFiltrados = productosFiltrados.filter(
+        (producto) => producto.marca == this.id
+      );
+      break;
+    case "porTipo":
+      productosSubFiltrados = productosFiltrados.filter(
+        (producto) => producto.tipo == this.id
+      );
+      break;
+  }
+  renderizarProductos(productosSubFiltrados);
+};
 
-filtros.forEach((filtro) => {
-  filtro.addEventListener("click", filtrar);
-});
+const filtrar = function (event) {
+  normalizarFiltros();
+  normalizarSubfiltros();
+  this.style.fontWeight = "bold"; // le aplico negrita al filtro seleccionado
+  let listaSubfiltros = this.nextElementSibling; // selecciono subfiltros del filtro seleccionado
+  listaSubfiltros.style.display = "block"; // los meto en el flujo del DOM
+  limpiarProductos();
+  let tipoFiltro = this.parentNode.parentNode.className;
+  switch (tipoFiltro) {
+    case "destacados":
+      productosFiltrados = productos.filter(
+        (producto) => producto.destacado == "si"
+      );
+      break;
+    case "porInstrumento":
+      productosFiltrados = productos.filter(
+        (producto) => producto.instrumento == this.id
+      );
+      break;
+    case "porMarca":
+      productosFiltrados = productos.filter(
+        (producto) => producto.marca == this.id
+      );
+      break;
+  }
+  renderizarProductos(productosFiltrados);
+};
+
+escucharFiltros();
+escucharSubFiltros();
