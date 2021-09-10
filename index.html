@@ -29,9 +29,11 @@
   <body>
     <header>
       <!-- Nav de Bootstrap -->
-      <nav class="navbar navbar-expand-lg fixed-top header--nav">
+      <nav class="navbar navbar-expand-lg header--nav">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Sincopado</a>
+          <a class="navbar-brand animate__animated animate__fadeIn" href="#"
+            >Sincopado</a
+          >
           <button
             class="navbar-toggler"
             type="button"
@@ -51,13 +53,25 @@
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#nosotros">Nosotros</a>
+                <a
+                  class="nav-link animate__animated animate__fadeIn"
+                  href="#nosotros"
+                  >Nosotros</a
+                >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#ubicacion">Ubicación</a>
+                <a
+                  class="nav-link animate__animated animate__fadeIn"
+                  href="#ubicacion"
+                  >Ubicación</a
+                >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#contacto">Contacto</a>
+                <a
+                  class="nav-link animate__animated animate__fadeIn"
+                  href="#contacto"
+                  >Contacto</a
+                >
               </li>
             </ul>
           </div>
@@ -66,54 +80,46 @@
     </header>
     <main>
       <!-- Sección tienda -->
-      <section id="tienda" class="tienda">
-        <div class="mt-5 hero">
-          <h2>Bienvenido a nuestra tienda</h2>
-          <p class="pt-5">Aquí podrás encontrar los mejores instrumentos</p>
+      <div class="container-fluid hero">
+        <h2>Bienvenido a nuestra tienda</h2>
+        <p class="pt-5">Aquí podrás encontrar los mejores instrumentos</p>
+      </div>
+      <div class="filtros">
+        <div class="destacados">
+          <input type="radio" name="filtro" id="destacados" />
+          <label for="Pianos">Destacados</label>
         </div>
-        <!-- Container para los productos -->
-        <div class="container productos"></div>
-        <!-- Container para el carrito -->
-        <div class="container carrito">
-          <div class="row">
-            <div class="col-12 text-center"><h2>Carrito</h2></div>
-            <table class="col-12 table">
-              <thead>
-                <tr>
-                  <th scope="col">Producto ID</th>
-                  <th scope="col">Instrumento</th>
-                  <th scope="col">Marca</th>
-                  <th scope="col">Modelo</th>
-                  <th scope="col">Precio</th>
-                  <th scope="col">Eliminar</th>
-                </tr>
-              </thead>
-              <!-- tbody donde se irán agregando/quitando los productos seleccionados -->
-              <tbody class="tbody">
-                <!-- Fila para precio total -->
-                <tr>
-                  <th scope="row"></th>
-                  <td></td>
-                  <td></td>
-                  <td class="total">TOTAL</td>
-                  <td class="precioTotal"></td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <div class="guitarras">
+          <input type="radio" name="filtro" id="Guitarra" />
+          <label for="radio">Guitarras</label>
         </div>
-      </section>
-      <!-- Sección Nosotros -->
-      <section id="nosotros" class="nosotros"></section>
-      <!-- Sección Ubicación -->
-      <section id="ubicacion" class="ubicacion"></section>
-      <!-- Sección Contacto -->
-      <section id="contacto" class="contacto"></section>
+        <div class="bajos">
+          <input type="radio" name="filtro" id="Bajo" />
+          <label for="Bajos">Bajos</label>
+        </div>
+        <div class="pianos">
+          <input type="radio" name="filtro" id="Piano" />
+          <label for="Pianos">Piano</label>
+        </div>
+      </div>
+      <!-- Container para los productos -->
+      <div class="container productos"></div>
+      <!-- offcanvas -->
+      <div class="carritoContainer">
+        <div class="titulo">Carrito</div>
+        <div class="carrito"></div>
+        <div class="total">
+          <p>TOTAL</p>
+          <p class="totalPrecio"></p>
+        </div>
+      </div>
     </main>
     <footer></footer>
     <!-- Link a Script propio -->
-    <script src="./js/code.js"></script>
+    <script src="./js/productos.js"></script>
+    <script src="./js/funcionesCarrito.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="js/filtros.js"></script>
     <!-- Link a Scripts de Bootstrap -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"

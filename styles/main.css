@@ -1,6 +1,6 @@
 .header--nav {
   font-family: "Roboto", sans-serif;
-  background-color: #103f3f;
+  background-color: #0a220a;
 }
 
 .header--nav ul {
@@ -11,7 +11,32 @@
   color: black;
 }
 
+html {
+  --lh: 1.4rem;
+  line-height: var(--lh);
+}
+
+main {
+  display: grid;
+  grid-template-columns: 2fr 6fr 2fr;
+  grid-template-rows: 50vh 1fr;
+  grid-template-areas: "hero hero hero" "filtros productos carrito";
+}
+
+.filtros {
+  grid-area: filtros;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.carritoContainer {
+  grid-area: carrito;
+  padding: 2rem;
+}
+
 .hero {
+  grid-area: hero;
   position: relative;
   height: 50vh;
   display: flex;
@@ -25,41 +50,73 @@
 }
 
 .hero h2, .hero p {
+  font-family: "Roboto", sans-serif;
   position: relative;
+  color: rgba(17, 0, 255, 0.808);
+  font-size: 2rem;
 }
 
 .productos {
+  grid-area: productos;
   padding: 2rem;
-  gap: 20px;
 }
 
-.productos .card {
-  flex-basis: 23%;
+.productos .row {
+  gap: 2rem;
+  justify-content: center;
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url(https://picsum.photos/id/145/1920/1080);
-  background-position: center;
-  background-attachment: fixed;
-  filter: opacity(0.9);
+.productos .row .card {
+  flex-basis: 20%;
 }
 
-.carrito tr, .carrito th, .carrito td {
+.productos .row .card .card-title {
   text-align: center;
 }
 
-.carrito .botonEliminar {
+.productos .row .card .card-body {
+  justify-content: space-between;
+}
+
+.productos .row .card .card-body h5 {
   text-align: center;
+}
+
+.botonEliminar:hover {
   cursor: pointer;
 }
 
-.carrito .total, .carrito .precioTotal {
-  font-weight: bold;
+.carritoContainer .titulo {
+  padding-bottom: 2rem;
+}
+
+.carritoContainer .carrito {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+}
+
+.carritoContainer .carrito .productoCarrito {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  max-height: 80px;
+}
+
+.carritoContainer .carrito .productoCarrito .texto {
+  white-space: initial;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+html {
+  --lh: 1.4rem;
+  line-height: var(--lh);
+}
+
+.total {
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
 }
 /*# sourceMappingURL=main.css.map */

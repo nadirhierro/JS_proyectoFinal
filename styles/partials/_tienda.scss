@@ -1,4 +1,27 @@
+html {
+  --lh: 1.4rem;
+  line-height: var(--lh);
+}
+main {
+  display: grid;
+  grid-template-columns: 2fr 6fr 2fr;
+  grid-template-rows: 50vh 1fr;
+  grid-template-areas:
+    "hero hero hero"
+    "filtros productos carrito";
+}
+.filtros {
+  grid-area: filtros;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+.carritoContainer {
+  grid-area: carrito;
+  padding: 2rem;
+}
 .hero {
+  grid-area: hero;
   position: relative;
   height: 50vh;
   display: flex;
@@ -9,52 +32,67 @@
   font-weight: bold;
   text-align: center;
   color: rgb(17, 29, 43);
-
   h2 {
+    font-family: $roboto;
     position: relative;
+    color: rgba(17, 0, 255, 0.808);
+    font-size: 2rem;
   }
   p {
     @extend h2;
   }
 }
 .productos {
+  grid-area: productos;
   padding: 2rem;
-  gap: 20px;
-  .card {
-    flex-basis: 23%;
+  .row {
+    gap: 2rem;
+    justify-content: center;
+    .card {
+      flex-basis: 20%;
+      .card-title {
+        text-align: center;
+      }
+      .card-body {
+        justify-content: space-between;
+        h5 {
+          text-align: center;
+        }
+      }
+    }
   }
 }
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url(https://picsum.photos/id/145/1920/1080);
-  background-position: center;
-  background-attachment: fixed;
-  filter: opacity(0.9);
+.botonEliminar:hover {
+  cursor: pointer;
 }
-.carrito {
-  tr {
-    text-align: center;
+.carritoContainer {
+  .titulo {
+    padding-bottom: 2rem;
   }
-  th {
-    @extend tr;
-  }
-  td {
-    @extend tr;
-  }
+  .carrito {
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
 
-  .botonEliminar {
-    text-align: center;
-    cursor: pointer;
+    .productoCarrito {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      max-height: 80px;
+      .texto {
+        white-space: initial;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
   }
-  .total {
-    font-weight: bold;
-  }
-  .precioTotal {
-    @extend .total;
-  }
+}
+html {
+  --lh: 1.4rem;
+  line-height: var(--lh);
+}
+.total {
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
 }
