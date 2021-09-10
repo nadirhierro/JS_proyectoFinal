@@ -29,28 +29,27 @@ let precioTotal = 0;
 // selecciono todos mis botones de agregar para poder escucharlos
 let botonesAgregar = document.querySelectorAll(".botonAgregar");
 // recupero carrito del localStorage
-let carritoStorage = localStorage.getItem("carrito");
-
+let carritoStorageString = localStorage.getItem("carrito");
+let carritoStorage = JSON.parse(carritoStorageString);
+// inicializo carrito
 let carrito = [];
 
-if (carritoStorage != null) {
-  carrito = JSON.parse(carritoStorage);
-  console.log(carrito);
+if (carritoStorage != null && carritoStorage.length != 0) {
+  // si el carrito de storage no es null o vacío, entonces lo recupero y renderizo
+  carrito = carritoStorage;
   carrito.forEach((producto) => {
-    if (producto.cantidad != 0) {
-      let productoStock = producto.stock;
-      let productoCantidad = producto.cantidad;
-      let productoID = producto.id;
-      productos.forEach((producto) => {
-        if (producto.id == productoID && productoCantidad != 0) {
-          producto["stock"] = parseInt(productoStock);
-          producto["cantidad"] = parseInt(productoCantidad);
-          renderizar(producto);
-          precioTotal += producto.precio * producto.cantidad;
-          actualizarTotal(precioTotal);
-        }
-      });
-    }
+    let productoID = producto.id; // tomo el id
+    let productoStock = producto.stock; // tomo stock y cantidad para emparejar con el array de productos
+    let productoCantidad = producto.cantidad;
+    productos.forEach((producto) => {
+      if (producto.id == productoID) {
+        producto["stock"] = parseInt(productoStock); // emparejo
+        producto["cantidad"] = parseInt(productoCantidad);
+        renderizar(producto); // renderizo
+        precioTotal += producto.precio * producto.cantidad; // calculo precio total
+        actualizarTotal(precioTotal); // actualizo en carrito
+      }
+    });
   });
   //Escucho el click en el botón de agregar
 

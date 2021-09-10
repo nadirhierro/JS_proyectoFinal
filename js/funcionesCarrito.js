@@ -37,7 +37,9 @@ const refreshPrecioCantidad = function (producto) {
 const refreshCarritoArray = function (producto, productoAborrar) {
   let indexEnCarrito = carrito.indexOf(productoAborrar); // tomo el index del producto en el carrito
   carrito.splice(indexEnCarrito, 1); // lo saco del carrito
-  carrito.push(producto); // vuelvo a ponerlo, pero ahora con la cantidad actualizada
+  if (producto.cantidad >= 1) {
+    carrito.push(producto);
+  } // vuelvo a ponerlo, pero ahora con la cantidad actualizada, si la cantidad es 0, no lo vuelvo a poner
 };
 const refreshLocalStorage = function (carrito) {
   localStorage.removeItem("carrito");

@@ -3,17 +3,21 @@ let filtros = document.getElementsByName("filtro"); //escucho todos los filtros
 //función filtrar
 const filtrar = function (event) {
   let productosAsacar = document.querySelectorAll(".card"); // selecciono los productos que se encuentran actualmente renderizados
-  console.log(productosAsacar);
   for (const producto of productosAsacar) {
     // elimino cada producto renderizado
-    console.log(producto);
     let padre = producto.parentNode;
     padre.removeChild(producto);
   }
-  let productosFiltrados = productos.filter(
-    (producto) => producto.instrumento == this.id
-  ); // filtro los productos elegidos para renderizarlos
-  console.log(productosFiltrados);
+  let productosFiltrados = [];
+  if (this.id.toString() == "destacados") {
+    productosFiltrados = productos.filter(
+      (producto) => producto.destacado == "si"
+    );
+  } else {
+    productosFiltrados = productos.filter(
+      (producto) => producto.instrumento == this.id
+    );
+  } // filtro los productos elegidos para renderizarlos
   let divProductos = document.querySelector(".rowProductos"); // selecciono el row de productos
   // para cada producto renderizo su tarjeta
   for (const producto of productosFiltrados) {
