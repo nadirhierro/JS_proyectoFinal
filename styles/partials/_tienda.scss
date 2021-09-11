@@ -8,11 +8,14 @@
   background-color: rgb(79, 90, 79);
 }
 .tienda {
+  width: 100%;
   display: grid;
+  padding: 0;
   grid-template-columns: 1fr 6fr;
   grid-template-areas: "filtros productos";
   font-family: $roboto;
   .filtros {
+    position: fixed;
     grid-area: filtros;
     display: flex;
     flex-direction: column;
@@ -25,17 +28,30 @@
   .grillaProductos {
     grid-area: productos;
     display: grid;
-    grid-template-columns: repeat(4, minmax(300px, 1fr));
+    grid-template-columns: repeat(1, minmax(300px, 1fr));
     gap: 1rem;
+    @media (min-width: 992px) {
+      & {
+        grid-template-columns: repeat(2, minmax(300px, 1fr));
+      }
+    }
+    @media (min-width: 1200px) {
+      & {
+        grid-template-columns: repeat(3, minmax(300px, 1fr));
+      }
+    }
+    @media (min-width: 1400px) {
+      & {
+        grid-template-columns: repeat(4, minmax(300px, 1fr));
+      }
+    }
     .tarjeta {
       grid-area: auto;
       padding: 2rem;
-      min-height: 100%;
       position: relative;
       top: 0;
       transition: all 0.1s ease-in;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-
       color: #444;
       text-decoration: none;
       cursor: pointer;

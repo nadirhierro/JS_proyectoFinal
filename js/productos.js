@@ -174,3 +174,14 @@ productos.push(
     "no"
   )
 );
+productos.push(
+  new Producto(
+    14,
+    "guitarra",
+    "acustico",
+    "fender",
+    "Guitarra Acústica Fender Fa125",
+    51985.23,
+    "no"
+  )
+);
