@@ -26,7 +26,6 @@
 }
 
 .hero {
-  width: 100vw;
   position: relative;
   padding-top: 5rem;
   display: flex;
@@ -130,6 +129,11 @@
   display: flex;
   gap: 2rem;
   flex-direction: column;
+}
+
+.carritoContainer .carrito img {
+  max-height: 20%;
+  width: 20%;
 }
 
 .carritoContainer .carrito .productoCarrito {
