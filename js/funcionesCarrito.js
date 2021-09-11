@@ -1,7 +1,7 @@
 //función para renderizar en carrito
 const renderizarEnCarrito = function (producto) {
   let filaCarrito = document.createElement("div"); // variable para insertar el producto al carrito
-  filaCarrito.id = `${producto.id}`;
+  filaCarrito.id = `carrito-${producto.id}`;
   filaCarrito.classList = [`${producto.id}`, "productoCarrito"].join(" ");
   filaCarrito.innerHTML = `
   <img src="./img/${producto.id}.jpg" class="card-img-top img-fluid" alt="${
@@ -99,11 +99,12 @@ const agregarCarrito = function (event) {
 const borrarCarrito = function (event) {
   let productoCarrito = this.parentNode; // selecciono al padre del botón eliminar, que tiene un id igual al id del producto
   let productoCarritoID = productoCarrito.id; // rescato el id de producto
+  let productoID = productoCarritoID.replace("carrito-", "");
   let productoAborrar = carrito.find(
     (producto) => producto.id == productoCarritoID
   ); // lo busco en el carrito
   for (const producto of productos) {
-    if (producto.id == productoCarritoID) {
+    if (producto.id == productoID) {
       producto.borrar(); // actualizo cantidad y stock en array productos
       refreshCarritoArray(producto, productoAborrar); // refresh al array carrito
       refreshLocalStorage(carrito); // refresh al LocalStorage
