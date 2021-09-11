@@ -43,28 +43,35 @@ const escucharBotonesEliminar = function () {
 
 // función para renderizar productos en el DOM
 const renderizarProductos = function (arrayProductos) {
-  let divProductos = document.querySelector(".rowProductos");
+  let divProductos = document.querySelector(".grillaProductos");
   for (const producto of arrayProductos) {
     // para cada producto filtrado inserto su tarjeta
     divProductos.innerHTML += `
-      <div class="card col-md-6 col-lg-3">
-        <img src="https://picsum.photos/id/1082/200/200" class="card-img-top" alt="${producto.nombre}">
-        <div id="${producto.id}" class="card-body d-flex flex-column align-items-center">
-            <h6 class="card-title">${producto.nombre}</h6>
-            <p id="precio" class="card-text text-center">$${producto.precio}</p>
-            <button class="btn btn-primary botonAgregar">Agregar a carrito</button>
-        </div>
-      </div>`;
+    <div id="${producto.id}" class="tarjeta botonAgregar">
+    <div class="tarjetaCuerpo">
+      <div class="cajaImagen">
+        <img class="img-fluid imagen" src="./img/${producto.id}.jpg" alt="${producto.descripcion}" />
+      </div>
+      <div class="nombre">${producto.nombre}</div>
+      <div class="precio">$ ${producto.precio}</div>
+    </div>
+  </div>`;
   }
   escucharBotonesAgregar();
 };
 
 // función para limpiar productos del DOM
 const limpiarProductos = function () {
-  let productosAsacar = document.querySelectorAll(".card"); // selecciono los productos que se encuentran actualmente renderizados
+  let productosAsacar = document.querySelectorAll(".tarjeta"); // selecciono los productos que se encuentran actualmente renderizados
   for (const producto of productosAsacar) {
     // elimino cada producto renderizado
     let padre = producto.parentNode;
     padre.removeChild(producto);
   }
+};
+
+//función para borrar nodo
+const borrarNodoCarrito = function (nodo) {
+  let nodoPadre = nodo.parentNode; // voy al padre
+  nodoPadre.removeChild(nodo); // elimino el nodo
 };

@@ -119,3 +119,58 @@ productos.push(
     5
   )
 );
+productos.push(
+  new Producto(
+    9,
+    "piano",
+    "acustico",
+    "yamaha",
+    "Piano Vertical Yamaha Ju109",
+    800000,
+    "no"
+  )
+);
+productos.push(
+  new Producto(
+    10,
+    "bajo",
+    "acustico",
+    "fender",
+    "Bajo Acústico Fender CB-60SCE",
+    100000,
+    "no"
+  )
+);
+productos.push(
+  new Producto(
+    11,
+    "bajo",
+    "electrico",
+    "ibanez",
+    "Bajo eléctrico 5 cuerdas Ibanez GSRM25BK",
+    157463.23,
+    "si"
+  )
+);
+productos.push(
+  new Producto(
+    12,
+    "guitarra",
+    "puas",
+    "dandrea",
+    "Puas D'Andrea 12 unidades Cool Plecs",
+    1200,
+    "si"
+  )
+);
+productos.push(
+  new Producto(
+    13,
+    "guitarra",
+    "puas",
+    "gibson",
+    "Puas para guitarra Gibson six pack",
+    1500,
+    "no"
+  )
+);

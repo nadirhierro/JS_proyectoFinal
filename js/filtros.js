@@ -77,6 +77,3 @@ const filtrar = function (event) {
   }
   renderizarProductos(productosFiltrados);
 };
-
-escucharFiltros();
-escucharSubFiltros();

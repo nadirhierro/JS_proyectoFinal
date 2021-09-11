@@ -1,11 +1,22 @@
 .header--nav {
   font-family: $roboto;
-  background-color: rgb(10, 34, 10);
+  background-color: rgb(79, 90, 79);
+  a {
+    color: black;
+  }
   ul {
     text-decoration: none;
     li {
       a {
         color: black;
+        &:hover {
+          color: black;
+          font-weight: bold;
+        }
+        img {
+          cursor: pointer;
+          height: 40px;
+        }
       }
     }
   }

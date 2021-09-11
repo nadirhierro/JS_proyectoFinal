@@ -1,66 +1,86 @@
-html {
-  --lh: 1.4rem;
-  line-height: var(--lh);
-}
-main {
-  display: grid;
-  grid-template-columns: 1fr 6fr 2fr;
-  grid-template-rows: 50vh 1fr;
-  grid-template-areas:
-    "hero hero hero"
-    "filtros productos carrito";
-}
-.filtros {
-  grid-area: filtros;
-  display: flex;
-  flex-direction: column;
-  padding: 2rem;
-}
-.carritoContainer {
-  grid-area: carrito;
-  padding: 2rem;
-}
 .hero {
-  grid-area: hero;
+  width: 100vw;
   position: relative;
-  height: 50vh;
+  padding-top: 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-family: "Roboto", sans-serif;
-  font-weight: bold;
-  text-align: center;
-  color: rgb(17, 29, 43);
-  h2 {
-    font-family: $roboto;
-    position: relative;
-    color: rgba(17, 0, 255, 0.808);
-    font-size: 2rem;
-  }
-  p {
-    @extend h2;
-  }
+  font-family: $roboto;
+  background-color: rgb(79, 90, 79);
 }
-.productos {
-  grid-area: productos;
-  padding: 2rem;
-  .row {
-    gap: 2rem;
-    justify-content: center;
-    .card {
-      .card-title {
-        text-align: center;
+.tienda {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  grid-template-areas: "filtros productos";
+  font-family: $roboto;
+  .filtros {
+    grid-area: filtros;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    ul {
+      list-style-position: initial;
+      list-style: none;
+    }
+  }
+  .grillaProductos {
+    grid-area: productos;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(300px, 1fr));
+    gap: 1rem;
+    .tarjeta {
+      grid-area: auto;
+      padding: 2rem;
+      min-height: 100%;
+      position: relative;
+      top: 0;
+      transition: all 0.1s ease-in;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+      color: #444;
+      text-decoration: none;
+      cursor: pointer;
+      &:hover {
+        color: #444;
+        top: -2px;
+        box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
       }
-      .card-body {
+      .tarjetaCuerpo {
+        display: flex;
+        flex-direction: column;
         justify-content: space-between;
-        h5 {
-          text-align: center;
+        height: 100%;
+        .cajaImagen {
+          position: relative;
+          padding-top: 100%;
+          .imagen {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            max-width: 100%;
+            max-height: 100%;
+          }
+        }
+        .nombre {
+          align-self: center;
+          display: inline-block;
+          max-height: 60px;
+          overflow: hidden;
+          font-size: 20px;
+        }
+        .precio {
+          align-self: center;
+          font-size: 20px;
+          max-height: 50px;
         }
       }
     }
   }
 }
+
 .botonEliminar:hover {
   cursor: pointer;
 }
@@ -72,23 +92,13 @@ main {
     display: flex;
     gap: 2rem;
     flex-direction: column;
-
     .productoCarrito {
       display: flex;
       flex-direction: row;
       gap: 1rem;
       max-height: 80px;
-      .texto {
-        white-space: initial;
-        text-overflow: ellipsis;
-        overflow: hidden;
-      }
     }
   }
-}
-html {
-  --lh: 1.4rem;
-  line-height: var(--lh);
 }
 .total {
   padding-top: 2rem;
@@ -96,10 +106,15 @@ html {
   justify-content: space-between;
 }
 .filtros {
+  font-family: $roboto;
+  padding: 0;
   ul {
     cursor: pointer;
     ul {
       display: none;
     }
+  }
+  #destacados {
+    font-weight: bold;
   }
 }
