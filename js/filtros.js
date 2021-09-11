@@ -46,12 +46,12 @@ const filtrar = function (event) {
       break;
     case "porInstrumento":
       productosFiltrados = productos.filter(
-        (producto) => producto.instrumento == this.id
+        (producto) => producto.instrumento == this.className
       );
       break;
     case "porMarca":
       productosFiltrados = productos.filter(
-        (producto) => producto.marca == this.id
+        (producto) => producto.marca == this.className
       );
       break;
   }
@@ -67,17 +67,17 @@ const subFiltrar = function (event) {
   switch (tipoFiltro) {
     case "porInstrumento":
       productosSubFiltrados = productosFiltrados.filter(
-        (producto) => producto.instrumento == this.id
+        (producto) => producto.instrumento == this.className
       );
       break;
     case "porMarca":
       productosSubFiltrados = productosFiltrados.filter(
-        (producto) => producto.marca == this.id
+        (producto) => producto.marca == this.className
       );
       break;
     case "porTipo":
       productosSubFiltrados = productosFiltrados.filter(
-        (producto) => producto.tipo == this.id
+        (producto) => producto.tipo == this.className
       );
       break;
   }

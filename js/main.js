@@ -11,12 +11,12 @@ filtrosDiv.innerHTML = `
 <h3>Filtros</h3>
         <div class="destacados">
           <ul>
-            <li name="filtro" id="destacados" clas>Destacados</li>
+            <li name="filtro" class="destacados">Destacados</li>
             <ul>
               <div class="porInstrumento">
-                <li name="subfiltro" id="guitarra">Guitarras</li>
-                <li name="subfiltro" id="bajo">Bajos</li>
-                <li name="subfiltro" id="piano">Pianos</li>
+                <li name="subfiltro" class="guitarra">Guitarras</li>
+                <li name="subfiltro" class="bajo">Bajos</li>
+                <li name="subfiltro" class="piano">Pianos</li>
               </div>
             </ul>
           </ul>
@@ -24,40 +24,40 @@ filtrosDiv.innerHTML = `
         <div class="porInstrumento">
           <p>Por Instrumentos</p>
           <ul>
-            <li name="filtro" id="guitarra">Guitarras</li>
+            <li name="filtro" class="guitarra">Guitarras</li>
             <ul>
               <div class="porTipo">
-                <li name="subfiltro" id="electrico">Eléctricas</li>
-                <li name="subfiltro" id="acustico">Acústicas</li>
+                <li name="subfiltro" class="electrico">Eléctricas</li>
+                <li name="subfiltro" class="acustico">Acústicas</li>
               </div>
               <div class="porMarca">
-                <li name="subfiltro" id="fender">Fender</li>
-                <li name="subfiltro" id="gibson">Gibson</li>
+                <li name="subfiltro" class="fender">Fender</li>
+                <li name="subfiltro" class="gibson">Gibson</li>
               </div>
             </ul>
           </ul>
           <ul>
-            <li name="filtro" id="bajo">Bajos</li>
+            <li name="filtro" class="bajo">Bajos</li>
             <ul>
               <div class="porTipo">
-                <li name="subfiltro" id="electrico">Eléctricos</li>
-                <li name="subfiltro" id="acustico">Acústicos</li>
+                <li name="subfiltro" class="electrico">Eléctricos</li>
+                <li name="subfiltro" class="acustico">Acústicos</li>
               </div>
               <div class="porMarca">
-                <li name="subfiltro" id="fender">Fender</li>
-                <li name="subfiltro" id="ibanez">Ibanez</li>
+                <li name="subfiltro" class="fender">Fender</li>
+                <li name="subfiltro" class="ibanez">Ibanez</li>
               </div>
             </ul>
           </ul>
           <ul>
-            <li name="filtro" id="piano">Piano</li>
+            <li name="filtro" class="piano">Piano</li>
             <ul>
               <div class="porTipo">
-                <li name="subfiltro" id="electrico">Eléctricos</li>
-                <li name="subfiltro" id="acustico">Acústicos</li>
+                <li name="subfiltro" class="electrico">Eléctricos</li>
+                <li name="subfiltro" class="acustico">Acústicos</li>
               </div>
               <div class="porMarca">
-                <li name="subfiltro" id="yamaha">Yamaha</li>
+                <li name="subfiltro" class="yamaha">Yamaha</li>
               </div>
             </ul>
           </ul>
@@ -65,22 +65,22 @@ filtrosDiv.innerHTML = `
         <div class="porMarca">
           <p>Por Marca</p>
           <ul>
-            <li name="filtro" id="fender">Fender</li>
+            <li name="filtro" class="fender">Fender</li>
             <ul>
               <div class="porInstrumento">
-                <li name="subfiltro" id="guitarra">Guitarras</li>
-                <li name="subfiltro" id="bajo">Bajos</li>
+                <li name="subfiltro" class="guitarra">Guitarras</li>
+                <li name="subfiltro" class="bajo">Bajos</li>
               </div>
             </ul>
           </ul>
           <ul>
-            <li name="filtro" id="gibson">Gibson</li>
+            <li name="filtro" class="gibson">Gibson</li>
             <ul>
               <div class="porInstrumento">
-                <li name="subfiltro" id="guitarra">Guitarras</li>
+                <li name="subfiltro" class="guitarra">Guitarras</li>
               </div>
               <div class="porTipo">
-              <li name="subfiltro" id="puas">Puas</li>
+              <li name="subfiltro" class="puas">Puas</li>
               </div>
             </ul>
           </ul>
