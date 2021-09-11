@@ -21,12 +21,11 @@ const emparejarCarritoStorage = function () {
         }
       });
     });
-    escucharBotonesEliminar();
+    escucharBotonesEliminar(); //escucho los nuevos botones
   }
 };
 
-// Función para escuchar botones agregar
-
+// Funciones para escuchar botones agregar y borrar
 const escucharBotonesAgregar = function () {
   let botonesAgregar = document.querySelectorAll(".botonAgregar");
   botonesAgregar.forEach((boton) => {

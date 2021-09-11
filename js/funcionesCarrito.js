@@ -40,9 +40,10 @@ const refreshCarritoArray = function (producto, productoAborrar) {
   } // vuelvo a ponerlo, pero ahora con la cantidad actualizada, si la cantidad es 0, no lo vuelvo a poner
 };
 const refreshLocalStorage = function (carrito) {
-  localStorage.removeItem("carrito");
+  localStorage.removeItem("carrito"); // lo saco para volver a ponerlo
   localStorage.setItem("carrito", JSON.stringify(carrito)); // guardo el carrito en sessionStorage
 };
+
 // función para calcular el total, según se agregue o borre un producto
 // fixeo y parseo el precioTotal para evitar que se sumen decimales no deseados
 const calcularTotal = function (nombreFuncion, precioProducto) {
@@ -64,10 +65,8 @@ const actualizarTotal = function (precioTotal) {
 
 // función para agregar producto al carrito
 const agregarCarrito = function (event) {
-  // busco el ID del producto seleccionado dentro del id del nodo
-  let productoID = this.id;
-
-  //busco el producto, y lo agrego al array carrito, lo guardo en sessionstorage y lo renderizo
+  let productoID = this.id; // busco el ID del producto seleccionado dentro del id del nodo
+  //busco el producto
   for (const producto of productos) {
     if (producto.id == productoID && producto.stock != 0) {
       // si hay stock

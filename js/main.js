@@ -86,8 +86,8 @@ filtrosDiv.innerHTML = `
           </ul>
         </div>`;
 
-escucharFiltros();
-escucharSubFiltros();
+escucharFiltros(); // escucho filtros
+escucharSubFiltros(); // escucho subfiltros
 
 // filtro productos destacados para renderizarlos al inicio
 let productosDestacados = productos.filter(
