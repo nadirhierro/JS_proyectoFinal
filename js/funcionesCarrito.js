@@ -1,20 +1,19 @@
 //función para renderizar en carrito
 const renderizarEnCarrito = function (producto) {
-  let filaCarrito = document.createElement("div"); // variable para insertar el producto al carrito
-  filaCarrito.id = `carrito-${producto.id}`;
-  filaCarrito.classList = [`${producto.id}`, "productoCarrito"].join(" ");
-  filaCarrito.innerHTML = `
-  <img src="./img/${producto.id}.jpg" class="card-img-top img-fluid" alt="${
+  $(".carrito").append(`
+  <div id="carrito-${producto.id}" class="${producto.id} productoCarrito">
+    <img src="./img/${producto.id}.jpg" class="card-img-top img-fluid" alt="${
     producto.descripcion
   }">
-      <div class="${producto.id}-cantidad">${producto.cantidad}</div>
-      <div class="texto">${producto.nombre}</div>
-      <div class="${producto.id}-precio">$${
+    <div class="${producto.id}-cantidad">${producto.cantidad}</div>
+    <div class="texto">${producto.nombre}</div>
+    <div class="${producto.id}-precio">$${(
     producto.precio * producto.cantidad
-  } </div>
-      <div class="botonEliminar">-</div>`; // defino estructura html de la fila
-  let productosCarrito = document.querySelector(".carrito"); // selecciono el div carrito
-  productosCarrito.prepend(filaCarrito); // inserto la fila para que salga primera
+  ).toFixed(2)} 
+    </div>
+    <div class="botonEliminar">-</div>
+  </div>
+  `);
 };
 
 //función para cambiar cantidad y precio en carrito
@@ -28,7 +27,7 @@ const refreshPrecioCantidad = function (producto) {
     "." + CSS.escape(producto.id) + "-precio"
   );
   nuevaCantidadDiv.innerHTML = `${nuevaCantidad}`;
-  nuevoprecioDIV.innerHTML = `$${nuevoPrecio}`;
+  nuevoprecioDIV.innerHTML = `$${nuevoPrecio.toFixed(2)}`;
 };
 
 // función para refresh de carrito
@@ -59,8 +58,7 @@ const calcularTotal = function (nombreFuncion, precioProducto) {
 // función para actualizar el total en el carrito
 // selecciono su nodo y cambio su innerHTML
 const actualizarTotal = function (precioTotal) {
-  let celdaAcambiar = document.querySelector(".totalPrecio");
-  celdaAcambiar.innerHTML = `$${precioTotal}`;
+  $(".totalPrecio").html(`$${precioTotal}`);
 };
 
 // función para agregar producto al carrito
@@ -115,7 +113,7 @@ const borrarCarrito = function (event) {
         refreshPrecioCantidad(producto); // refresh a precio y cantidad en DOM
       } else {
         // si no borro el nodo
-        borrarNodoCarrito(productoCarrito);
+        $(`#${productoCarritoID}`).remove();
       }
     }
   }

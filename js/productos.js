@@ -1,9 +1,18 @@
 // creo clase producto
 class Producto {
-  constructor(id, instrumento, tipo, marca, nombre, precio, destacado, stock) {
+  constructor(
+    id,
+    categoria,
+    subcategoria,
+    marca,
+    nombre,
+    precio,
+    destacado,
+    stock
+  ) {
     this.id = id;
-    this.instrumento = instrumento;
-    this.tipo = tipo;
+    this.categoria = categoria;
+    this.subcategoria = subcategoria;
     this.marca = marca;
     this.nombre = nombre;
     this.precio = precio;
@@ -26,8 +35,8 @@ const productos = [];
 productos.push(
   new Producto(
     1,
-    "guitarra",
-    "electrico",
+    "guitarras",
+    "guitarras eléctricas",
     "fender",
     "Guitarra Fender Stratocaster",
     150000,
@@ -38,8 +47,8 @@ productos.push(
 productos.push(
   new Producto(
     2,
-    "guitarra",
-    "electrico",
+    "guitarras",
+    "guitarras eléctricas",
     "gibson",
     "Guitarra Gibson Les Paul",
     180000,
@@ -50,8 +59,8 @@ productos.push(
 productos.push(
   new Producto(
     3,
-    "bajo",
-    "electrico",
+    "bajos",
+    "bajos eléctricos",
     "fender",
     "Bajo Fender Jazz Bass",
     120000,
@@ -62,8 +71,8 @@ productos.push(
 productos.push(
   new Producto(
     4,
-    "bajo",
-    "electrico",
+    "bajos",
+    "bajos eléctricos",
     "fender",
     "Bajo Fender Coronado",
     190000,
@@ -74,8 +83,8 @@ productos.push(
 productos.push(
   new Producto(
     5,
-    "piano",
-    "electrico",
+    "teclados",
+    "digitales",
     "yamaha",
     "Piano Yamaha Digital P45 88 teclas",
     92000,
@@ -87,7 +96,7 @@ productos.push(
   new Producto(
     6,
     "estudio",
-    "micrófono",
+    "micrófonos",
     "shure",
     "Micrófono Shure Glx",
     7428.3,
@@ -98,8 +107,8 @@ productos.push(
 productos.push(
   new Producto(
     7,
-    "guitarra",
-    "encordado",
+    "guitarras",
+    "encordados para guitarra",
     "daddario",
     "Encordado guitarra D'addario Exp110 Nickle W",
     2739.45,
@@ -110,8 +119,8 @@ productos.push(
 productos.push(
   new Producto(
     8,
-    "bajo",
-    "encordado",
+    "bajos",
+    "encordados para bajo",
     "daddario",
     "Encordado bajo D'addario Nyxl50105 4c. Nickel W",
     6640,
@@ -122,66 +131,303 @@ productos.push(
 productos.push(
   new Producto(
     9,
-    "piano",
-    "acustico",
+    "teclados",
+    "pianos",
     "yamaha",
     "Piano Vertical Yamaha Ju109",
     800000,
-    "no"
+    "no",
+    4
   )
 );
 productos.push(
   new Producto(
     10,
-    "bajo",
-    "acustico",
+    "bajos",
+    "bajos acústicos",
     "fender",
     "Bajo Acústico Fender CB-60SCE",
     100000,
-    "no"
+    "no",
+    2
   )
 );
 productos.push(
   new Producto(
     11,
-    "bajo",
-    "electrico",
+    "bajos",
+    "bajos eléctricos",
     "ibanez",
     "Bajo eléctrico 5 cuerdas Ibanez GSRM25BK",
     157463.23,
-    "si"
+    "si",
+    2
   )
 );
 productos.push(
   new Producto(
     12,
-    "guitarra",
-    "puas",
+    "guitarras",
+    "accesorios para guitarra",
     "dandrea",
     "Puas D'Andrea 12 unidades Cool Plecs",
     1200,
-    "si"
+    "si",
+    25
   )
 );
 productos.push(
   new Producto(
     13,
-    "guitarra",
-    "puas",
+    "guitarras",
+    "accesorios para guitarra",
     "gibson",
     "Puas para guitarra Gibson six pack",
     1500,
-    "no"
+    "no",
+    10
   )
 );
 productos.push(
   new Producto(
     14,
-    "guitarra",
-    "acustico",
+    "guitarras",
+    "guitarras acústicas",
     "fender",
     "Guitarra Acústica Fender Fa125",
     51985.23,
-    "no"
+    "no",
+    4
+  )
+);
+productos.push(
+  new Producto(
+    15,
+    "guitarras",
+    "guitarras acústicas",
+    "fender",
+    "Fender CC-60SCE Concierto Guitarra Acústica - Natural - Zurdo",
+    157986.36,
+    2,
+    "no",
+    2
+  )
+);
+productos.push(
+  new Producto(
+    16,
+    "guitarras",
+    "guitarras acusticas",
+    "ovation",
+    "Ovation CE44P-SM Guitarra Acústica-Eléctrica, Arce Espaltado",
+    259999.99,
+    1,
+    "no",
+    3
+  )
+);
+productos.push(
+  new Producto(
+    17,
+    "guitarras",
+    "guitarras electricas",
+    "ibanez",
+    "Ibanez JEMJRWH Steve Vai Signature Guitarra Eléctrica de 6 Cuerdas - Blanco",
+    409898.25,
+    "si",
+    3
+  )
+);
+productos.push(
+  new Producto(
+    18,
+    "guitarras",
+    "guitarras eléctricas",
+    "ibanez",
+    "Ibanez Artcore AS73 guitarra eléctrica semihueca",
+    200987.3,
+    "no",
+    4
+  )
+);
+productos.push(
+  new Producto(
+    19,
+    "guitarras",
+    "amplificadores para guitarra",
+    "vox",
+    "Amplificador Guitarra Vox Mini 3 G2 3 Watts Multiefecto",
+    119999.99,
+    "no",
+    2
+  )
+);
+productos.push(
+  new Producto(
+    20,
+    "guitarras",
+    "amplificadores para guitarra",
+    "marshall",
+    "Marshall Amplificador Guitarra Electrica 15 W Efecto Mg15cfx",
+    40263.99,
+    "no",
+    1
+  )
+);
+productos.push(
+  new Producto(
+    21,
+    "guitarras",
+    "amplificadores para guitarra",
+    "marshall",
+    "Amplificador Marshall Mg102 Cfx 100 Watts 2x12 4 Canales",
+    125321.25,
+    "si",
+    3
+  )
+);
+productos.push(
+  new Producto(
+    22,
+    "guitarras",
+    "amplificadores para guitarra",
+    "blackstar",
+    "Amplificador Guitarra Acústica Blackstar Sonnet 60 1x6",
+    95999.99,
+    "no",
+    2
+  )
+);
+productos.push(
+  new Producto(
+    23,
+    "guitarras",
+    "encordados para guitarra",
+    "fender",
+    "Encordado Para Guitarra Fender Electrica Nickel 008",
+    1152.25,
+    "no",
+    5
+  )
+);
+productos.push(
+  new Producto(
+    24,
+    "guitarras",
+    "encordados para guitarra",
+    "ernie ball",
+    "Encordado Ernie Ball Guitarra Electrica P02221 10 46 Regular",
+    1450,
+    "no",
+    6
+  )
+);
+productos.push(
+  new Producto(
+    25,
+    "guitarras",
+    "accesorios para guitarra",
+    "fender",
+    "Microfonos Fender Stratocaster Vintage Noiseless (set X 3)",
+    42999.99,
+    "no",
+    9
+  )
+);
+productos.push(
+  new Producto(
+    26,
+    "guitarras",
+    "accesorios para guitarra",
+    "ibanez",
+    "Afinador Cromatico Ibanez Pantalla Color Apagado Automatico",
+    1200,
+    "no",
+    5
+  )
+);
+productos.push(
+  new Producto(
+    27,
+    "bajos",
+    "bajos acusticos",
+    "ibanez",
+    "Bajo Electroacustico Ibanez Ewb20wnent",
+    100256.25,
+    "no",
+    3
+  )
+);
+productos.push(
+  new Producto(
+    28,
+    "bajos",
+    "bajos acusticos",
+    "fender",
+    "Bajo Electro Acustico Fender Cb-60sce Fishman Laurel",
+    88256.25,
+    "si",
+    2
+  )
+);
+productos.push(
+  new Producto(
+    29,
+    "bajos",
+    "amplificadores para bajo",
+    "fender",
+    "Amplificador Para Bajo Fender Rumble 100 V3 100w Combo 1x12",
+    90256.25,
+    "no",
+    3
+  )
+);
+productos.push(
+  new Producto(
+    30,
+    "bajos",
+    "amplificadores para bajo",
+    "fender",
+    "Amplificador para bajo Orange Crush Bass B50 12",
+    90256.25,
+    "si",
+    3
+  )
+);
+productos.push(
+  new Producto(
+    31,
+    "bajos",
+    "amplificadores para bajo",
+    "blackstar",
+    "Combo Amplificador Blackstar Unity 60 Para Bajo 60 W 1x10",
+    50256.25,
+    "no",
+    1
+  )
+);
+productos.push(
+  new Producto(
+    32,
+    "bajos",
+    "encordados para bajo",
+    "ernie ball",
+    "Encordado Ernie Ball Bajo Electrico P02835 040 Extra Slinky",
+    4999.99,
+    "no",
+    1
+  )
+);
+
+productos.push(
+  new Producto(
+    33,
+    "bajos",
+    "encordados para bajo",
+    "daddario",
+    "Encordado D'addario Para Bajos 4 Cuerdas XTB45100 045 - 100",
+    5599.99,
+    "si",
+    1
   )
 );

@@ -1,3 +1,16 @@
+// función para quitar acentos, recuperada de https://desarrolloweb.com/faq/la-mejor-manera-de-eliminar-tildes-o-acentos-en-javascript
+const removeAccents = (str) => {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+};
+
+// Funciones para escuchar botones agregar y borrar
+const escucharBotonesAgregar = function () {
+  $(`.botonAgregar`).unbind().click(agregarCarrito);
+};
+const escucharBotonesEliminar = function () {
+  $(".botonEliminar").unbind().click(borrarCarrito);
+};
+
 // Función para emparejar carrito con Storage
 const emparejarCarritoStorage = function () {
   // recupero carrito del localStorage
@@ -25,52 +38,26 @@ const emparejarCarritoStorage = function () {
   }
 };
 
-// Funciones para escuchar botones agregar y borrar
-const escucharBotonesAgregar = function () {
-  let botonesAgregar = document.querySelectorAll(".botonAgregar");
-  botonesAgregar.forEach((boton) => {
-    boton.addEventListener("click", agregarCarrito);
-  });
-};
-
-const escucharBotonesEliminar = function () {
-  let botonesEliminar = document.querySelectorAll(".botonEliminar");
-  botonesEliminar.forEach((boton) => {
-    boton.addEventListener("click", borrarCarrito);
-  });
-};
-
 // función para renderizar productos en el DOM
 const renderizarProductos = function (arrayProductos) {
-  let divProductos = document.querySelector(".grillaProductos");
-  for (const producto of arrayProductos) {
-    // para cada producto filtrado inserto su tarjeta
-    divProductos.innerHTML += `
+  arrayProductos.forEach((producto) => {
+    $(".grillaProductos").append(`
     <div id="${producto.id}" class="tarjeta botonAgregar">
     <div class="tarjetaCuerpo">
       <div class="cajaImagen">
-        <img class="img-fluid imagen" src="./img/${producto.id}.jpg" alt="${producto.descripcion}" />
+        <img class="img-fluid imagen" src="./img/${producto.id}.jpg" alt="${
+      producto.descripcion
+    }" />
       </div>
       <div class="nombre">${producto.nombre}</div>
-      <div class="precio">$ ${producto.precio}</div>
+      <div class="precio">$ ${producto.precio.toFixed(2)}</div>
     </div>
-  </div>`;
-  }
+  </div>`);
+  });
   escucharBotonesAgregar();
 };
 
 // función para limpiar productos del DOM
 const limpiarProductos = function () {
-  let productosAsacar = document.querySelectorAll(".tarjeta"); // selecciono los productos que se encuentran actualmente renderizados
-  for (const producto of productosAsacar) {
-    // elimino cada producto renderizado
-    let padre = producto.parentNode;
-    padre.removeChild(producto);
-  }
-};
-
-//función para borrar nodo
-const borrarNodoCarrito = function (nodo) {
-  let nodoPadre = nodo.parentNode; // voy al padre
-  nodoPadre.removeChild(nodo); // elimino el nodo
+  $(".tarjeta").remove();
 };
