@@ -51,6 +51,7 @@ const renderizarProductos = function (arrayProductos) {
       </div>
       <div class="nombre">${producto.nombre}</div>
       <div class="precio">$ ${producto.precio.toFixed(2)}</div>
+      <div class="agregar">Agregar al carrito</div>
     </div>
   </div>`);
   });

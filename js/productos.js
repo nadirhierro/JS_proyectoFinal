@@ -38,7 +38,7 @@ productos.push(
     "guitarras",
     "guitarras eléctricas",
     "fender",
-    "Guitarra Fender Stratocaster",
+    "Guitarra eléctrica Fender Stratocaster",
     150000,
     "si",
     3
@@ -50,7 +50,7 @@ productos.push(
     "guitarras",
     "guitarras eléctricas",
     "gibson",
-    "Guitarra Gibson Les Paul",
+    "Guitarra eléctrica Gibson Les Paul",
     180000,
     "si",
     2
@@ -62,7 +62,7 @@ productos.push(
     "bajos",
     "bajos eléctricos",
     "fender",
-    "Bajo Fender Jazz Bass",
+    "Bajo eléctrico Fender Jazz Bass",
     120000,
     "si",
     5
@@ -74,7 +74,7 @@ productos.push(
     "bajos",
     "bajos eléctricos",
     "fender",
-    "Bajo Fender Coronado",
+    "Bajo eléctrico Fender Coronado",
     190000,
     "si",
     4
@@ -110,7 +110,7 @@ productos.push(
     "guitarras",
     "encordados para guitarra",
     "daddario",
-    "Encordado guitarra D'addario Exp110 Nickle W",
+    "Encordado guitarra eléctrica D'addario Exp110 Nickle W",
     2739.45,
     "si",
     1
@@ -122,7 +122,7 @@ productos.push(
     "bajos",
     "encordados para bajo",
     "daddario",
-    "Encordado bajo D'addario Nyxl50105 4c. Nickel W",
+    "Encordado bajo eléctrico D'addario Nyxl50105 4c. Nickel W",
     6640,
     "si",
     5
@@ -170,7 +170,7 @@ productos.push(
     "guitarras",
     "accesorios para guitarra",
     "dandrea",
-    "Puas D'Andrea 12 unidades Cool Plecs",
+    "Puas para guitarra D'Andrea 12 unidades Cool Plecs",
     1200,
     "si",
     25
@@ -256,7 +256,7 @@ productos.push(
     "guitarras",
     "amplificadores para guitarra",
     "vox",
-    "Amplificador Guitarra Vox Mini 3 G2 3 Watts Multiefecto",
+    "Amplificador Guitarra eléctrica Vox Mini 3 G2 3 Watts Multiefecto",
     119999.99,
     "no",
     2
@@ -280,7 +280,7 @@ productos.push(
     "guitarras",
     "amplificadores para guitarra",
     "marshall",
-    "Amplificador Marshall Mg102 Cfx 100 Watts 2x12 4 Canales",
+    "Amplificador Marshall Guitarra Electrica Mg102 Cfx 100 Watts 2x12 4 Canales",
     125321.25,
     "si",
     3
@@ -328,7 +328,7 @@ productos.push(
     "guitarras",
     "accesorios para guitarra",
     "fender",
-    "Microfonos Fender Stratocaster Vintage Noiseless (set X 3)",
+    "Microfonos Fender Stratocaster Vintage Noiseless (set X 3) - Guitarra electrica",
     42999.99,
     "no",
     9
@@ -340,7 +340,7 @@ productos.push(
     "guitarras",
     "accesorios para guitarra",
     "ibanez",
-    "Afinador Cromatico Ibanez Pantalla Color Apagado Automatico",
+    "Afinador Cromatico Ibanez Pantalla Color Apagado Automatico para guitarra o bajo",
     1200,
     "no",
     5
@@ -352,7 +352,7 @@ productos.push(
     "bajos",
     "bajos acusticos",
     "ibanez",
-    "Bajo Electroacustico Ibanez Ewb20wnent",
+    "Bajo Electro Acustico Ibanez Ewb20wnent",
     100256.25,
     "no",
     3
@@ -425,7 +425,7 @@ productos.push(
     "bajos",
     "encordados para bajo",
     "daddario",
-    "Encordado D'addario Para Bajos 4 Cuerdas XTB45100 045 - 100",
+    "Encordado D'addario Para Bajo electrico 4 Cuerdas XTB45100 045 - 100",
     5599.99,
     "si",
     1

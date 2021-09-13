@@ -18,25 +18,20 @@ const renderizarEnCarrito = function (producto) {
 
 //función para cambiar cantidad y precio en carrito
 const refreshPrecioCantidad = function (producto) {
-  let nuevaCantidad = producto.cantidad;
-  let nuevoPrecio = producto.precio * nuevaCantidad;
-  let nuevaCantidadDiv = document.querySelector(
-    "." + CSS.escape(producto.id) + "-cantidad"
-  );
-  let nuevoprecioDIV = document.querySelector(
-    "." + CSS.escape(producto.id) + "-precio"
-  );
-  nuevaCantidadDiv.innerHTML = `${nuevaCantidad}`;
-  nuevoprecioDIV.innerHTML = `$${nuevoPrecio.toFixed(2)}`;
+  let nuevaCantidad = producto.cantidad; // reviso la nueva cantidad (en la funcion agregarCarrito ya se actualizó)
+  let nuevoPrecio = producto.precio * nuevaCantidad; // calculo el nuevo precio
+  $(`.${producto.id}-cantidad`).html(`${nuevaCantidad}`); // lo inserto en el DOM
+  $(`.${producto.id}-precio`).html(`$${nuevoPrecio.toFixed(2)}`); // lo inserto en el DOM
 };
 
 // función para refresh de carrito
 const refreshCarritoArray = function (producto, productoAborrar) {
   let indexEnCarrito = carrito.indexOf(productoAborrar); // tomo el index del producto en el carrito
   carrito.splice(indexEnCarrito, 1); // lo saco del carrito
+  // vuelvo a ponerlo, pero ahora con la cantidad actualizada, si la cantidad es 0, no lo vuelvo a poner
   if (producto.cantidad >= 1) {
     carrito.push(producto);
-  } // vuelvo a ponerlo, pero ahora con la cantidad actualizada, si la cantidad es 0, no lo vuelvo a poner
+  }
 };
 const refreshLocalStorage = function (carrito) {
   localStorage.removeItem("carrito"); // lo saco para volver a ponerlo
@@ -65,7 +60,8 @@ const actualizarTotal = function (precioTotal) {
 const agregarCarrito = function (event) {
   let productoID = this.id; // busco el ID del producto seleccionado dentro del id del nodo
   //busco el producto
-  for (const producto of productos) {
+  productos.forEach((producto) => {
+    console.log(producto);
     if (producto.id == productoID && producto.stock != 0) {
       // si hay stock
       producto.agregar(); // agrego cantidad y quito stock
@@ -88,9 +84,8 @@ const agregarCarrito = function (event) {
       }
     } else if (producto.id == productoID && producto.stock === 0) {
       alert("No hay Stock");
-      break;
     }
-  }
+  });
 };
 
 // función para borrar producto del carrito
@@ -98,10 +93,8 @@ const borrarCarrito = function (event) {
   let productoCarrito = this.parentNode; // selecciono al padre del botón eliminar, que tiene un id igual al id del producto
   let productoCarritoID = productoCarrito.id; // rescato el id de producto
   let productoID = productoCarritoID.replace("carrito-", "");
-  let productoAborrar = carrito.find(
-    (producto) => producto.id == productoCarritoID
-  ); // lo busco en el carrito
-  for (const producto of productos) {
+  let productoAborrar = carrito.find((producto) => producto.id == productoID); // lo busco en el carrito
+  productos.forEach((producto) => {
     if (producto.id == productoID) {
       producto.borrar(); // actualizo cantidad y stock en array productos
       refreshCarritoArray(producto, productoAborrar); // refresh al array carrito
@@ -116,5 +109,5 @@ const borrarCarrito = function (event) {
         $(`#${productoCarritoID}`).remove();
       }
     }
-  }
+  });
 };
