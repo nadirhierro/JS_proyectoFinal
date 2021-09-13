@@ -1,7 +1,3 @@
-let productosFiltrados = []; // inicializo array de productos filtrados
-let productosSubFiltrados = []; // inicializo array de productos subfiltrados
-let productosBuscados = []; // inicializo array de productos buscados
-
 // función para buscar, contempla que las palabras no estén en orden,
 // busca que todas las palabras ingresadas estén dentro del nombre del producto
 const buscar = function (event) {

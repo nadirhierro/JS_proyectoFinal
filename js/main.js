@@ -1,6 +1,9 @@
 // variables globales
 let carrito = [];
 let precioTotal = 0;
+let productosFiltrados = []; // inicializo array de productos filtrados
+let productosSubFiltrados = []; // inicializo array de productos subfiltrados
+let productosBuscados = []; // inicializo array de productos buscados
 // estructuras html estáticas
 let grillaTienda = $(`
   <div class="container-fluid tienda"></div>
