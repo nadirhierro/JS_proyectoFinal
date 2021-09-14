@@ -12,7 +12,6 @@ let grillaTienda = $(`
 let barraBusqueda = $(`
   <div class="barraBusqueda">
     <h3>Buscá los productos de tu interés</h3>
-    <h4>Podés buscar por palabras clave</h4>
     <form onsubmit="return false" class="buscador">
       <input
         type="search"
