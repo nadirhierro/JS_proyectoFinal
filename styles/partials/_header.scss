@@ -1,8 +1,9 @@
 .header--nav {
   font-family: $roboto;
   background-color: rgb(79, 90, 79);
-  a {
-    color: black;
+  img {
+    height: 50px;
+    width: auto;
   }
   ul {
     text-decoration: none;

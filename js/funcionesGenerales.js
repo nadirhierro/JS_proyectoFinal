@@ -2,60 +2,85 @@
 const removeAccents = (str) => {
   return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 };
-
-// Funciones para escuchar botones agregar y borrar
+function numberWithCommas(x) {
+  return x
+    .toString()
+    .replace(".", ",")
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
 const escucharBotonesAgregar = function () {
-  $(`.botonAgregar`).unbind().click(agregarCarrito);
+  $(".botonAgregar").off().on("click", agregarCarrito);
+};
+// Funciones para escuchar botones agregar y borrar
+const escucharBotonesSumar = function () {
+  $(`.botonSumar`).off().on("click", agregarCarrito);
+};
+const escucharBotonesRestar = function () {
+  $(".botonRestar").off().on("click", restarCarrito);
 };
 const escucharBotonesEliminar = function () {
-  $(".botonEliminar").unbind().click(borrarCarrito);
+  $(".botonEliminar").off().on("click", eliminarCarrito);
 };
-
 // Función para emparejar carrito con Storage
 const emparejarCarritoStorage = function () {
   // recupero carrito del localStorage
   let carritoStorageString = localStorage.getItem("carrito");
   let carritoStorage = JSON.parse(carritoStorageString);
-
+  // si el carrito de storage no es null o vacío, entonces lo recupero y renderizo
   if (carritoStorage != null && carritoStorage.length != 0) {
-    // si el carrito de storage no es null o vacío, entonces lo recupero y renderizo
-    carrito = carritoStorage;
-    carrito.forEach((producto) => {
-      let productoID = producto.id; // tomo el id
-      let productoStock = producto.stock; // tomo stock y cantidad para emparejar con el array de productos
-      let productoCantidad = producto.cantidad;
+    // inserto primero la fila de precio total
+    $(".carritoContainer").append(filaTotal);
+    // para cada producto del carrito
+    carritoStorage.forEach((productoCarrito) => {
+      let productoID = productoCarrito.id; // tomo el id
+      let productoStock = productoCarrito.stock; // tomo stock y cantidad para emparejar con el array de productos
+      let productoCantidad = productoCarrito.cantidad; // tomo la cantidad
+      // me fijo qué producto es en producto y emparejo los datos
       productos.forEach((producto) => {
         if (producto.id == productoID) {
-          producto["stock"] = parseInt(productoStock); // emparejo
-          producto["cantidad"] = parseInt(productoCantidad);
+          producto["stock"] = parseInt(productoStock); // emparejo stock
+          producto["cantidad"] = parseInt(productoCantidad); // emparejo cantidad
+          carrito.push(producto); // ahora meto el producto al carrito
           renderizarEnCarrito(producto); // renderizo
           precioTotal += producto.precio * producto.cantidad; // calculo precio total
           actualizarTotal(precioTotal); // actualizo en carrito
         }
       });
     });
+    escucharBotonesSumar();
+    escucharBotonesRestar();
     escucharBotonesEliminar(); //escucho los nuevos botones
+    // si no había carrito
+  } else {
+    $(".carrito").append(carritoVacio); // dejo mensaje de que está vacío
   }
 };
 
 // función para renderizar productos en el DOM
 const renderizarProductos = function (arrayProductos) {
   arrayProductos.forEach((producto) => {
+    let precioFixed = numberWithCommas(producto.precio.toFixed(2));
+    let precioCuotas = numberWithCommas((producto.precio / 18).toFixed(2));
     $(".grillaProductos").append(`
     <div id="${producto.id}" class="tarjeta botonAgregar">
     <div class="tarjetaCuerpo">
       <div class="cajaImagen">
-        <img class="img-fluid imagen" src="./img/${producto.id}.jpg" alt="${
-      producto.descripcion
-    }" />
+        <img class="img-fluid imagen" src="./img/productos/${producto.id}.jpg" alt="${producto.descripcion}" />
       </div>
       <div class="nombre">${producto.nombre}</div>
-      <div class="precio">$ ${producto.precio.toFixed(2)}</div>
+      <div class="cuotas">
+        <p class="texto">18 cuotas s/interés de</p>
+        <p class="precioCuotas"> $ ${precioCuotas}
+        </p>
+      </div>
+      <div class="precio">Final: $${precioFixed}</div>
       <div class="agregar">Agregar al carrito</div>
     </div>
   </div>`);
   });
-  escucharBotonesAgregar();
+  escucharBotonesSumar();
+  escucharBotonesRestar();
+  escucharBotonesEliminar();
 };
 
 // función para limpiar productos del DOM

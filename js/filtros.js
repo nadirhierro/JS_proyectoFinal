@@ -46,6 +46,7 @@ const filtrar = function (event) {
   );
   limpiarProductos(); // borro productos de la grilla
   renderizarProductos(productosFiltrados); // renderizo los productos filtrados
+  escucharBotonesAgregar();
 };
 
 //función subfiltrar
@@ -68,4 +69,5 @@ const subFiltrar = function (event) {
   }
   limpiarProductos(); // limpio productos de la grilla
   renderizarProductos(productosSubFiltrados); // renderizo
+  escucharBotonesAgregar();
 };

@@ -94,7 +94,7 @@ let grillaProductos = $(`
 
 let carritoOffcanvas = $(`
   <div
-    class="offcanvas offcanvas-start"
+    class="offcanvas offcanvas-end"
     data-bs-scroll="true"
     data-bs-backdrop="false"
     tabindex="-1"
@@ -114,11 +114,19 @@ let carritoOffcanvas = $(`
     </div>
     <div class="offcanvas-body carritoContainer">
       <div class="carrito"></div>
-      <div class="total">
-        <p>TOTAL</p>
-        <p class="totalPrecio"></p>
-      </div>
     </div>
+  </div>`);
+
+let carritoVacio = $(`
+  <div class="carritoVacio">
+    <h4>El carrito está vacío</h4>
+  </div>  
+  `);
+let filaTotal = $(`
+  <div class="total">
+    <p>TOTAL</p>
+    <p class="totalPrecio"></p>
+    <button class="btn rounded-pill limpiarCarrito">Limpiar carrito</button>
   </div>`);
 // función document ready
 $(document).ready(function () {
@@ -135,6 +143,7 @@ $(document).ready(function () {
     (producto) => producto.destacado == "si"
   );
   renderizarProductos(productosDestacados);
-  escucharBotonesAgregar(); // escucho los botones agregar
+  escucharBotonesAgregar();
   emparejarCarritoStorage(); // emparejo carrito y Storage
+  $(".limpiarCarrito").on("click", limpiarCarrito);
 });
