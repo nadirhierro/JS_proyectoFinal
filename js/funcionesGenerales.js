@@ -70,10 +70,10 @@ const renderizarProductos = function (arrayProductos) {
       <div class="nombre">${producto.nombre}</div>
       <div class="cuotas">
         <p class="texto">18 cuotas s/interés de</p>
-        <p class="precioCuotas"> $ ${precioCuotas}
+        <p class="texto precioCuotas"> $ ${precioCuotas}
         </p>
       </div>
-      <div class="precio">Final: $${precioFixed}</div>
+      <div class="precio"><p class="texto">Final: $${precioFixed}</p></div>
       <div class="agregar">Agregar al carrito</div>
     </div>
   </div>`);

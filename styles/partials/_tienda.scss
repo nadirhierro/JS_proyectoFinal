@@ -1,87 +1,51 @@
 .hero {
   position: relative;
-  padding-top: 5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include padding-y(5rem, 0);
+  @include flexColumn(inherit, unset, center);
+  @include fondoVerde;
   font-family: $roboto;
-  background-color: rgb(79, 90, 79);
-  color: black;
 }
 .tienda {
-  width: 100%;
-  display: grid;
-  padding: 0;
-  grid-template-columns: 2fr 4fr;
-  grid-template-rows: auto;
-  grid-template-areas:
-    "barraBusqueda barraBusqueda"
-    "filtros productos";
-  font-family: $roboto;
-  @media (min-width: 992px) {
-    & {
-      grid-template-columns: 1fr 3fr;
-    }
-  }
-  @media (min-width: 1200px) {
-    & {
-      grid-template-columns: 1fr 4fr;
-    }
-  }
-  @media (min-width: 1400px) {
-    & {
-      grid-template-columns: 2fr 10fr;
-    }
-  }
+  @include padding(0);
+  @include sizes(100%, auto);
+  @include grillaTienda;
   .barraBusqueda {
     grid-area: barraBusqueda;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: black;
-    background-color: rgb(74, 83, 74);
+    @include padding(2rem);
+    @include flexColumn(inherit, unset, center);
+    @include fondoVerde;
     .buscador {
-      display: flex;
-      justify-content: center;
-      width: 80%;
-      gap: 1rem;
+      @include flex(1rem, center, inherit);
+      @include sizes(80%, auto);
       .form-control {
-        width: 40%;
+        @include sizes(40%, auto);
         &:focus {
-          border-color: rgb(16, 85, 90);
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
-            0 0 8px rgb(16, 85, 90);
+          @include boxShadorBusqueda;
         }
       }
       .btn {
-        color: white;
-        background-color: rgb(14, 33, 34);
+        color: $blanco;
+        background-color: $verdeOscuro;
       }
     }
   }
   .filtros {
-    padding: 1rem;
+    grid-area: filtros;
+    @include padding(1rem);
     .categorias {
-      grid-area: filtros;
-      display: flex;
-      flex-direction: column;
-
+      @include flexColumn(inherit, unset, inherit);
       .categoriaContenedor {
-        padding: 0.5rem;
+        @include padding(0.5rem);
         .categoria {
-          font-size: 20px;
-          background-color: white;
-          border-radius: 30px;
+          font-size: 1rem;
           list-style: none;
           cursor: pointer;
           &:hover {
-            -webkit-animation: fadeIn 0.9s;
-            animation: fadeIn 0.9s;
+            @include fadeIn;
           }
         }
         .subcategorias {
-          padding: 0rem;
+          @include padding(0rem);
           display: none;
           list-style-position: initial;
           list-style: none;
@@ -89,113 +53,59 @@
             padding-top: 1rem;
           }
           .subcategoria {
-            border-radius: 30px;
             cursor: pointer;
           }
           .subcategoria:hover {
-            -webkit-animation: fadeIn 0.9s;
-            animation: fadeIn 0.9s;
+            @include fadeIn;
           }
         }
       }
     }
   }
   .grillaProductos {
-    grid-area: productos;
-    display: grid;
-    grid-template-columns: repeat(1, minmax(3 00px, 1fr));
-
-    @media (min-width: 768px) {
-      & {
-        grid-template-columns: repeat(2, minmax(275px, 1fr));
-      }
-    }
-    @media (min-width: 992px) {
-      & {
-        grid-template-columns: repeat(2, minmax(250px, 1fr));
-      }
-    }
-    @media (min-width: 1200px) {
-      & {
-        gap: 1rem;
-        grid-template-columns: repeat(3, minmax(250px, 1fr));
-      }
-    }
-    @media (min-width: 1400px) {
-      & {
-        grid-template-columns: repeat(4, minmax(200px, 1fr));
-      }
-    }
+    @include grillaProductos;
     .tarjeta {
-      display: block;
-      align-self: center;
-      grid-area: auto/span 1;
-      padding: 1rem;
-      position: relative;
-      top: 0;
-      transition: all 0.1s ease-in;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      color: #444;
-      text-decoration: none;
-      cursor: pointer;
-      &:hover {
-        color: #444;
-        top: -2px;
-        box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
-      }
+      @include tarjetaProducto;
       .tarjetaCuerpo {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 100%;
+        @include sizes(auto, 100%);
+        @include flexColumn(inherit, space-between, inherit);
         .cajaImagen {
           position: relative;
           padding-top: 100%;
           .imagen {
-            position: absolute;
-            margin: auto;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            max-width: 100%;
-            max-height: 100%;
+            @include fotos;
           }
         }
         .nombre {
           padding-top: 1rem;
           align-self: center;
-          display: inline-block;
-          font-size: 18px;
+          font-size: 1.2rem;
         }
         .cuotas {
           align-self: center;
           text-align: center;
-          padding-top: 2rem;
-          padding-bottom: 2rem;
+          @include padding-y(2rem, 2rem);
           .texto {
-            margin: 0;
-            font-size: 16px;
+            font-size: 0.9rem;
           }
           .precioCuotas {
-            margin: 0;
-            font-size: 28px;
+            font-size: 2rem;
             font-weight: bold;
           }
         }
         .precio {
           align-self: center;
-          font-size: 12px;
+          font-size: 0.7rem;
           max-height: 50px;
         }
 
         .agregar {
+          padding-top: 1rem;
           align-self: center;
           font-weight: bold;
-          padding-top: 1rem;
         }
         &:hover .agregar {
-          color: red;
+          color: $rojo;
         }
       }
     }
@@ -206,61 +116,33 @@
     padding-bottom: 2rem;
   }
   .carrito {
-    display: flex;
-    gap: 2rem;
-    flex-direction: column;
+    @include flexColumn(2rem, unset, unset);
     .productoCarrito {
-      display: flex;
-      flex-direction: row;
-      gap: 1rem;
+      @include flex(1rem, unset, unset);
       min-height: 80px;
       .cajaImagen {
         position: relative;
         min-width: 96px;
         img {
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          right: 0;
-          left: 0;
-          margin: auto;
-          max-width: 100%;
-          max-height: 100%;
+          @include fotos;
         }
       }
       .infoProducto {
-        padding: 0 1rem;
-        font-size: 16px;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        text-align: start;
-        width: 100%;
-        overflow: hidden;
+        @include sizes(100%, auto);
+        @include padding-x(1rem, 1rem);
+        @include flexColumn(1rem, unset, unset);
+        font-size: 1rem;
         .texto {
           overflow: hidden;
           max-height: 48px;
-          p {
-            margin: 0;
-          }
         }
         .precioYbotones {
-          width: 100%;
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
+          @include sizes(100%, auto);
+          @include flex(inherit, space-between, unset);
           .botones {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 0.5rem;
+            @include flex(0.5rem, center, center);
             .botonRestar {
               cursor: pointer;
-            }
-            .inputCantidad {
-              max-height: 20px;
-              max-width: 20px;
-              font-size: 14px;
             }
             .botonSumar {
               cursor: pointer;
@@ -277,52 +159,13 @@
 }
 .total {
   padding-top: 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flex(inherit, space-between, center);
   p {
     margin: 0;
   }
   .limpiarCarrito {
-    background-color: rgb(79, 90, 79);
-    color: black;
+    background-color: $verde;
+    color: $negro;
     font-weight: bold;
-  }
-}
-
-/* ----------------------------------------------
- * Generated by Animista on 2021-9-12 17:20:19
- * Licensed under FreeBSD License.
- * See http://animista.net/license for more info. 
- * w: http://animista.net, t: @cssanimista
- * ---------------------------------------------- */
-
-/**
- * ----------------------------------------
- * animation text-focus-in
- * ----------------------------------------
- */
-@-webkit-keyframes text-focus-in {
-  0% {
-    -webkit-filter: blur(12px);
-    filter: blur(12px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-filter: blur(0px);
-    filter: blur(0px);
-    opacity: 1;
-  }
-}
-@keyframes text-focus-in {
-  0% {
-    -webkit-filter: blur(12px);
-    filter: blur(12px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-filter: blur(0px);
-    filter: blur(0px);
-    opacity: 1;
   }
 }

@@ -128,6 +128,7 @@ let filaTotal = $(`
     <p class="totalPrecio"></p>
     <button class="btn rounded-pill limpiarCarrito">Limpiar carrito</button>
   </div>`);
+
 // función document ready
 $(document).ready(function () {
   $(".main").append(grillaTienda); // cargo grilla tienda

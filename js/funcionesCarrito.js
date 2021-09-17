@@ -16,27 +16,17 @@ const renderizarEnCarrito = function (producto) {
               />
             </div>
             <div class="infoProducto">
-              <div class="texto">
-                <p>${producto.nombre}</p>
-              </div>
+              <p class="texto">${producto.nombre}</p>
               <div class="precioYbotones">
                 <div id="botones-${producto.id}" class="botones">
-                  <div class="cajaBoton">
                     <i class="fas fa-minus-circle botonRestar"></i>
-                  </div>
-                  <div class="${producto.id}-cantidad">${producto.cantidad}</div>
-                  <div class="cajaBoton">
+                    <p class="${producto.id}-cantidad texto">${producto.cantidad}</p>
                     <i class="fas fa-plus-circle botonSumar"></i>
-                  </div>
                 </div>
-                <div class="${producto.id}-precio precioCarrito">
-                  <span>$ ${precio}</span>
-                </div>
+                <p class="${producto.id}-precio texto">$ ${precio}</p>
               </div>
             </div>
-            <div class="cajaBoton">
-              <i class="fas fa-times-circle botonEliminar"></i>
-            </div>
+            <i class="fas fa-times-circle botonEliminar"></i>
           </div>
   `);
 };
@@ -94,7 +84,7 @@ const agregarCarrito = function (event) {
   let productoID = ""; // inicializo productoID porque necesito saber si se está haciendo click en el carrito o en la grilla productos
   // si el tag es I, entonces busco el id según el DOM
   if ($(this).prop("tagName") == "I") {
-    let productoCarritoID = $(this).parent().parent().attr("id"); // rescato el id de producto
+    let productoCarritoID = $(this).parent().attr("id"); // rescato el id de producto
     productoID = productoCarritoID.replace("botones-", ""); // lo limpio de la palabra botones
   } else {
     // sino
@@ -150,7 +140,7 @@ const agregarCarrito = function (event) {
 // función para borrar producto del carrito
 const restarCarrito = function (event) {
   // selecciono al padre del padre del botón restar, que tiene un id igual al id del producto
-  let productoCarritoID = $(this).parent().parent().attr("id"); // rescato el id de producto
+  let productoCarritoID = $(this).parent().attr("id"); // rescato el id de producto
   let productoID = productoCarritoID.replace("botones-", ""); // lo limpio de la palabra botones
   let productoArestar = carrito.find((producto) => producto.id == productoID); // lo busco en el carrito
   productos.forEach((producto) => {
@@ -177,8 +167,9 @@ const restarCarrito = function (event) {
 };
 const eliminarCarrito = function (event) {
   // selecciono al padre del padre del botón eliminar, que tiene un id igual al id del producto
-  let productoCarritoID = $(this).parent().parent().attr("id"); // rescato el id de producto
+  let productoCarritoID = $(this).parent().attr("id"); // rescato el id de producto
   let productoID = productoCarritoID.replace("carrito-", ""); // lo limpio de la palabra carrito
+  console.log(productoID);
   let productoAborrar = carrito.find((producto) => producto.id == productoID); // lo busco en el carrito
   console.log(productoAborrar);
   const productoCantidad = productoAborrar.cantidad; // guardo la cantidad para las iteraciones
@@ -195,7 +186,7 @@ const eliminarCarrito = function (event) {
       actualizarTotal(precioTotal); // actualizo el total en el DOM carrito
     }
   });
-  $(this).parent().parent().remove(); // saco el producto del carrito
+  $(this).parent().remove(); // saco el producto del carrito
   // si el carrito quedó vacío
   if (carrito.length == 0) {
     $(".total").remove(); // saco la fila de total

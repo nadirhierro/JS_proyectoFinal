@@ -1,3 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.texto {
+  margin: 0;
+}
+
 .header--nav {
   font-family: "Roboto", sans-serif;
   background-color: #4f5a4f;
@@ -29,18 +38,22 @@
 .hero {
   position: relative;
   padding-top: 5rem;
+  padding-bottom: 0;
   display: flex;
   flex-direction: column;
+  gap: inherit;
+  justify-content: unset;
   align-items: center;
-  font-family: "Roboto", sans-serif;
   background-color: #4f5a4f;
   color: black;
+  font-family: "Roboto", sans-serif;
 }
 
 .tienda {
+  padding: 0;
+  height: auto;
   width: 100%;
   display: grid;
-  padding: 0;
   grid-template-columns: 2fr 4fr;
   grid-template-rows: auto;
   grid-template-areas: "barraBusqueda barraBusqueda" "filtros productos";
@@ -70,19 +83,24 @@
   padding: 2rem;
   display: flex;
   flex-direction: column;
+  gap: inherit;
+  justify-content: unset;
   align-items: center;
+  background-color: #4f5a4f;
   color: black;
-  background-color: #4a534a;
 }
 
 .tienda .barraBusqueda .buscador {
   display: flex;
-  justify-content: center;
-  width: 80%;
   gap: 1rem;
+  justify-content: center;
+  align-items: inherit;
+  height: auto;
+  width: 80%;
 }
 
 .tienda .barraBusqueda .buscador .form-control {
+  height: auto;
   width: 40%;
 }
 
@@ -97,13 +115,16 @@
 }
 
 .tienda .filtros {
+  grid-area: filtros;
   padding: 1rem;
 }
 
 .tienda .filtros .categorias {
-  grid-area: filtros;
   display: flex;
   flex-direction: column;
+  gap: inherit;
+  justify-content: unset;
+  align-items: inherit;
 }
 
 .tienda .filtros .categorias .categoriaContenedor {
@@ -111,9 +132,7 @@
 }
 
 .tienda .filtros .categorias .categoriaContenedor .categoria {
-  font-size: 20px;
-  background-color: white;
-  border-radius: 30px;
+  font-size: 1rem;
   list-style: none;
   cursor: pointer;
 }
@@ -135,7 +154,6 @@
 }
 
 .tienda .filtros .categorias .categoriaContenedor .subcategorias .subcategoria {
-  border-radius: 30px;
   cursor: pointer;
 }
 
@@ -148,6 +166,7 @@
   grid-area: productos;
   display: grid;
   grid-template-columns: repeat(1, minmax(3 0px, 1fr));
+  align-items: center;
 }
 
 @media (min-width: 768px) {
@@ -176,11 +195,10 @@
 }
 
 .tienda .grillaProductos .tarjeta {
-  display: block;
-  align-self: center;
   grid-area: auto/span 1;
-  padding: 1rem;
+  display: block;
   position: relative;
+  padding: 1rem;
   top: 0;
   transition: all 0.1s ease-in;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -196,10 +214,13 @@
 }
 
 .tienda .grillaProductos .tarjeta .tarjetaCuerpo {
+  height: 100%;
+  width: auto;
   display: flex;
   flex-direction: column;
+  gap: inherit;
   justify-content: space-between;
-  height: 100%;
+  align-items: inherit;
 }
 
 .tienda .grillaProductos .tarjeta .tarjetaCuerpo .cajaImagen {
@@ -209,11 +230,11 @@
 
 .tienda .grillaProductos .tarjeta .tarjetaCuerpo .cajaImagen .imagen {
   position: absolute;
-  margin: auto;
   top: 0;
-  left: 0;
-  right: 0;
   bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
   max-width: 100%;
   max-height: 100%;
 }
@@ -221,8 +242,7 @@
 .tienda .grillaProductos .tarjeta .tarjetaCuerpo .nombre {
   padding-top: 1rem;
   align-self: center;
-  display: inline-block;
-  font-size: 18px;
+  font-size: 1.2rem;
 }
 
 .tienda .grillaProductos .tarjeta .tarjetaCuerpo .cuotas {
@@ -233,26 +253,24 @@
 }
 
 .tienda .grillaProductos .tarjeta .tarjetaCuerpo .cuotas .texto {
-  margin: 0;
-  font-size: 16px;
+  font-size: 0.9rem;
 }
 
 .tienda .grillaProductos .tarjeta .tarjetaCuerpo .cuotas .precioCuotas {
-  margin: 0;
-  font-size: 28px;
+  font-size: 2rem;
   font-weight: bold;
 }
 
 .tienda .grillaProductos .tarjeta .tarjetaCuerpo .precio {
   align-self: center;
-  font-size: 12px;
+  font-size: 0.7rem;
   max-height: 50px;
 }
 
 .tienda .grillaProductos .tarjeta .tarjetaCuerpo .agregar {
+  padding-top: 1rem;
   align-self: center;
   font-weight: bold;
-  padding-top: 1rem;
 }
 
 .tienda .grillaProductos .tarjeta .tarjetaCuerpo:hover .agregar {
@@ -265,14 +283,17 @@
 
 .carritoContainer .carrito {
   display: flex;
-  gap: 2rem;
   flex-direction: column;
+  gap: 2rem;
+  justify-content: unset;
+  align-items: unset;
 }
 
 .carritoContainer .carrito .productoCarrito {
   display: flex;
-  flex-direction: row;
   gap: 1rem;
+  justify-content: unset;
+  align-items: unset;
   min-height: 80px;
 }
 
@@ -293,14 +314,16 @@
 }
 
 .carritoContainer .carrito .productoCarrito .infoProducto {
-  padding: 0 1rem;
-  font-size: 16px;
+  height: auto;
+  width: 100%;
+  padding-right: 1rem;
+  padding-left: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  text-align: start;
-  width: 100%;
-  overflow: hidden;
+  justify-content: unset;
+  align-items: unset;
+  font-size: 1rem;
 }
 
 .carritoContainer .carrito .productoCarrito .infoProducto .texto {
@@ -308,32 +331,24 @@
   max-height: 48px;
 }
 
-.carritoContainer .carrito .productoCarrito .infoProducto .texto p {
-  margin: 0;
-}
-
 .carritoContainer .carrito .productoCarrito .infoProducto .precioYbotones {
+  height: auto;
   width: 100%;
   display: flex;
-  flex-direction: row;
+  gap: inherit;
   justify-content: space-between;
+  align-items: unset;
 }
 
 .carritoContainer .carrito .productoCarrito .infoProducto .precioYbotones .botones {
   display: flex;
-  flex-direction: row;
-  align-items: center;
   gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .carritoContainer .carrito .productoCarrito .infoProducto .precioYbotones .botones .botonRestar {
   cursor: pointer;
-}
-
-.carritoContainer .carrito .productoCarrito .infoProducto .precioYbotones .botones .inputCantidad {
-  max-height: 20px;
-  max-width: 20px;
-  font-size: 14px;
 }
 
 .carritoContainer .carrito .productoCarrito .infoProducto .precioYbotones .botones .botonSumar {
@@ -348,6 +363,7 @@
 .total {
   padding-top: 2rem;
   display: flex;
+  gap: inherit;
   justify-content: space-between;
   align-items: center;
 }
@@ -360,42 +376,5 @@
   background-color: #4f5a4f;
   color: black;
   font-weight: bold;
-}
-
-/* ----------------------------------------------
- * Generated by Animista on 2021-9-12 17:20:19
- * Licensed under FreeBSD License.
- * See http://animista.net/license for more info. 
- * w: http://animista.net, t: @cssanimista
- * ---------------------------------------------- */
-/**
- * ----------------------------------------
- * animation text-focus-in
- * ----------------------------------------
- */
-@-webkit-keyframes text-focus-in {
-  0% {
-    -webkit-filter: blur(12px);
-    filter: blur(12px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-filter: blur(0px);
-    filter: blur(0px);
-    opacity: 1;
-  }
-}
-
-@keyframes text-focus-in {
-  0% {
-    -webkit-filter: blur(12px);
-    filter: blur(12px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-filter: blur(0px);
-    filter: blur(0px);
-    opacity: 1;
-  }
 }
 /*# sourceMappingURL=main.css.map */
