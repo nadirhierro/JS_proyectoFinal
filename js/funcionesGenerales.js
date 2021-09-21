@@ -30,6 +30,8 @@ const emparejarCarritoStorage = function () {
   if (carritoStorage != null && carritoStorage.length != 0) {
     // inserto primero la fila de precio total
     $(".carritoContainer").append(filaTotal);
+    $(".limpiarCarrito").on("click", limpiarCarrito);
+    $(".comprarCarrito").on("click", comprarCarrito);
     // para cada producto del carrito
     carritoStorage.forEach((productoCarrito) => {
       let productoID = productoCarrito.id; // tomo el id
@@ -68,9 +70,11 @@ const renderizarProductos = function (arrayProductos) {
     <div id="${producto.id}" class="tarjeta botonAgregar">
     <div class="tarjetaCuerpo">
       <div class="cajaImagen">
-        <img class="img-fluid imagen" src="./img/productos/${producto.id}.jpg" alt="${producto.descripcion}" />
+        <img class="img-fluid imagen" src="./img/productos/${producto.id}.jpg" alt="${producto.nombre}" />
       </div>
-      <div class="nombre">${producto.nombre}</div>
+      <div class="nombre">
+        <p>${producto.nombre}</p>
+      </div>
       <div class="cuotas">
         <p class="texto">18 cuotas s/interés de</p>
         <p class="texto precioCuotas"> $ ${precioCuotas}

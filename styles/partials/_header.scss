@@ -1,51 +1,70 @@
 .header--nav {
   font-family: $nunito;
-  background-color: $verde;
   max-height: 62px;
-  img {
-    height: 50px;
-    width: auto;
-  }
-  ul {
-    text-decoration: none;
-    li {
-      a {
-        font-size: 18px;
-        color: rgb(169, 172, 131);
-        font-weight: bold;
-        &:hover {
-          color: rgb(169, 172, 131);
-          background-color: $verdeOscuro;
-          transform: skewX(-10deg);
-          transition: 0.4s;
-        }
-        &:focus {
-          color: rgb(169, 172, 131);
-        }
-        img {
-          cursor: pointer;
-          height: 40px;
-        }
+  background-color: rgba(73, 76, 54, 0.97);
+  .container-fluid {
+    background-color: rgba(73, 76, 54, 0.97);
+    @media (min-width: 992px) {
+      & {
+        background-color: transparent;
       }
-      .carritoIconCaja {
-        display: flex;
-        gap: 0.1rem;
-        cursor: pointer;
-        text-decoration: none;
-        &:hover {
-          background-color: inherit;
-          transform: none;
-        }
-        .carritoContador {
-          font-size: 16px;
-          @include sizes(1.3rem, 1.3rem);
-          vertical-align: middle;
-          border-radius: 50%;
-          background-color: rgb(177, 184, 122);
-          color: black;
+    }
+    .navbar-toggler {
+      background-image: url("../img/hamburguerIcon.png");
+      background-size: cover;
+      background-position: center;
+      &:focus {
+        box-shadow: 0 0 0 0.25rem $amarillo;
+      }
+    }
+    img {
+      height: 50px;
+      width: auto;
+    }
+    ul {
+      text-decoration: none;
+      @media (min-width: 992px) {
+        align-items: center;
+      }
+      li {
+        a {
+          font-size: 18px;
+          color: $amarillo;
           font-weight: bold;
-          text-align: center;
-          align-self: flex-end;
+          &:hover {
+            color: $amarillo;
+            background-color: $verdeOscuro;
+            transform: skewX(-10deg);
+            transition: 0.4s;
+          }
+          &:focus {
+            color: $amarillo;
+          }
+          img {
+            cursor: pointer;
+            height: 40px;
+          }
+        }
+        .carritoIconCaja {
+          display: flex;
+          gap: 0.1rem;
+          cursor: pointer;
+          text-decoration: none;
+          &:hover {
+            background-color: inherit;
+            transform: none;
+          }
+          .carritoContador {
+            font-size: 16px;
+            @include sizes(1.3rem, 1.3rem);
+            vertical-align: middle;
+            border-radius: 50%;
+            background-color: $verdeOscuro;
+            color: $amarillo;
+            font-weight: bold;
+            text-align: center;
+            align-self: flex-end;
+          }
         }
       }
     }

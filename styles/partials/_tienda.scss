@@ -1,5 +1,6 @@
 .main {
   min-height: 120vh; // para que la barra de scroll ya aparezca en el medio y no entorpezca las animaciones
+  font-family: $nunito;
 }
 .hero {
   @include padding-y(7rem, 4rem);
@@ -138,12 +139,13 @@
         @include padding(0.5rem);
         .categoria {
           @include padding-y(0, 0.5rem);
-          font-size: 1.3rem;
+          font-size: 1rem;
           list-style: none;
           cursor: pointer;
           @media (min-width: 992px) {
             & {
               padding: 0;
+              font-size: 1.3rem;
             }
           }
           &:hover {
@@ -196,6 +198,7 @@
           padding-top: 1rem;
           align-self: center;
           font-size: 1.2rem;
+          text-align: center;
         }
         .cuotas {
           align-self: center;
@@ -205,8 +208,13 @@
             font-size: 0.9rem;
           }
           .precioCuotas {
-            font-size: 2rem;
+            font-size: 1.7rem;
             font-weight: bold;
+            @media (min-width: 572px) {
+              & {
+                font-size: 2rem;
+              }
+            }
           }
         }
         .precio {
@@ -293,8 +301,128 @@
   p {
     margin: 0;
   }
+}
+.botonesCarrito {
+  padding-top: 2rem;
+  @include flex(inherit, space-between, flex-end);
   .limpiarCarrito {
     @include fondoVerde;
     font-weight: bold;
+  }
+  .comprarCarrito {
+    @extend .limpiarCarrito;
+  }
+}
+
+.finalizarCompra {
+  font-family: $nunito;
+  .tituloFinalizar {
+    padding-top: 1rem;
+    @include fondoVerde;
+    gap: 1rem;
+    align-content: center;
+    flex-direction: column;
+    text-align: center;
+    h2,
+    h4 {
+      font-weight: bold;
+    }
+  }
+}
+.carritoYdatos {
+  font-family: $nunito;
+  justify-content: center;
+  table {
+    border-collapse: separate;
+    border-spacing: 0 2rem;
+    @media (min-width: 768px) {
+      & {
+        width: 80%;
+      }
+    }
+    @media (min-width: 992px) {
+      & {
+        width: 70%;
+      }
+    }
+    @media (min-width: 1200px) {
+      & {
+        width: 60%;
+      }
+    }
+    .columnaImagen {
+      width: 2.3rem;
+      @media (min-width: 576px) {
+        width: 3.8rem;
+      }
+    }
+    th,
+    tr {
+      font-size: 1rem;
+      @media (min-width: 576px) {
+        & {
+          font-size: 1rem;
+        }
+      }
+    }
+    td {
+      vertical-align: middle;
+    }
+    .fila {
+      height: 4rem;
+    }
+    .cajaImagenTabla {
+      position: relative;
+      padding-left: 100%;
+      img {
+        @include fotos;
+        min-width: 0.1rem;
+        @media (min-width: 576px) {
+          & {
+            min-width: 2rem;
+          }
+        }
+      }
+    }
+    .botonesFinalizar {
+      @include flex(0.5rem, flex-start, center);
+    }
+    .botonRestarFinalizar,
+    .botonSumarFinalizar,
+    .botonEliminarFinalizar {
+      cursor: pointer;
+    }
+  }
+}
+.cajaFormulario {
+  @include fondoVerde;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  .formularioTitulo {
+    @include padding-y(2rem, 2rem);
+    text-align: center;
+  }
+  .finalizarCompraForm {
+    justify-content: center;
+    @media (min-width: 992px) {
+      & {
+        width: 60%;
+      }
+    }
+    .form-floating {
+      box-shadow: $sombra1;
+      color: black;
+      padding: 0;
+    }
+    .tarjeta {
+      gap: 0.01rem;
+    }
+    .btnFinalizarCompra {
+      width: 40%;
+      margin: 1rem 0;
+      background-color: $verdeOscuro;
+      color: $amarillo;
+    }
   }
 }

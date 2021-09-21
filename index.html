@@ -41,10 +41,12 @@
       <!-- Nav de Bootstrap -->
       <nav class="navbar navbar-expand-lg fixed-top header--nav">
         <div class="container-fluid">
-          <img
-            class="navbar-brand animate__animated animate__fadeIn"
-            src="./img/logoChico.png"
-          />
+          <a href="./index.html">
+            <img
+              class="navbar-brand animate__animated animate__fadeIn"
+              src="./img/logoChico.png"
+            />
+          </a>
           <button
             class="navbar-toggler"
             type="button"
@@ -56,7 +58,7 @@
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="collapse navbar-collapse linksNav" id="navbarNav">
             <ul
               class="
                 navbar-nav
@@ -93,13 +95,17 @@
               </li>
               <li>
                 <a
-                  class="carritoIconCaja"
+                  class="
+                    nav-link
+                    animate__animated animate__fadeIn
+                    carritoIconCaja
+                  "
                   data-bs-toggle="offcanvas"
                   data-bs-target="#offcanvasScrolling"
                   aria-controls="offcanvasScrolling"
                 >
                   <img
-                    src="./img/carrito/carrito.svg"
+                    src="./img/carrito/carrito.png"
                     alt=""
                     class="carritoIcon"
                   />
@@ -113,7 +119,13 @@
     <main class="main">
       <div class="container-fluid hero">
         <div class="row justify-content-center">
-          <div class="col-3 cajaHeroLogo animate__animated animate__fadeIn">
+          <div
+            class="
+              col-12 col-sm-10 col-md-8 col-lg-5 col-xl-4
+              cajaHeroLogo
+              animate__animated animate__fadeIn
+            "
+          >
             <img
               class="img-fluid heroLogo"
               src="./img/logo_white_large.png"
@@ -123,7 +135,7 @@
           </div>
           <div
             class="
-              col-10 col-sm-8 col-md-6 col-xl-4
+              col-12 col-md-12 col-md-6 col-lg-6 col-xl-4
               texto
               animate__animated animate__fadeIn
               bienvenida

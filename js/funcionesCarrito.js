@@ -79,6 +79,7 @@ const agregarCarrito = function (event) {
   if (carrito.length == 0) {
     $(".carritoContainer").append(filaTotal); // agrego fila de total
     $(".limpiarCarrito").on("click", limpiarCarrito); // escucho el botón de limpiar
+    $(".comprarCarrito").on("click", comprarCarrito); // escucho el botón comprar
     $(".carritoVacio").remove(); // quito el mensaje de carrito vacío
     $(".carritoIconCaja").append(carritoContador);
   }
@@ -172,9 +173,7 @@ const eliminarProducto = function (event) {
   // selecciono al padre del botón eliminar, que tiene un id igual al id del producto
   let productoCarritoID = $(this).parent().attr("id"); // rescato el id de producto
   let productoID = productoCarritoID.replace("carrito-", ""); // lo limpio de la palabra carrito
-  console.log(productoID);
   let productoAborrar = carrito.find((producto) => producto.id == productoID); // lo busco en el carrito
-  console.log(productoAborrar);
   const productoCantidad = productoAborrar.cantidad; // guardo la cantidad para las iteraciones
   contar -= productoCantidad;
   $(".carritoContador").html(`${contar}`); // sumo al contador
@@ -219,5 +218,121 @@ const limpiarCarrito = function (event) {
   $(".productoCarrito").remove(); // saco los productos del dom
   $(".carritoContador").remove(); // saco el contador
   $(".total").remove(); // saco la fila total del dom
+  $(".botonesCarrito").remove(); // saco los botones
   $(".carrito").append(carritoVacio); // dejo mensaje de que está vacío
+};
+
+const sumarFinalizar = function (event) {
+  let productoCarritoID = $(this).parent().attr("id"); // rescato el id de producto
+  let productoID = productoCarritoID.replace("botones-", ""); // lo limpio de la palabra botones
+  let productoAagregar = carrito.find((producto) => producto.id == productoID);
+  productos.forEach((producto) => {
+    if (producto.id == productoID && producto.stock != 0) {
+      producto.agregar();
+      calcularTotal("agregarCarrito", producto.precio);
+      refreshCarritoArray(producto, productoAagregar);
+      refreshLocalStorage(carrito);
+      $(`.${productoID}-cantidad`).html(`${producto.cantidad}`);
+      $(`.${producto.id}-subtotal`).html(
+        `$ ${numberWithCommas(
+          (producto.precio * producto.cantidad).toFixed(2)
+        )}`
+      );
+    } else if (producto.id == productoID && producto.stock === 0) {
+      alert("No hay Stock");
+    }
+  });
+  $(".totalFinalizar").html(`$ ${numberWithCommas(precioTotal.toFixed(2))}`);
+};
+
+const restarFinalizar = function (event) {
+  let productoCarritoID = $(this).parent().attr("id"); // rescato el id de producto
+  let productoID = productoCarritoID.replace("botones-", ""); // lo limpio de la palabra botones
+  let productoArestar = carrito.find((producto) => producto.id == productoID);
+  productos.forEach((producto) => {
+    if (producto.id == productoID) {
+      producto.borrar(); // actualizo cantidad y stock en array productos
+      calcularTotal("borrarCarrito", producto.precio);
+      refreshCarritoArray(producto, productoArestar); // refresh al array carrito
+      refreshLocalStorage(carrito); // refresh al LocalStorage
+      if (producto.cantidad >= 1) {
+        // Si todavía hay cantidad en el carrito
+        $(`.${producto.id}-cantidad`).html(`${producto.cantidad}`);
+        $(`.${producto.id}-subtotal`).html(
+          `$ ${numberWithCommas(
+            (producto.precio * producto.cantidad).toFixed(2)
+          )}`
+        );
+      } else {
+        // si no borro el nodo
+        $(`#fila-${producto.id}`).remove();
+      }
+    }
+  });
+  $(".totalFinalizar").html(`$ ${numberWithCommas(precioTotal.toFixed(2))}`);
+};
+
+const eliminarFinalizar = function (event) {
+  let productoCarritoID = $(this).parent().parent().attr("id"); // rescato el id de producto
+  let productoID = productoCarritoID.replace("fila-", ""); // lo limpio de la palabra carrito
+  console.log(productoID);
+  let productoAborrar = carrito.find((producto) => producto.id == productoID); // lo busco en el carrito
+  console.log(productoAborrar);
+  productos.forEach((producto) => {
+    const productoCantidad = producto.cantidad; // guardo la cantidad para las iteraciones
+    if (producto.id == productoID) {
+      for (let i = 0; i < productoCantidad; i++) {
+        producto.borrar();
+      }
+      refreshCarritoArray(producto, productoAborrar); // refresh al array carrito
+      refreshLocalStorage(carrito); // refresh al LocalStorage
+      calcularTotal("borrarCarrito", producto.precio * productoCantidad); // calculo el nuevo total
+    }
+  });
+  $(this).parent().parent().remove();
+  $(".totalFinalizar").html(`$ ${numberWithCommas(precioTotal.toFixed(2))}`);
+};
+// función para comprar
+const comprarCarrito = function (event) {
+  $(".linksNav").remove();
+  $(".hero").remove();
+  $(".tienda").remove();
+  $(".main").append(finalizarCompraHero);
+  $(".main").append(finalizarCompraContainer);
+  $(".carritoYdatos").append(finalizarCompraCarrito);
+  carrito.forEach((producto) => {
+    $(".tbody").append(`
+      <tr id="fila-${producto.id}" class="fila">
+        <th class="cajaImagenTabla" scope="row">
+          <img src="./img/productos/${producto.id}.jpg" alt="" />
+        </th>
+        <td>Encordado guitarra eléctrica D'addario Exp110 Nickle W</td>
+        <td>
+          <div id="botones-${producto.id}" class="botonesFinalizar">
+            <i class="fas fa-minus-circle botonRestarFinalizar"></i>
+            <p class="${producto.id}-cantidad texto">${producto.cantidad}</p>
+            <i class="fas fa-plus-circle botonSumarFinalizar"></i>
+          </div>
+        </td>
+        <td class="${producto.id}-subtotal">$ ${numberWithCommas(
+      (producto.precio * producto.cantidad).toFixed(2)
+    )}</td>
+        <td><i class="fas fa-times-circle botonEliminarFinalizar"></i></td>
+      </tr>
+    `);
+  });
+  $(".tbody").append(`
+    <tr>
+      <td></td>
+      <td></td>
+      <td class="text">TOTAL</td>
+      <td class="totalFinalizar">$ ${numberWithCommas(
+        precioTotal.toFixed(2)
+      )}</td>
+      <td></td>
+  `);
+  $(".botonSumarFinalizar").off().on("click", sumarFinalizar);
+  $(".botonRestarFinalizar").off().on("click", restarFinalizar);
+  $(".botonEliminarFinalizar").off().on("click", eliminarFinalizar);
+  $(".carritoYdatos").append(finalizarCompraFormulario);
 };
