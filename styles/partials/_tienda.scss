@@ -1,62 +1,175 @@
+.main {
+  min-height: 120vh; // para que la barra de scroll ya aparezca en el medio y no entorpezca las animaciones
+}
 .hero {
+  @include padding-y(7rem, 4rem);
+  @include fondoHero;
+  color: $amarillo;
+  .row {
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    .bienvenida {
+      @include padding-y(0, 2rem);
+      font-weight: bold;
+      h2 {
+        font-size: 40px;
+      }
+    }
+    .cajaHeroLogo {
+      @include flexColumn(0, unset, center);
+      .heroLema {
+        font-weight: bold;
+        align-self: flex-end;
+      }
+    }
+  }
+}
+.lds-roller {
+  display: inline-block;
   position: relative;
-  @include padding-y(5rem, 0);
-  @include flexColumn(inherit, unset, center);
-  @include fondoVerde;
-  font-family: $roboto;
+  width: 80px;
+  height: 80px;
+}
+.lds-roller div {
+  animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 40px 40px;
+}
+.lds-roller div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: $verde;
+  margin: -4px 0 0 -4px;
+}
+.lds-roller div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+.lds-roller div:nth-child(1):after {
+  top: 63px;
+  left: 63px;
+}
+.lds-roller div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+.lds-roller div:nth-child(2):after {
+  top: 68px;
+  left: 56px;
+}
+.lds-roller div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+.lds-roller div:nth-child(3):after {
+  top: 71px;
+  left: 48px;
+}
+.lds-roller div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+.lds-roller div:nth-child(4):after {
+  top: 72px;
+  left: 40px;
+}
+.lds-roller div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+.lds-roller div:nth-child(5):after {
+  top: 71px;
+  left: 32px;
+}
+.lds-roller div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+.lds-roller div:nth-child(6):after {
+  top: 68px;
+  left: 24px;
+}
+.lds-roller div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+.lds-roller div:nth-child(7):after {
+  top: 63px;
+  left: 17px;
+}
+.lds-roller div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+.lds-roller div:nth-child(8):after {
+  top: 56px;
+  left: 12px;
+}
+@keyframes lds-roller {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 .tienda {
-  @include padding(0);
-  @include sizes(100%, auto);
-  @include grillaTienda;
+  font-family: $nunito;
   .barraBusqueda {
-    grid-area: barraBusqueda;
     @include padding(2rem);
     @include flexColumn(inherit, unset, center);
     @include fondoVerde;
     .buscador {
       @include flex(1rem, center, inherit);
       @include sizes(80%, auto);
-      .form-control {
-        @include sizes(40%, auto);
-        &:focus {
-          @include boxShadorBusqueda;
+      @media (min-width: 992px) {
+        & {
+          @include sizes(50%, auto);
         }
       }
-      .btn {
-        color: $blanco;
-        background-color: $verdeOscuro;
+      .form-control {
+        &:focus {
+          @include boxShadowBusqueda;
+        }
       }
     }
   }
   .filtros {
-    grid-area: filtros;
     @include padding(1rem);
     .categorias {
-      @include flexColumn(inherit, unset, inherit);
+      @include flexColumn(inherit, unset, unset);
       .categoriaContenedor {
         @include padding(0.5rem);
         .categoria {
-          font-size: 1rem;
+          @include padding-y(0, 0.5rem);
+          font-size: 1.3rem;
           list-style: none;
           cursor: pointer;
+          @media (min-width: 992px) {
+            & {
+              padding: 0;
+            }
+          }
           &:hover {
             @include fadeIn;
+            transform: skewX(-10deg);
           }
         }
         .subcategorias {
-          @include padding(0rem);
           display: none;
-          list-style-position: initial;
           list-style: none;
+          padding-left: 0.5rem;
           h5 {
-            padding-top: 1rem;
+            @include padding-y(1rem, 0.5rem);
           }
           .subcategoria {
             cursor: pointer;
+            @include padding-y(0, 1rem);
+            @media (min-width: 992px) {
+              & {
+                padding: 0;
+              }
+            }
           }
           .subcategoria:hover {
             @include fadeIn;
+            transform: skewX(-10deg);
           }
         }
       }
@@ -66,9 +179,12 @@
     @include grillaProductos;
     .tarjeta {
       @include tarjetaProducto;
+      &:hover {
+        background-color: rgba(169, 172, 131, 0.15);
+      }
       .tarjetaCuerpo {
         @include sizes(auto, 100%);
-        @include flexColumn(inherit, space-between, inherit);
+        @include flexColumn(inherit, space-between, unset);
         .cajaImagen {
           position: relative;
           padding-top: 100%;
@@ -100,14 +216,28 @@
         }
 
         .agregar {
-          padding-top: 1rem;
+          @include padding-x(0.5rem, 0.5rem);
+          margin-top: 1rem;
           align-self: center;
           font-weight: bold;
         }
         &:hover .agregar {
-          color: $rojo;
+          @include fondoVerde;
+          transform: skewX(-15deg);
         }
       }
+    }
+  }
+}
+.offcanvas-header {
+  @include fondoVerde;
+  .offcanvas-title {
+    font-weight: bold;
+  }
+  button {
+    background-image: url("../img/btnClose.png");
+    &:focus {
+      box-shadow: none;
     }
   }
 }
@@ -164,8 +294,7 @@
     margin: 0;
   }
   .limpiarCarrito {
-    background-color: $verde;
-    color: $negro;
+    @include fondoVerde;
     font-weight: bold;
   }
 }

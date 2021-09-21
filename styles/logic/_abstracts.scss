@@ -3,7 +3,7 @@
   height: $height;
   width: $width;
 }
-// mixin para padding horizontal y padding vertical
+// mixin para padding, margin y flex
 @mixin padding-y($padding-top, $padding-bottom) {
   padding-top: $padding-top;
   padding-bottom: $padding-bottom;
@@ -19,17 +19,6 @@
   margin-top: $margin-top;
   margin-bottom: $margin-bottom;
 }
-// mixin para filtro y transición de las fotos
-@mixin fotos {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  margin: auto;
-  max-width: 100%;
-  max-height: 100%;
-}
 @mixin flex($gap, $justify-content, $align-items) {
   display: flex;
   gap: $gap;
@@ -43,30 +32,37 @@
   justify-content: $justify-content;
   align-items: $align-items;
 }
-@mixin grillaTienda {
-  display: grid;
-  grid-template-columns: 2fr 4fr;
-  grid-template-rows: auto;
-  grid-template-areas:
-    "barraBusqueda barraBusqueda"
-    "filtros productos";
-  font-family: $roboto;
-  @media (min-width: 992px) {
-    & {
-      grid-template-columns: 1fr 3fr;
-    }
-  }
-  @media (min-width: 1200px) {
-    & {
-      grid-template-columns: 1fr 4fr;
-    }
-  }
-  @media (min-width: 1400px) {
-    & {
-      grid-template-columns: 2fr 10fr;
-    }
-  }
+// mixin para fadeIn
+@mixin fadeIn {
+  -webkit-animation: fadeIn 0.9s;
+  animation: fadeIn 0.9s;
 }
+// mixins para fondo
+@mixin fondoVerde {
+  background-color: $verde;
+  color: $amarillo;
+}
+// mixin para el fondo del hero
+@mixin fondoHero {
+  background-image: url("../img/heroFondo.jpg");
+  background-size: cover;
+  background-position: top;
+  background-color: rgba(0, 0, 0, 0.8);
+  background-blend-mode: color;
+  font-family: $nunito;
+}
+// mixins para búsqueda y filtros
+@mixin boxShadowBusqueda {
+  border-color: $amarillo;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $amarillo;
+}
+@mixin categoria {
+  font-size: 20px;
+  border-radius: 30px;
+  list-style: none;
+  cursor: pointer;
+}
+// mixins para grilla productos
 @mixin grillaProductos {
   grid-area: productos;
   display: grid;
@@ -94,24 +90,7 @@
     }
   }
 }
-@mixin boxShadorBusqueda {
-  border-color: rgb(16, 85, 90);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgb(16, 85, 90);
-}
-@mixin fadeIn {
-  -webkit-animation: fadeIn 0.9s;
-  animation: fadeIn 0.9s;
-}
-@mixin fondoVerde {
-  background-color: $verde;
-  color: $negro;
-}
-@mixin categoria {
-  font-size: 20px;
-  border-radius: 30px;
-  list-style: none;
-  cursor: pointer;
-}
+//mixin para las tarjetas
 @mixin tarjetaProducto {
   grid-area: auto/span 1;
   display: block;
@@ -120,12 +99,21 @@
   top: 0;
   transition: all 0.1s ease-in;
   box-shadow: $sombra1;
-  color: $gris;
   text-decoration: none;
   cursor: pointer;
   &:hover {
-    color: $gris;
     top: -2px;
     box-shadow: $sombra2;
   }
+}
+// mixin para las fotos
+@mixin fotos {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
 }

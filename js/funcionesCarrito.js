@@ -80,37 +80,37 @@ const agregarCarrito = function (event) {
     $(".carritoContainer").append(filaTotal); // agrego fila de total
     $(".limpiarCarrito").on("click", limpiarCarrito); // escucho el botón de limpiar
     $(".carritoVacio").remove(); // quito el mensaje de carrito vacío
+    $(".carritoIconCaja").append(carritoContador);
   }
   let productoID = ""; // inicializo productoID porque necesito saber si se está haciendo click en el carrito o en la grilla productos
-  // si el tag es I, entonces busco el id según el DOM
+  // si el tag es I, entonces busco el id según el DOM del carrito
   if ($(this).prop("tagName") == "I") {
     let productoCarritoID = $(this).parent().attr("id"); // rescato el id de producto
     productoID = productoCarritoID.replace("botones-", ""); // lo limpio de la palabra botones
   } else {
-    // sino
+    // sino busco el id según el DOM de la grilla
     productoID = $(this).attr("id"); // busco el ID del producto seleccionado dentro del id del nodo
   }
   //busco el producto
   productos.forEach((producto) => {
     if (producto.id == productoID && producto.stock != 0) {
       // si hay stock
+      contar++;
       producto.agregar(); // agrego cantidad y quito stock
       calcularTotal("agregarCarrito", producto.precio); // lo sumo al total
       actualizarTotal(precioTotal); // actualizo el total en el DOM carrito
+      $(".carritoContador").html(`${contar}`); // sumo al contador
       // me fijo si el tag es DIV (de la grilla productos) para en tal caso agregarle animación
       if ($(this).prop("tagName") == "DIV") {
-        setTimeout(function () {
-          $(`#${producto.id}`).css({
-            "animation-name": "pulse",
-            "animation-duration": "0.8s",
-          });
-        }, 0);
+        $(`#${producto.id}`).css({
+          "animation-name": "pulse",
+          "animation-duration": "0.8s",
+        });
         setTimeout(function () {
           $(`#${producto.id}`).css({
             "animation-name": "none",
             "animation-duration": "0s",
-          }),
-            800;
+          });
         }, 801);
       }
       let productoAagregar = carrito.find(
@@ -139,10 +139,11 @@ const agregarCarrito = function (event) {
 
 // función para borrar producto del carrito
 const restarCarrito = function (event) {
-  // selecciono al padre del padre del botón restar, que tiene un id igual al id del producto
+  // selecciono al padre del botón restar, que tiene un id igual al id del producto
   let productoCarritoID = $(this).parent().attr("id"); // rescato el id de producto
   let productoID = productoCarritoID.replace("botones-", ""); // lo limpio de la palabra botones
   let productoArestar = carrito.find((producto) => producto.id == productoID); // lo busco en el carrito
+  contar--;
   productos.forEach((producto) => {
     if (producto.id == productoID) {
       producto.borrar(); // actualizo cantidad y stock en array productos
@@ -150,6 +151,7 @@ const restarCarrito = function (event) {
       refreshLocalStorage(carrito); // refresh al LocalStorage
       calcularTotal("restarCarrito", producto.precio); // calculo el nuevo total
       actualizarTotal(precioTotal); // actualizo el total en el DOM carrito
+      $(".carritoContador").html(`${contar}`); // resto al contador
       if (producto.cantidad >= 1) {
         // Si todavía hay cantidad en el carrito
         refreshPrecioCantidad(producto); // refresh a precio y cantidad en DOM
@@ -162,17 +164,20 @@ const restarCarrito = function (event) {
   // si el carrito quedó vacío
   if (carrito.length == 0) {
     $(".total").remove(); // saco la fila de total
+    $(".carritoContador").remove(); // saco el contador
     $(".carrito").append(carritoVacio); // dejo mensaje de que está vacío
   }
 };
-const eliminarCarrito = function (event) {
-  // selecciono al padre del padre del botón eliminar, que tiene un id igual al id del producto
+const eliminarProducto = function (event) {
+  // selecciono al padre del botón eliminar, que tiene un id igual al id del producto
   let productoCarritoID = $(this).parent().attr("id"); // rescato el id de producto
   let productoID = productoCarritoID.replace("carrito-", ""); // lo limpio de la palabra carrito
   console.log(productoID);
   let productoAborrar = carrito.find((producto) => producto.id == productoID); // lo busco en el carrito
   console.log(productoAborrar);
   const productoCantidad = productoAborrar.cantidad; // guardo la cantidad para las iteraciones
+  contar -= productoCantidad;
+  $(".carritoContador").html(`${contar}`); // sumo al contador
   // busco el producto en array productos
   productos.forEach((producto) => {
     if (producto.id == productoID) {
@@ -189,6 +194,7 @@ const eliminarCarrito = function (event) {
   $(this).parent().remove(); // saco el producto del carrito
   // si el carrito quedó vacío
   if (carrito.length == 0) {
+    $(".carritoContador").remove(); // saco el contador
     $(".total").remove(); // saco la fila de total
     $(".carrito").append(carritoVacio); // dejo mensaje de que está vacío
   }
@@ -196,20 +202,22 @@ const eliminarCarrito = function (event) {
 
 // función para limpiar el carrito
 const limpiarCarrito = function (event) {
-  // para cada producto del array productos aplico el método borrar
+  // para cada producto que había sido seleccionado del array productos aplico el método borrar
   // tantas veces como cantidad se había seleccionado
   productos.forEach((producto) => {
     if (producto.cantidad != 0) {
       const cantidad = producto.cantidad; // guardo la cantidad en una constante, porque voy a modificar producto.cantidad con cada iteración
       for (let i = 0; i < cantidad; i++) {
-        producto.borrar(); // descuento 1 con el método
+        producto.borrar(); // descuento con el método
       }
     }
   });
   carrito = []; // Al carrito lo dejo directamente vacío
   localStorage.removeItem("carrito"); // limpio el Storage
   precioTotal = 0; // dejo en 0 el precio total
+  contar = 0;
   $(".productoCarrito").remove(); // saco los productos del dom
+  $(".carritoContador").remove(); // saco el contador
   $(".total").remove(); // saco la fila total del dom
   $(".carrito").append(carritoVacio); // dejo mensaje de que está vacío
 };

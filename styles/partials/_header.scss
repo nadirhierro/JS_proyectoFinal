@@ -1,6 +1,7 @@
 .header--nav {
-  font-family: $roboto;
-  background-color: rgb(79, 90, 79);
+  font-family: $nunito;
+  background-color: $verde;
+  max-height: 62px;
   img {
     height: 50px;
     width: auto;
@@ -9,14 +10,42 @@
     text-decoration: none;
     li {
       a {
-        color: black;
+        font-size: 18px;
+        color: rgb(169, 172, 131);
+        font-weight: bold;
         &:hover {
-          color: black;
-          font-weight: bold;
+          color: rgb(169, 172, 131);
+          background-color: $verdeOscuro;
+          transform: skewX(-10deg);
+          transition: 0.4s;
+        }
+        &:focus {
+          color: rgb(169, 172, 131);
         }
         img {
           cursor: pointer;
           height: 40px;
+        }
+      }
+      .carritoIconCaja {
+        display: flex;
+        gap: 0.1rem;
+        cursor: pointer;
+        text-decoration: none;
+        &:hover {
+          background-color: inherit;
+          transform: none;
+        }
+        .carritoContador {
+          font-size: 16px;
+          @include sizes(1.3rem, 1.3rem);
+          vertical-align: middle;
+          border-radius: 50%;
+          background-color: rgb(177, 184, 122);
+          color: black;
+          font-weight: bold;
+          text-align: center;
+          align-self: flex-end;
         }
       }
     }

@@ -19,7 +19,7 @@ const escucharBotonesRestar = function () {
   $(".botonRestar").off().on("click", restarCarrito);
 };
 const escucharBotonesEliminar = function () {
-  $(".botonEliminar").off().on("click", eliminarCarrito);
+  $(".botonEliminar").off().on("click", eliminarProducto);
 };
 // Función para emparejar carrito con Storage
 const emparejarCarritoStorage = function () {
@@ -35,6 +35,7 @@ const emparejarCarritoStorage = function () {
       let productoID = productoCarrito.id; // tomo el id
       let productoStock = productoCarrito.stock; // tomo stock y cantidad para emparejar con el array de productos
       let productoCantidad = productoCarrito.cantidad; // tomo la cantidad
+      contar += productoCantidad; // lo agrego a la cuenta
       // me fijo qué producto es en producto y emparejo los datos
       productos.forEach((producto) => {
         if (producto.id == productoID) {
@@ -47,6 +48,8 @@ const emparejarCarritoStorage = function () {
         }
       });
     });
+    $(".carritoIconCaja").append(carritoContador);
+    $(".carritoContador").html(`${contar}`);
     escucharBotonesSumar();
     escucharBotonesRestar();
     escucharBotonesEliminar(); //escucho los nuevos botones

@@ -18,6 +18,10 @@
       crossorigin="anonymous"
     />
     <link
+      href="https://fonts.googleapis.com/css2?family=Nunito&display=swap"
+      rel="stylesheet"
+    />
+    <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
@@ -39,7 +43,7 @@
         <div class="container-fluid">
           <img
             class="navbar-brand animate__animated animate__fadeIn"
-            src="./img/logo_small.png"
+            src="./img/logoChico.png"
           />
           <button
             class="navbar-toggler"
@@ -89,11 +93,16 @@
               </li>
               <li>
                 <a
+                  class="carritoIconCaja"
                   data-bs-toggle="offcanvas"
                   data-bs-target="#offcanvasScrolling"
                   aria-controls="offcanvasScrolling"
                 >
-                  <img src="./img/carrito/carrito.svg" alt="" />
+                  <img
+                    src="./img/carrito/carrito.svg"
+                    alt=""
+                    class="carritoIcon"
+                  />
                 </a>
               </li>
             </ul>
@@ -103,9 +112,30 @@
     </header>
     <main class="main">
       <div class="container-fluid hero">
-        <h2>Bienvenido a nuestra tienda</h2>
-        <p class="pt-5">Aquí podrás encontrar los mejores instrumentos</p>
-        <p>Haz click para agregar productos al carrito</p>
+        <div class="row justify-content-center">
+          <div class="col-3 cajaHeroLogo animate__animated animate__fadeIn">
+            <img
+              class="img-fluid heroLogo"
+              src="./img/logo_white_large.png"
+              alt="Logo Sincopado"
+            />
+            <p class="heroLema">Siempre la mejor atención</p>
+          </div>
+          <div
+            class="
+              col-10 col-sm-8 col-md-6 col-xl-4
+              texto
+              animate__animated animate__fadeIn
+              bienvenida
+              pt-5
+            "
+          >
+            <h2>Bienvenido a nuestra tienda</h2>
+            <p>
+              ¡Aprovechá todos nuestros productos con 18 cuotas sin interés!
+            </p>
+          </div>
+        </div>
       </div>
     </main>
     <footer></footer>

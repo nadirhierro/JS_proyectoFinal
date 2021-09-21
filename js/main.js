@@ -1,16 +1,25 @@
 // variables globales
 let carrito = [];
 let precioTotal = 0;
+let contar = 0;
 let productosFiltrados = []; // inicializo array de productos filtrados
 let productosSubFiltrados = []; // inicializo array de productos subfiltrados
 let productosBuscados = []; // inicializo array de productos buscados
 // estructuras html estáticas
+let loader = $(`
+<div class="container-fluid">
+<div class="row justify-content-center pt-5 loader">
+<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+</div>
+</div>
+`);
 let grillaTienda = $(`
   <div class="container-fluid tienda"></div>
-  `);
+  `).hide();
 
 let barraBusqueda = $(`
-  <div class="barraBusqueda">
+  <div class="row">
+    <div class="col-12 barraBusqueda">
     <h3>Buscá los productos de tu interés</h3>
     <form onsubmit="return false" class="buscador">
       <input
@@ -20,12 +29,13 @@ let barraBusqueda = $(`
         placeholder="Buscar..."
         aria-label="Search"
       />
-      <button type="submit" id="botonBuscar" class="btn">Buscar</button>
     </form>
+    </div>
     </div>`);
 
+let rowFiltrosProductos = $(`<div class="row filtrosProductos"></div>`);
 let filtros = $(`
-  <div class="filtros">
+  <div class="col-2 filtros">
     <h3>Filtros</h3>
     <div class="categorias">
     <ul class="categoriaContenedor">
@@ -89,7 +99,7 @@ let filtros = $(`
   </div>`);
 
 let grillaProductos = $(`
-  <div class="grillaProductos"></div>
+  <div class="col-10 grillaProductos"></div>
   `);
 
 let carritoOffcanvas = $(`
@@ -128,23 +138,27 @@ let filaTotal = $(`
     <p class="totalPrecio"></p>
     <button class="btn rounded-pill limpiarCarrito">Limpiar carrito</button>
   </div>`);
-
+let carritoContador = $(`<span class="carritoContador"></span>`);
 // función document ready
 $(document).ready(function () {
+  $(".main").append(loader); // loader para mientras se carga
   $(".main").append(grillaTienda); // cargo grilla tienda
   $(".tienda").append(barraBusqueda); // cargo la barra de busqueda
-  $(".tienda").append(filtros); // cargo filtros
-  $(".tienda").append(grillaProductos); // cargo grilla productos
+  $(".tienda").append(rowFiltrosProductos);
+  $(".filtrosProductos").append(filtros); // cargo filtros
+  $(".filtrosProductos").append(grillaProductos); // cargo grilla productos
   $(".tienda").append(carritoOffcanvas); // cargo off canvas
   $(".categoria").on("click", filtrar); // escucho las categorias
   $(".subcategoria").on("click", subFiltrar); // escucho los filtros
-  $(".buscador").submit(buscar); // escucho el buscador
+  $("#input").on("input", buscar); // escucho la barra de búsqueda
+  emparejarCarritoStorage(); // emparejo carrito y Storage
+  $(".limpiarCarrito").on("click", limpiarCarrito);
   // filtro productos destacados para renderizarlos al inicio
   let productosDestacados = productos.filter(
     (producto) => producto.destacado == "si"
   );
   renderizarProductos(productosDestacados);
   escucharBotonesAgregar();
-  emparejarCarritoStorage(); // emparejo carrito y Storage
-  $(".limpiarCarrito").on("click", limpiarCarrito);
+  $(".loader").fadeOut(1000); // saco el loader con timing
+  $(".tienda").delay(1001).fadeIn(1200); // cuando se va el loader, visibilizo la tienda
 });
