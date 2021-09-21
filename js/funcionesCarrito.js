@@ -195,6 +195,7 @@ const eliminarProducto = function (event) {
   if (carrito.length == 0) {
     $(".carritoContador").remove(); // saco el contador
     $(".total").remove(); // saco la fila de total
+    $(".botonesCarrito").remove(); // saco los botones
     $(".carrito").append(carritoVacio); // dejo mensaje de que está vacío
   }
 };
