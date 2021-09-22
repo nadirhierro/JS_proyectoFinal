@@ -431,17 +431,21 @@
 }
 
 .tienda .grillaProductos .tarjeta .tarjetaCuerpo .nombre {
-  padding-top: 1rem;
+  padding-top: 0.5rem;
   align-self: center;
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-align: center;
+}
+
+.tienda .grillaProductos .tarjeta .tarjetaCuerpo .nombre p {
+  margin-bottom: 0;
 }
 
 .tienda .grillaProductos .tarjeta .tarjetaCuerpo .cuotas {
   align-self: center;
   text-align: center;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .tienda .grillaProductos .tarjeta .tarjetaCuerpo .cuotas .texto {
@@ -449,13 +453,13 @@
 }
 
 .tienda .grillaProductos .tarjeta .tarjetaCuerpo .cuotas .precioCuotas {
-  font-size: 1.7rem;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 
 @media (min-width: 572px) {
   .tienda .grillaProductos .tarjeta .tarjetaCuerpo .cuotas .precioCuotas {
-    font-size: 2rem;
+    font-size: 1.4rem;
   }
 }
 
@@ -468,7 +472,7 @@
 .tienda .grillaProductos .tarjeta .tarjetaCuerpo .agregar {
   padding-right: 0.5rem;
   padding-left: 0.5rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   align-self: center;
   font-weight: bold;
 }
@@ -670,7 +674,7 @@
 @media (min-width: 576px) {
   .carritoYdatos table th,
   .carritoYdatos table tr {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -737,19 +741,29 @@
 }
 
 .cajaFormulario .finalizarCompraForm {
-  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
 }
 
 @media (min-width: 992px) {
   .cajaFormulario .finalizarCompraForm {
-    width: 60%;
+    width: 50%;
   }
+}
+
+.cajaFormulario .finalizarCompraForm h4 {
+  padding-top: 1rem;
+  text-align: center;
 }
 
 .cajaFormulario .finalizarCompraForm .form-floating {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   color: black;
-  padding: 0;
+}
+
+.cajaFormulario .finalizarCompraForm .form-select {
+  align-self: center;
 }
 
 .cajaFormulario .finalizarCompraForm .tarjeta {
@@ -757,8 +771,6 @@
 }
 
 .cajaFormulario .finalizarCompraForm .btnFinalizarCompra {
-  width: 40%;
-  margin: 1rem 0;
   background-color: #181912;
   color: #a9ac83;
 }

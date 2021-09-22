@@ -308,9 +308,9 @@ let finalizarCompraFormulario = $(`
           <label for="cp">Código postal:</label>
         </div>
       </div>
-      <div class="col-12 row tarjeta">
+      <div class="col-6 tarjeta">
         <h4>Datos de la tarjeta de crédito</h3>
-        <div class="col-12 form-floating mb-3">
+        <div class="form-floating mb-3">
           <input
             type="text"
             name="numeroTarjeta"
@@ -323,7 +323,7 @@ let finalizarCompraFormulario = $(`
           />
           <label for="numeroTarjeta">Número de la tarjeta:</label>
         </div>
-        <div class="col-12 form-floating mb-3">
+        <div class="form-floating mb-3">
           <input
             type="text"
             name="nombreTarjeta"
@@ -336,7 +336,7 @@ let finalizarCompraFormulario = $(`
           />
           <label for="nombreTarjeta">Nombre en la tarjeta:</label>
         </div>
-        <div class="col-6 form-floating mb-3">
+        <div class="form-floating mb-3">
           <input
             type="text"
             name="desde"
@@ -349,7 +349,7 @@ let finalizarCompraFormulario = $(`
           />
           <label for="desde">Desde:</label>
         </div>
-        <div class="col-6 form-floating mb-3">
+        <div class="form-floating mb-3">
           <input
             type="text"
             name="hasta"
@@ -362,7 +362,7 @@ let finalizarCompraFormulario = $(`
           />
           <label for="hasta">Hasta:</label>
         </div>
-        <div class="col-6 form-floating mb-3">
+        <div class="form-floating mb-3">
           <input
             type="text"
             name="cvc"
@@ -375,14 +375,14 @@ let finalizarCompraFormulario = $(`
           />
           <label for="cvc">CVC:</label>
         </div>
-        <select class="col-12 form-select mb-3" aria-label="Default select example">
+        <select class="form-select mb-3" aria-label="Default select example">
           <option selected>Cantidad de cuotas</option>
           <option value=""></option>
           <option value=""></option>
           <option value=""></option>
         </select>    
       </div>
-      <button type="submit" class="col-12 btn rounded-pill btnFinalizarCompra">Finalizar Compra</button>
+      <button type="submit" class="col-3 btn rounded-pill btnFinalizarCompra">Finalizar Compra</button>
     </form>
   </div>`);
 

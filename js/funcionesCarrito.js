@@ -341,6 +341,7 @@ const limpiarCarrito = function (event) {
 
 // función para comprar
 const comprarCarrito = function (event) {
+  $("html, body").animate({ scrollTop: 0 });
   limpiarTienda();
   renderizarTabla();
   renderizarTotalTabla();
