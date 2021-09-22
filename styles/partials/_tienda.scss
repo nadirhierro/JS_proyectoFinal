@@ -384,12 +384,15 @@
         }
       }
     }
-    .botonesFinalizar {
+    .total {
+      display: table-row;
+    }
+    .botones {
       @include flex(0.5rem, flex-start, center);
     }
-    .botonRestarFinalizar,
-    .botonSumarFinalizar,
-    .botonEliminarFinalizar {
+    .botonRestar,
+    .botonSumar,
+    .botonEliminar {
       cursor: pointer;
     }
   }

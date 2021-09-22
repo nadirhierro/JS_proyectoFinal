@@ -388,23 +388,8 @@ let finalizarCompraFormulario = $(`
 
 // función document ready
 $(function () {
-  $(".main").append(loader); // loader para mientras se carga
-  $(".main").append(grillaTienda); // cargo grilla tienda
-  $(".tienda").append(barraBusqueda); // cargo la barra de busqueda
-  $(".tienda").append(rowFiltrosProductos);
-  $(".filtrosProductos").append(filtros); // cargo filtros
-  $(".filtrosProductos").append(grillaProductos); // cargo grilla productos
-  $(".tienda").append(carritoOffcanvas); // cargo off canvas
-  $(".categoria").on("click", filtrar); // escucho las categorias
-  $(".subcategoria").on("click", subFiltrar); // escucho los filtros
-  $("#input").on("input", buscar); // escucho la barra de búsqueda
+  iniciarTienda(); // inicio tienda
   emparejarCarritoStorage(); // emparejo carrito y Storage
-  // filtro productos destacados para renderizarlos al inicio
-  let productosDestacados = productos.filter(
-    (producto) => producto.destacado == "si"
-  );
-  renderizarProductos(productosDestacados);
-  escucharBotonesAgregar();
-  $(".loader").fadeOut(1000); // saco el loader con timing
-  $(".tienda").delay(1001).fadeIn(1200); // cuando se va el loader, visibilizo la tienda
+  renderizarDestacados(); // renderizo destacados
+  animacionInicio(); // animación
 });

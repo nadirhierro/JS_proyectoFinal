@@ -705,16 +705,20 @@
   }
 }
 
-.carritoYdatos table .botonesFinalizar {
+.carritoYdatos table .total {
+  display: table-row;
+}
+
+.carritoYdatos table .botones {
   display: flex;
   gap: 0.5rem;
   justify-content: flex-start;
   align-items: center;
 }
 
-.carritoYdatos table .botonRestarFinalizar,
-.carritoYdatos table .botonSumarFinalizar,
-.carritoYdatos table .botonEliminarFinalizar {
+.carritoYdatos table .botonRestar,
+.carritoYdatos table .botonSumar,
+.carritoYdatos table .botonEliminar {
   cursor: pointer;
 }
 

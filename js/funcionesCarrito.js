@@ -1,3 +1,36 @@
+// Función para emparejar carrito con Storage
+const emparejarCarritoStorage = function () {
+  // recupero carrito del localStorage
+  let carritoStorageString = localStorage.getItem("carrito");
+  let carritoStorage = JSON.parse(carritoStorageString);
+  // si el carrito de storage no es null o vacío, entonces lo recupero y renderizo
+  if (carritoStorage != null && carritoStorage.length != 0) {
+    iniciarCarrito();
+    // para cada producto del carrito
+    carritoStorage.forEach((productoCarrito) => {
+      let productoID = productoCarrito.id; // tomo el id
+      let productoStock = productoCarrito.stock; // tomo stock y cantidad para emparejar con el array de productos
+      let productoCantidad = productoCarrito.cantidad; // tomo la cantidad
+      refreshContador("emparejar", productoCantidad);
+      // me fijo qué producto es en producto y emparejo los datos
+      productos.forEach((producto) => {
+        if (producto.id == productoID) {
+          producto["stock"] = parseInt(productoStock); // emparejo stock
+          producto["cantidad"] = parseInt(productoCantidad); // emparejo cantidad
+          carrito.push(producto); // ahora meto el producto al carrito
+          renderizarEnCarrito(producto); // renderizo
+          precioTotal += producto.precio * producto.cantidad; // calculo precio total
+          actualizarTotal(precioTotal); // actualizo en carrito
+        }
+      });
+    });
+    escucharBotones();
+    // si no había carrito
+  } else {
+    limpiarDOMcarrito();
+  }
+};
+
 //función para renderizar en carrito
 const renderizarEnCarrito = function (producto) {
   let precio = numberWithCommas(
@@ -31,7 +64,62 @@ const renderizarEnCarrito = function (producto) {
   `);
 };
 
-//función para cambiar cantidad y precio en carrito
+// función para animar producto en grilla
+const animacionGrilla = function (id) {
+  $(`#${id}`).css({
+    "animation-name": "pulse",
+    "animation-duration": "0.8s",
+  });
+  setTimeout(function () {
+    $(`#${id}`).css({
+      "animation-name": "none",
+      "animation-duration": "0s",
+    });
+  }, 801);
+};
+
+// funciones para renderizar en tabla de finalizar compra
+const renderizarTabla = function () {
+  carrito.forEach((producto) => {
+    let subtotal = numberWithCommas(
+      (producto.precio * producto.cantidad).toFixed(2)
+    );
+    $(".tbody").append(`
+      <tr id="carrito-${producto.id}" class="fila">
+        <th class="cajaImagenTabla" scope="row">
+          <img src="./img/productos/${producto.id}.jpg" alt="" />
+        </th>
+        <td>Encordado guitarra eléctrica D'addario Exp110 Nickle W</td>
+        <td>
+          <div id="botones-${producto.id}" class="botones">
+            <i class="fas fa-minus-circle botonRestar"></i>
+            <p class="${producto.id}-cantidad texto">${producto.cantidad}</p>
+            <i class="fas fa-plus-circle botonSumar"></i>
+          </div>
+        </td>
+        <td class="${producto.id}-precio">$ ${subtotal}</td>
+        <td class="botonEliminar"><i class="fas fa-times-circle"></i></td>
+      </tr>
+    `);
+  });
+};
+const renderizarTotalTabla = function () {
+  let total = numberWithCommas(precioTotal.toFixed(2));
+  $(".tbody").append(`
+    <tr class="total">
+      <td></td>
+      <td></td>
+      <td class="texto">TOTAL</td>
+      <td class="totalPrecio">$ ${total}</td>
+      <td></td></tr>
+  `);
+};
+// función para cargar formulario de finalizar compra
+const cargarFormulario = function () {
+  $(".carritoYdatos").append(finalizarCompraFormulario);
+};
+
+// función para cambiar cantidad y precio en carrito
 const refreshPrecioCantidad = function (producto) {
   let nuevaCantidad = producto.cantidad; // reviso la nueva cantidad (en la funcion agregarCarrito ya se actualizó)
   let nuevoPrecio = producto.precio * nuevaCantidad; // calculo el nuevo precio
@@ -40,7 +128,7 @@ const refreshPrecioCantidad = function (producto) {
   $(`.${producto.id}-precio`).html(`$${nuevoPrecioFixed}`); // lo inserto en el DOM
 };
 
-// función para refresh de carrito
+// función para refresh de array carrito
 const refreshCarritoArray = function (producto, productoAborrar) {
   let indexEnCarrito = carrito.indexOf(productoAborrar); // tomo el index del producto en el carrito
   carrito.splice(indexEnCarrito, 1); // lo saco del carrito
@@ -49,39 +137,94 @@ const refreshCarritoArray = function (producto, productoAborrar) {
     carrito.push(producto);
   }
 };
+
+//función para refresh del Storage
 const refreshLocalStorage = function (carrito) {
   localStorage.removeItem("carrito"); // lo saco para volver a ponerlo
   localStorage.setItem("carrito", JSON.stringify(carrito)); // guardo el carrito en sessionStorage
 };
 
-// función para calcular el total, según se agregue o borre un producto
-// fixeo y parseo el precioTotal para evitar que se sumen decimales no deseados
+// función para calcular el total
 const calcularTotal = function (nombreFuncion, precioProducto) {
-  if (nombreFuncion == "borrarCarrito" || nombreFuncion == "restarCarrito") {
+  if (nombreFuncion == "restar") {
     precioTotal = precioTotal - precioProducto;
     precioTotal = parseFloat(precioTotal.toFixed(2));
-  } else if (nombreFuncion == "agregarCarrito") {
+  } else if (nombreFuncion == "sumar") {
     precioTotal += precioProducto;
     precioTotal = parseFloat(precioTotal.toFixed(2));
   }
 };
 
 // función para actualizar el total en el carrito
-// selecciono su nodo y cambio su innerHTML
 const actualizarTotal = function (precioTotal) {
   let precioTotalFixed = numberWithCommas(precioTotal.toFixed(2));
   $(".totalPrecio").html(`$ ${precioTotalFixed}`);
+};
+
+//función para "iniciar" el carrito
+const iniciarCarrito = function () {
+  $(".carritoContainer").append(filaTotal); // agrego fila de total
+  $(".limpiarCarrito").on("click", limpiarCarrito); // escucho el botón de limpiar
+  $(".comprarCarrito").on("click", comprarCarrito); // escucho el botón comprar
+  $(".carritoVacio").remove(); // quito el mensaje de carrito vacío
+  $(".carritoIconCaja").append(carritoContador); // agrego el contador
+};
+
+// función para limpiar carrito dom
+const limpiarDOMcarrito = function () {
+  $(".productoCarrito").remove(); // saco los productos del dom
+  $(".carritoContador").remove(); // saco el contador
+  $(".total").remove(); // saco la fila total del dom
+  $(".botonesCarrito").remove(); // saco los botones
+  $(".carrito").append(carritoVacio); // dejo mensaje de que está vacío
+};
+// función para limpiar tienda
+const limpiarTienda = function () {
+  $(".linksNav").remove();
+  $(".hero").remove();
+  $(".tienda").remove();
+  $(".main").append(finalizarCompraHero);
+  $(".main").append(finalizarCompraContainer);
+  $(".carritoYdatos").append(finalizarCompraCarrito);
+};
+
+// funcion sumar contador
+const refreshContador = function (nombreFuncion, cantidad) {
+  switch (nombreFuncion) {
+    case "sumar":
+      contar++;
+      break;
+    case "restar":
+      contar--;
+      break;
+    case "eliminar":
+      contar -= cantidad;
+      break;
+    case "emparejar":
+      contar += cantidad;
+  }
+
+  $(".carritoContador").html(`${contar}`); // sumo al contador
+};
+
+// función para sacar producto del dom carrito
+const sacarNodo = function (id) {
+  $(`#carrito-${id}`).remove();
+};
+
+// función para limpiar variables y Storage
+const limpiarVariablesStorage = function () {
+  carrito = [];
+  localStorage.removeItem("carrito");
+  precioTotal = 0;
+  contar = 0;
 };
 
 // función para agregar producto al carrito
 const agregarCarrito = function (event) {
   // si el carrito estaba vacío
   if (carrito.length == 0) {
-    $(".carritoContainer").append(filaTotal); // agrego fila de total
-    $(".limpiarCarrito").on("click", limpiarCarrito); // escucho el botón de limpiar
-    $(".comprarCarrito").on("click", comprarCarrito); // escucho el botón comprar
-    $(".carritoVacio").remove(); // quito el mensaje de carrito vacío
-    $(".carritoIconCaja").append(carritoContador);
+    iniciarCarrito();
   }
   let productoID = ""; // inicializo productoID porque necesito saber si se está haciendo click en el carrito o en la grilla productos
   // si el tag es I, entonces busco el id según el DOM del carrito
@@ -96,23 +239,13 @@ const agregarCarrito = function (event) {
   productos.forEach((producto) => {
     if (producto.id == productoID && producto.stock != 0) {
       // si hay stock
-      contar++;
       producto.agregar(); // agrego cantidad y quito stock
-      calcularTotal("agregarCarrito", producto.precio); // lo sumo al total
+      calcularTotal("sumar", producto.precio); // lo sumo al total
       actualizarTotal(precioTotal); // actualizo el total en el DOM carrito
-      $(".carritoContador").html(`${contar}`); // sumo al contador
+      refreshContador("sumar"); // refresh al contador
       // me fijo si el tag es DIV (de la grilla productos) para en tal caso agregarle animación
       if ($(this).prop("tagName") == "DIV") {
-        $(`#${producto.id}`).css({
-          "animation-name": "pulse",
-          "animation-duration": "0.8s",
-        });
-        setTimeout(function () {
-          $(`#${producto.id}`).css({
-            "animation-name": "none",
-            "animation-duration": "0s",
-          });
-        }, 801);
+        animacionGrilla(producto.id);
       }
       let productoAagregar = carrito.find(
         (producto) => producto.id == productoID
@@ -122,10 +255,7 @@ const agregarCarrito = function (event) {
         carrito.push(producto); // guardo el producto en el carrito
         refreshLocalStorage(carrito); // refresh al LocalStorage
         renderizarEnCarrito(producto); // renderizo producto en DOM carrito
-        // escucho botones
-        escucharBotonesSumar();
-        escucharBotonesRestar();
-        escucharBotonesEliminar();
+        escucharBotones(); // escucho botones
       } else {
         // si el producto ya está en el carrito
         refreshCarritoArray(producto, productoAagregar); // refresh al array
@@ -144,29 +274,26 @@ const restarCarrito = function (event) {
   let productoCarritoID = $(this).parent().attr("id"); // rescato el id de producto
   let productoID = productoCarritoID.replace("botones-", ""); // lo limpio de la palabra botones
   let productoArestar = carrito.find((producto) => producto.id == productoID); // lo busco en el carrito
-  contar--;
   productos.forEach((producto) => {
     if (producto.id == productoID) {
       producto.borrar(); // actualizo cantidad y stock en array productos
       refreshCarritoArray(producto, productoArestar); // refresh al array carrito
       refreshLocalStorage(carrito); // refresh al LocalStorage
-      calcularTotal("restarCarrito", producto.precio); // calculo el nuevo total
+      calcularTotal("restar", producto.precio); // calculo el nuevo total
       actualizarTotal(precioTotal); // actualizo el total en el DOM carrito
-      $(".carritoContador").html(`${contar}`); // resto al contador
+      refreshContador("restar"); // refresh al contador
       if (producto.cantidad >= 1) {
         // Si todavía hay cantidad en el carrito
         refreshPrecioCantidad(producto); // refresh a precio y cantidad en DOM
       } else {
         // si no borro el nodo
-        $(`#carrito-${producto.id}`).remove();
+        sacarNodo(producto.id);
       }
     }
   });
   // si el carrito quedó vacío
   if (carrito.length == 0) {
-    $(".total").remove(); // saco la fila de total
-    $(".carritoContador").remove(); // saco el contador
-    $(".carrito").append(carritoVacio); // dejo mensaje de que está vacío
+    limpiarDOMcarrito();
   }
 };
 const eliminarProducto = function (event) {
@@ -175,8 +302,7 @@ const eliminarProducto = function (event) {
   let productoID = productoCarritoID.replace("carrito-", ""); // lo limpio de la palabra carrito
   let productoAborrar = carrito.find((producto) => producto.id == productoID); // lo busco en el carrito
   const productoCantidad = productoAborrar.cantidad; // guardo la cantidad para las iteraciones
-  contar -= productoCantidad;
-  $(".carritoContador").html(`${contar}`); // sumo al contador
+  refreshContador("eliminar", productoCantidad);
   // busco el producto en array productos
   productos.forEach((producto) => {
     if (producto.id == productoID) {
@@ -186,17 +312,14 @@ const eliminarProducto = function (event) {
       }
       refreshCarritoArray(producto, productoAborrar); // refresh al array carrito
       refreshLocalStorage(carrito); // refresh al LocalStorage
-      calcularTotal("borrarCarrito", producto.precio * productoCantidad); // calculo el nuevo total
+      calcularTotal("restar", producto.precio * productoCantidad); // calculo el nuevo total
       actualizarTotal(precioTotal); // actualizo el total en el DOM carrito
     }
   });
-  $(this).parent().remove(); // saco el producto del carrito
+  sacarNodo(productoID);
   // si el carrito quedó vacío
   if (carrito.length == 0) {
-    $(".carritoContador").remove(); // saco el contador
-    $(".total").remove(); // saco la fila de total
-    $(".botonesCarrito").remove(); // saco los botones
-    $(".carrito").append(carritoVacio); // dejo mensaje de que está vacío
+    limpiarDOMcarrito();
   }
 };
 
@@ -212,128 +335,15 @@ const limpiarCarrito = function (event) {
       }
     }
   });
-  carrito = []; // Al carrito lo dejo directamente vacío
-  localStorage.removeItem("carrito"); // limpio el Storage
-  precioTotal = 0; // dejo en 0 el precio total
-  contar = 0;
-  $(".productoCarrito").remove(); // saco los productos del dom
-  $(".carritoContador").remove(); // saco el contador
-  $(".total").remove(); // saco la fila total del dom
-  $(".botonesCarrito").remove(); // saco los botones
-  $(".carrito").append(carritoVacio); // dejo mensaje de que está vacío
+  limpiarDOMcarrito();
+  limpiarVariablesStorage();
 };
 
-const sumarFinalizar = function (event) {
-  let productoCarritoID = $(this).parent().attr("id"); // rescato el id de producto
-  let productoID = productoCarritoID.replace("botones-", ""); // lo limpio de la palabra botones
-  let productoAagregar = carrito.find((producto) => producto.id == productoID);
-  productos.forEach((producto) => {
-    if (producto.id == productoID && producto.stock != 0) {
-      producto.agregar();
-      calcularTotal("agregarCarrito", producto.precio);
-      refreshCarritoArray(producto, productoAagregar);
-      refreshLocalStorage(carrito);
-      $(`.${productoID}-cantidad`).html(`${producto.cantidad}`);
-      $(`.${producto.id}-subtotal`).html(
-        `$ ${numberWithCommas(
-          (producto.precio * producto.cantidad).toFixed(2)
-        )}`
-      );
-    } else if (producto.id == productoID && producto.stock === 0) {
-      alert("No hay Stock");
-    }
-  });
-  $(".totalFinalizar").html(`$ ${numberWithCommas(precioTotal.toFixed(2))}`);
-};
-
-const restarFinalizar = function (event) {
-  let productoCarritoID = $(this).parent().attr("id"); // rescato el id de producto
-  let productoID = productoCarritoID.replace("botones-", ""); // lo limpio de la palabra botones
-  let productoArestar = carrito.find((producto) => producto.id == productoID);
-  productos.forEach((producto) => {
-    if (producto.id == productoID) {
-      producto.borrar(); // actualizo cantidad y stock en array productos
-      calcularTotal("borrarCarrito", producto.precio);
-      refreshCarritoArray(producto, productoArestar); // refresh al array carrito
-      refreshLocalStorage(carrito); // refresh al LocalStorage
-      if (producto.cantidad >= 1) {
-        // Si todavía hay cantidad en el carrito
-        $(`.${producto.id}-cantidad`).html(`${producto.cantidad}`);
-        $(`.${producto.id}-subtotal`).html(
-          `$ ${numberWithCommas(
-            (producto.precio * producto.cantidad).toFixed(2)
-          )}`
-        );
-      } else {
-        // si no borro el nodo
-        $(`#fila-${producto.id}`).remove();
-      }
-    }
-  });
-  $(".totalFinalizar").html(`$ ${numberWithCommas(precioTotal.toFixed(2))}`);
-};
-
-const eliminarFinalizar = function (event) {
-  let productoCarritoID = $(this).parent().parent().attr("id"); // rescato el id de producto
-  let productoID = productoCarritoID.replace("fila-", ""); // lo limpio de la palabra carrito
-  console.log(productoID);
-  let productoAborrar = carrito.find((producto) => producto.id == productoID); // lo busco en el carrito
-  console.log(productoAborrar);
-  productos.forEach((producto) => {
-    const productoCantidad = producto.cantidad; // guardo la cantidad para las iteraciones
-    if (producto.id == productoID) {
-      for (let i = 0; i < productoCantidad; i++) {
-        producto.borrar();
-      }
-      refreshCarritoArray(producto, productoAborrar); // refresh al array carrito
-      refreshLocalStorage(carrito); // refresh al LocalStorage
-      calcularTotal("borrarCarrito", producto.precio * productoCantidad); // calculo el nuevo total
-    }
-  });
-  $(this).parent().parent().remove();
-  $(".totalFinalizar").html(`$ ${numberWithCommas(precioTotal.toFixed(2))}`);
-};
 // función para comprar
 const comprarCarrito = function (event) {
-  $(".linksNav").remove();
-  $(".hero").remove();
-  $(".tienda").remove();
-  $(".main").append(finalizarCompraHero);
-  $(".main").append(finalizarCompraContainer);
-  $(".carritoYdatos").append(finalizarCompraCarrito);
-  carrito.forEach((producto) => {
-    $(".tbody").append(`
-      <tr id="fila-${producto.id}" class="fila">
-        <th class="cajaImagenTabla" scope="row">
-          <img src="./img/productos/${producto.id}.jpg" alt="" />
-        </th>
-        <td>Encordado guitarra eléctrica D'addario Exp110 Nickle W</td>
-        <td>
-          <div id="botones-${producto.id}" class="botonesFinalizar">
-            <i class="fas fa-minus-circle botonRestarFinalizar"></i>
-            <p class="${producto.id}-cantidad texto">${producto.cantidad}</p>
-            <i class="fas fa-plus-circle botonSumarFinalizar"></i>
-          </div>
-        </td>
-        <td class="${producto.id}-subtotal">$ ${numberWithCommas(
-      (producto.precio * producto.cantidad).toFixed(2)
-    )}</td>
-        <td><i class="fas fa-times-circle botonEliminarFinalizar"></i></td>
-      </tr>
-    `);
-  });
-  $(".tbody").append(`
-    <tr>
-      <td></td>
-      <td></td>
-      <td class="text">TOTAL</td>
-      <td class="totalFinalizar">$ ${numberWithCommas(
-        precioTotal.toFixed(2)
-      )}</td>
-      <td></td>
-  `);
-  $(".botonSumarFinalizar").off().on("click", sumarFinalizar);
-  $(".botonRestarFinalizar").off().on("click", restarFinalizar);
-  $(".botonEliminarFinalizar").off().on("click", eliminarFinalizar);
-  $(".carritoYdatos").append(finalizarCompraFormulario);
+  limpiarTienda();
+  renderizarTabla();
+  renderizarTotalTabla();
+  escucharBotones();
+  cargarFormulario();
 };

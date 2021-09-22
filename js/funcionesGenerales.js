@@ -8,59 +8,26 @@ function numberWithCommas(x) {
     .replace(".", ",")
     .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
-const escucharBotonesAgregar = function () {
+const escucharBotones = function () {
   $(".botonAgregar").off().on("click", agregarCarrito);
-};
-// Funciones para escuchar botones agregar y borrar
-const escucharBotonesSumar = function () {
   $(`.botonSumar`).off().on("click", agregarCarrito);
-};
-const escucharBotonesRestar = function () {
   $(".botonRestar").off().on("click", restarCarrito);
-};
-const escucharBotonesEliminar = function () {
   $(".botonEliminar").off().on("click", eliminarProducto);
 };
-// Función para emparejar carrito con Storage
-const emparejarCarritoStorage = function () {
-  // recupero carrito del localStorage
-  let carritoStorageString = localStorage.getItem("carrito");
-  let carritoStorage = JSON.parse(carritoStorageString);
-  // si el carrito de storage no es null o vacío, entonces lo recupero y renderizo
-  if (carritoStorage != null && carritoStorage.length != 0) {
-    // inserto primero la fila de precio total
-    $(".carritoContainer").append(filaTotal);
-    $(".limpiarCarrito").on("click", limpiarCarrito);
-    $(".comprarCarrito").on("click", comprarCarrito);
-    // para cada producto del carrito
-    carritoStorage.forEach((productoCarrito) => {
-      let productoID = productoCarrito.id; // tomo el id
-      let productoStock = productoCarrito.stock; // tomo stock y cantidad para emparejar con el array de productos
-      let productoCantidad = productoCarrito.cantidad; // tomo la cantidad
-      contar += productoCantidad; // lo agrego a la cuenta
-      // me fijo qué producto es en producto y emparejo los datos
-      productos.forEach((producto) => {
-        if (producto.id == productoID) {
-          producto["stock"] = parseInt(productoStock); // emparejo stock
-          producto["cantidad"] = parseInt(productoCantidad); // emparejo cantidad
-          carrito.push(producto); // ahora meto el producto al carrito
-          renderizarEnCarrito(producto); // renderizo
-          precioTotal += producto.precio * producto.cantidad; // calculo precio total
-          actualizarTotal(precioTotal); // actualizo en carrito
-        }
-      });
-    });
-    $(".carritoIconCaja").append(carritoContador);
-    $(".carritoContador").html(`${contar}`);
-    escucharBotonesSumar();
-    escucharBotonesRestar();
-    escucharBotonesEliminar(); //escucho los nuevos botones
-    // si no había carrito
-  } else {
-    $(".carrito").append(carritoVacio); // dejo mensaje de que está vacío
-  }
-};
 
+// función para iniciar tienda
+const iniciarTienda = function () {
+  $(".main").append(loader); // loader para mientras se carga
+  $(".main").append(grillaTienda); // cargo grilla tienda
+  $(".tienda").append(barraBusqueda); // cargo la barra de busqueda
+  $(".tienda").append(rowFiltrosProductos);
+  $(".filtrosProductos").append(filtros); // cargo filtros
+  $(".filtrosProductos").append(grillaProductos); // cargo grilla productos
+  $(".tienda").append(carritoOffcanvas); // cargo off canvas
+  $(".categoria").off().on("click", filtrar); // escucho las categorias
+  $(".subcategoria").off().on("click", subFiltrar); // escucho los filtros
+  $("#input").off().on("input", buscar); // escucho la barra de búsqueda
+};
 // función para renderizar productos en el DOM
 const renderizarProductos = function (arrayProductos) {
   arrayProductos.forEach((producto) => {
@@ -85,9 +52,23 @@ const renderizarProductos = function (arrayProductos) {
     </div>
   </div>`);
   });
-  escucharBotonesSumar();
-  escucharBotonesRestar();
-  escucharBotonesEliminar();
+  escucharBotones();
+};
+
+// función para renderizar destacados
+const renderizarDestacados = function () {
+  // filtro productos destacados para renderizarlos al inicio
+  let productosDestacados = productos.filter(
+    (producto) => producto.destacado == "si"
+  );
+  renderizarProductos(productosDestacados);
+  escucharBotones();
+};
+
+//función para animación de inicio
+const animacionInicio = function () {
+  $(".loader").fadeOut(1000); // saco el loader con timing
+  $(".tienda").delay(1001).fadeIn(1200); // cuando se va el loader, visibilizo la tienda
 };
 
 // función para limpiar productos del DOM

@@ -1,11 +1,29 @@
+// función para normalizar categorías
+const normalizarCategorias = function () {
+  $(".categoria").css("font-weight", "normal"); // pongo todas las categorías en fuente normal
+  $(".subcategoria").css("font-weight", "normal"); // lo mismo para las subcategorias
+  $(".subcategorias").css("display", "none"); // guardo todas las subcategorias
+};
+// función para normalizar subcategorias
+const normalizarSubcategorias = function () {
+  $(".subcategoria").css("font-weight", "normal"); // pongo las subcategorías en fuente normal (puede haber una seleccionada)
+};
+// función para poner en foco la categoría
+const focoCategoria = function (nodo) {
+  $(nodo).css("font-weight", "bold"); // le aplico negrita a la categoria seleccionada
+  $(nodo).next().css("display", "block"); // traigo sus subcategorías al DOM
+};
+// función para poner en foco la subcategoria
+const focoSubcategoria = function (nodo) {
+  $(nodo).css("font-weight", "bold"); // le aplico negrita a la categoria seleccionada
+};
+
 // función para buscar, contempla que las palabras no estén en orden,
 // busca que todas las palabras ingresadas estén dentro del nombre del producto
 const buscar = function (event) {
   let inputUsuario = event.target.value; // tomo el input del usuario
-  console.log(inputUsuario);
   // escucho cuando el usuario escriba más de dos palabras
   if (inputUsuario.length > 2) {
-    console.log(inputUsuario);
     let inputMinuscula = inputUsuario.toLowerCase(); // lo transformo a minúscula
     let inputLimpio = removeAccents(inputMinuscula); // le saco acentos o carácteres extraños
     let arrayInput = inputLimpio.split(" "); // armo un array con las palabras
@@ -29,28 +47,18 @@ const buscar = function (event) {
     limpiarProductos(); // limpio la grilla de productos
     renderizarProductos(productosBuscados); // renderizo los buscados
     productosBuscados = []; // reseteo el array de buscados para una próxima búsqueda
-    $(".categoria").css("font-weight", "normal"); // pongo todas las categorías en fuente normal
-    $(".subcategoria").css("font-weight", "normal"); // lo mismo para las subcategorias
-    $(".subcategorias").css("display", "none"); // guardo todas las subcategorias
+    normalizarCategorias();
     // si es el inicio de la página o el usuario borró la búsqueda, pongo los destacados
   } else if (inputUsuario == "") {
     limpiarProductos(); // limpio la grilla de productos
-    // filtro productos destacados para renderizarlos al inicio
-    let productosDestacados = productos.filter(
-      (producto) => producto.destacado == "si"
-    );
-    renderizarProductos(productosDestacados);
-    escucharBotonesAgregar();
+    renderizarDestacados(); // renderizo destacados
   }
 };
 
 //función para filtrar
 const filtrar = function (event) {
-  $(".categoria").css("font-weight", "normal"); // pongo todas las categorías en fuente normal
-  $(".subcategoria").css("font-weight", "normal"); // lo mismo para las subcategorias
-  $(".subcategorias").css("display", "none"); // guardo todas las subcategorias
-  $(this).css("font-weight", "bold"); // le aplico negrita a la categoria seleccionada
-  $(this).next().css("display", "block"); // traigo sus subcategorías al DOM
+  normalizarCategorias();
+  focoCategoria(this);
   let categoria = $(this).html().toLowerCase(); // me fijo qué tipo de categoria voy a aplicar
   // filtro los productos de la categoría seleccionada
   productosFiltrados = productos.filter(
@@ -60,13 +68,12 @@ const filtrar = function (event) {
   );
   limpiarProductos(); // borro productos de la grilla
   renderizarProductos(productosFiltrados); // renderizo los productos filtrados
-  escucharBotonesAgregar();
 };
 
 //función subfiltrar
 const subFiltrar = function (event) {
-  $(".subcategoria").css("font-weight", "normal"); // pongo las subcategorías en fuente normal (puede haber una seleccionada)
-  $(this).css("font-weight", "bold"); // le aplico negrita a la categoria seleccionada
+  normalizarSubcategorias();
+  focoSubcategoria(this);
   let subcategoriaClass = $(this).attr("class"); // tomo el tipo de subcategoria (está escrito en la clase)
   let subcategoria = $(this).html().toLowerCase(); // tomo el nombre de la subcategoría
   // si es por marca, filtro por marca, sino por subcategoria estandard
@@ -83,5 +90,4 @@ const subFiltrar = function (event) {
   }
   limpiarProductos(); // limpio productos de la grilla
   renderizarProductos(productosSubFiltrados); // renderizo
-  escucharBotonesAgregar();
 };
