@@ -30,13 +30,36 @@ const emparejarCarritoStorage = function () {
     limpiarDOMcarrito();
   }
 };
+const notificar = function (nombreFuncion, producto, productoCantidad) {
+  let precio = numberWithCommas(producto.precio.toFixed(2));
+  let total = numberWithCommas(precioTotal.toFixed(2));
+  let notificacion = $(`
+  <div class="notificacion animate__animated animate__bounceInLeft">
+    <p class="nombre">${producto.nombre}</p>
+    <p class="precio">Precio: $ ${precio}</p>
+    <p class"total">Llevas un total de : $ ${total}</p>
+  </div>
+`);
+  $(".notificacionContainer").append(notificacion);
+  if (nombreFuncion == "sumar") {
+    $(notificacion).prepend(`<h4>Producto agregado al carrito!</h4>`);
+    $(notificacion).addClass("sumar");
+  } else if (nombreFuncion == "restar") {
+    $(notificacion).prepend(`<h4>Producto restado del carrito!</h4>`);
+    $(notificacion).addClass("restar");
+  } else if (nombreFuncion == "eliminar") {
+    $(notificacion).prepend(`<h4>Productos eliminados del carrito!</h4>`);
+    $(notificacion).addClass("restar");
+  }
 
+  $(notificacion).delay(3000).fadeOut(2000);
+};
 //función para renderizar en carrito
 const renderizarEnCarrito = function (producto) {
   let precio = numberWithCommas(
     (producto.precio * producto.cantidad).toFixed(2)
   );
-  $(".carrito").append(`
+  let productoHtml = $(`
   <div
             id="carrito-${producto.id}"
             class="productoCarrito"
@@ -62,6 +85,7 @@ const renderizarEnCarrito = function (producto) {
             <i class="fas fa-times-circle botonEliminar"></i>
           </div>
   `);
+  $(".carrito").append(productoHtml);
 };
 
 // función para animar producto en grilla
@@ -84,41 +108,57 @@ const renderizarTabla = function () {
     let subtotal = numberWithCommas(
       (producto.precio * producto.cantidad).toFixed(2)
     );
-    $(".tbody").append(`
-      <tr id="carrito-${producto.id}" class="fila">
-        <th class="cajaImagenTabla" scope="row">
-          <img src="./img/productos/${producto.id}.jpg" alt="" />
-        </th>
-        <td>Encordado guitarra eléctrica D'addario Exp110 Nickle W</td>
-        <td>
-          <div id="botones-${producto.id}" class="botones">
-            <i class="fas fa-minus-circle botonRestar"></i>
-            <p class="${producto.id}-cantidad texto">${producto.cantidad}</p>
-            <i class="fas fa-plus-circle botonSumar"></i>
-          </div>
-        </td>
-        <td class="${producto.id}-precio">$ ${subtotal}</td>
-        <td class="botonEliminar"><i class="fas fa-times-circle"></i></td>
-      </tr>
-    `);
+    let fila = $(`
+    <tr id="carrito-${producto.id}" class="fila">
+      <th class="cajaImagenTabla" scope="row">
+        <img src="./img/productos/${producto.id}.jpg" alt="" />
+      </th>
+      <td>Encordado guitarra eléctrica D'addario Exp110 Nickle W</td>
+      <td>
+        <div id="botones-${producto.id}" class="botones">
+          <i class="fas fa-minus-circle botonRestar"></i>
+          <p class="${producto.id}-cantidad texto">${producto.cantidad}</p>
+          <i class="fas fa-plus-circle botonSumar"></i>
+        </div>
+      </td>
+      <td class="${producto.id}-precio">$ ${subtotal}</td>
+      <td class="botonEliminar"><i class="fas fa-times-circle"></i></td>
+    </tr>
+  `);
+    $(".tbody").append(fila);
   });
 };
 const renderizarTotalTabla = function () {
   let total = numberWithCommas(precioTotal.toFixed(2));
-  $(".tbody").append(`
+  let filaTotal = $(`
     <tr class="total">
       <td></td>
       <td></td>
       <td class="texto">TOTAL</td>
       <td class="totalPrecio">$ ${total}</td>
-      <td></td></tr>
+      <td></td>
+    </tr>
   `);
+  $(".tbody").append(filaTotal);
 };
 // función para cargar formulario de finalizar compra
 const cargarFormulario = function () {
   $(".carritoYdatos").append(finalizarCompraFormulario);
+  $(".form-select");
 };
-
+const calcularCuotas = function () {
+  let cuotas = [1, 3, 6, 12, 18];
+  for (let i = 0; i < cuotas.length; i++) {
+    precioDeCuotaFixeado = (precioTotal / cuotas[i]).toFixed(2);
+    let precioDeCuota = numberWithCommas(precioDeCuotaFixeado);
+    $(`.form-select option:nth-child(${i + 1})`).val(
+      `${cuotas[i]}_${precioDeCuotaFixeado}`
+    );
+    $(`.form-select option:nth-child(${i + 1})`).html(
+      `${cuotas[i]} cuotas sin interés de $${precioDeCuota}`
+    );
+  }
+};
 // función para cambiar cantidad y precio en carrito
 const refreshPrecioCantidad = function (producto) {
   let nuevaCantidad = producto.cantidad; // reviso la nueva cantidad (en la funcion agregarCarrito ya se actualizó)
@@ -146,7 +186,7 @@ const refreshLocalStorage = function (carrito) {
 
 // función para calcular el total
 const calcularTotal = function (nombreFuncion, precioProducto) {
-  if (nombreFuncion == "restar") {
+  if (nombreFuncion == "restar" || nombreFuncion == "eliminar") {
     precioTotal = precioTotal - precioProducto;
     precioTotal = parseFloat(precioTotal.toFixed(2));
   } else if (nombreFuncion == "sumar") {
@@ -176,11 +216,14 @@ const limpiarDOMcarrito = function () {
   $(".carritoContador").remove(); // saco el contador
   $(".total").remove(); // saco la fila total del dom
   $(".botonesCarrito").remove(); // saco los botones
+  $(".table").remove(); // saco la tabla en el caso de que se esté en finalizar compra
+  $(".cajaFormulario").remove(); // saco el formulario de finalizar compra
   $(".carrito").append(carritoVacio); // dejo mensaje de que está vacío
+  $(".finalizarCompra").append(carritoVacioConBtn); // dejo botón para volver a la tienda en finalizar compra
 };
 // función para limpiar tienda
 const limpiarTienda = function () {
-  $(".linksNav").remove();
+  $(".nav-itemCarrito").remove();
   $(".hero").remove();
   $(".tienda").remove();
   $(".main").append(finalizarCompraHero);
@@ -202,8 +245,8 @@ const refreshContador = function (nombreFuncion, cantidad) {
       break;
     case "emparejar":
       contar += cantidad;
+      break;
   }
-
   $(".carritoContador").html(`${contar}`); // sumo al contador
 };
 
@@ -243,6 +286,8 @@ const agregarCarrito = function (event) {
       calcularTotal("sumar", producto.precio); // lo sumo al total
       actualizarTotal(precioTotal); // actualizo el total en el DOM carrito
       refreshContador("sumar"); // refresh al contador
+      notificar("sumar", producto);
+      calcularCuotas();
       // me fijo si el tag es DIV (de la grilla productos) para en tal caso agregarle animación
       if ($(this).prop("tagName") == "DIV") {
         animacionGrilla(producto.id);
@@ -282,6 +327,8 @@ const restarCarrito = function (event) {
       calcularTotal("restar", producto.precio); // calculo el nuevo total
       actualizarTotal(precioTotal); // actualizo el total en el DOM carrito
       refreshContador("restar"); // refresh al contador
+      notificar("restar", producto);
+      calcularCuotas();
       if (producto.cantidad >= 1) {
         // Si todavía hay cantidad en el carrito
         refreshPrecioCantidad(producto); // refresh a precio y cantidad en DOM
@@ -312,8 +359,10 @@ const eliminarProducto = function (event) {
       }
       refreshCarritoArray(producto, productoAborrar); // refresh al array carrito
       refreshLocalStorage(carrito); // refresh al LocalStorage
-      calcularTotal("restar", producto.precio * productoCantidad); // calculo el nuevo total
+      calcularTotal("eliminar", producto.precio * productoCantidad); // calculo el nuevo total
       actualizarTotal(precioTotal); // actualizo el total en el DOM carrito
+      notificar("eliminar", producto, productoCantidad);
+      calcularCuotas();
     }
   });
   sacarNodo(productoID);
@@ -347,4 +396,5 @@ const comprarCarrito = function (event) {
   renderizarTotalTabla();
   escucharBotones();
   cargarFormulario();
+  calcularCuotas();
 };

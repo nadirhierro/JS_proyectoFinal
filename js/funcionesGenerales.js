@@ -29,28 +29,29 @@ const iniciarTienda = function () {
   $("#input").off().on("input", buscar); // escucho la barra de búsqueda
 };
 // función para renderizar productos en el DOM
-const renderizarProductos = function (arrayProductos) {
+const renderizarEnGrilla = function (arrayProductos) {
   arrayProductos.forEach((producto) => {
     let precioFixed = numberWithCommas(producto.precio.toFixed(2));
     let precioCuotas = numberWithCommas((producto.precio / 18).toFixed(2));
-    $(".grillaProductos").append(`
+    let productoHtml = $(`
     <div id="${producto.id}" class="tarjeta botonAgregar">
-    <div class="tarjetaCuerpo">
-      <div class="cajaImagen">
-        <img class="img-fluid imagen" src="./img/productos/${producto.id}.jpg" alt="${producto.nombre}" />
+      <div class="tarjetaCuerpo">
+        <div class="cajaImagen">
+          <img class="img-fluid imagen" src="./img/productos/${producto.id}.jpg" alt="${producto.nombre}" />
+        </div>
+        <div class="nombre">
+          <p>${producto.nombre}</p>
+        </div>
+        <div class="cuotas">
+          <p class="texto">18 cuotas s/interés de</p>
+          <p class="texto precioCuotas"> $ ${precioCuotas}
+          </p>
+        </div>
+        <div class="precio"><p class="texto">Final: $${precioFixed}</p></div>
+        <div class="agregar">Agregar al carrito</div>
       </div>
-      <div class="nombre">
-        <p>${producto.nombre}</p>
-      </div>
-      <div class="cuotas">
-        <p class="texto">18 cuotas s/interés de</p>
-        <p class="texto precioCuotas"> $ ${precioCuotas}
-        </p>
-      </div>
-      <div class="precio"><p class="texto">Final: $${precioFixed}</p></div>
-      <div class="agregar">Agregar al carrito</div>
-    </div>
-  </div>`);
+    </div>`);
+    $(".grillaProductos").append(productoHtml);
   });
   escucharBotones();
 };
@@ -61,7 +62,7 @@ const renderizarDestacados = function () {
   let productosDestacados = productos.filter(
     (producto) => producto.destacado == "si"
   );
-  renderizarProductos(productosDestacados);
+  renderizarEnGrilla(productosDestacados);
   escucharBotones();
 };
 
@@ -73,5 +74,6 @@ const animacionInicio = function () {
 
 // función para limpiar productos del DOM
 const limpiarProductos = function () {
+  $(".sinProductos").remove();
   $(".tarjeta").remove();
 };

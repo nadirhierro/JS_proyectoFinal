@@ -135,6 +135,11 @@ let carritoVacio = $(`
     <h4>El carrito está vacío</h4>
   </div>`);
 
+let carritoVacioConBtn = $(`
+  <div class="carritoVacio">
+    <h4>El carrito está vacío</h4>
+    <a href="./index.html" class="btn">Volver a la tienda</a>
+  </div>`);
 let filaTotal = $(`
   <div class="total">
     <p>TOTAL</p>
@@ -171,7 +176,7 @@ let finalizarCompraContainer = $(`
   <div class="container-fluid finalizarCompra">
     <div class="row tituloFinalizar">
       <h2 class="col-12 col-md-4">¡Últimos pasos!</h2>
-      <h4 class="col-12 col-md-4">Chequeá tu selección...</h4>
+      <h4 class="col-12 col-md-4">Chequeá tu carrito...</h4>
     </div>
     <div class="row carritoYdatos">
     </div>
@@ -375,8 +380,9 @@ let finalizarCompraFormulario = $(`
           />
           <label for="cvc">CVC:</label>
         </div>
-        <select class="form-select mb-3" aria-label="Default select example">
-          <option selected>Cantidad de cuotas</option>
+        <select class="form-select mb-3">
+          <option value=""></option>
+          <option value=""></option>
           <option value=""></option>
           <option value=""></option>
           <option value=""></option>

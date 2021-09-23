@@ -1,6 +1,30 @@
 .main {
   min-height: 120vh; // para que la barra de scroll ya aparezca en el medio y no entorpezca las animaciones
   font-family: $nunito;
+  .notificacionContainer {
+    position: fixed;
+    @include flexColumn(0.5rem, unset, unset);
+    bottom: 1.5rem;
+    left: 1.5rem;
+    z-index: 1000;
+    .notificacion {
+      padding: 1rem;
+      min-width: 350px;
+      max-width: 350px;
+      @include fondoVerde;
+      border-radius: 35px 0px 35px 0px;
+      -moz-border-radius: 35px 0px 35px 0px;
+      -webkit-border-radius: 35px 0px 35px 0px;
+      border: 2px solid $amarillo;
+      p {
+        margin: 0;
+      }
+    }
+    .restar {
+      background-color: rgb(56, 30, 30);
+      color: rgb(101, 133, 101);
+    }
+  }
 }
 .hero {
   @include padding-y(7rem, 4rem);
@@ -126,7 +150,7 @@
       }
       .form-control {
         &:focus {
-          @include boxShadowBusqueda;
+          @include boxShadowInput;
         }
       }
     }
@@ -179,6 +203,12 @@
   }
   .grillaProductos {
     @include grillaProductos;
+    .sinProductos {
+      grid-area: auto/ span 4;
+      padding-top: 2rem;
+      align-self: flex-start;
+      justify-self: center;
+    }
     .tarjeta {
       @include tarjetaProducto;
       &:hover {
@@ -331,6 +361,13 @@
       font-weight: bold;
     }
   }
+  .carritoVacio {
+    padding-top: 2rem;
+    @include flexColumn(1rem, center, center);
+    a {
+      @include fondoVerde;
+    }
+  }
 }
 .carritoYdatos {
   font-family: $nunito;
@@ -423,8 +460,10 @@
       text-align: center;
     }
     .form-floating {
-      box-shadow: $sombra1;
       color: black;
+      .form-control:focus {
+        @include boxShadowInput;
+      }
     }
     .form-select {
       align-self: center;

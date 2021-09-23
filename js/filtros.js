@@ -45,7 +45,13 @@ const buscar = function (event) {
       }
     });
     limpiarProductos(); // limpio la grilla de productos
-    renderizarProductos(productosBuscados); // renderizo los buscados
+    if (productosBuscados.length == 0) {
+      $(".grillaProductos").append(
+        `<h4 class="sinProductos" >No hay productos para tu búsqueda</h4>`
+      );
+    } else {
+      renderizarEnGrilla(productosBuscados); // renderizo los buscados
+    }
     productosBuscados = []; // reseteo el array de buscados para una próxima búsqueda
     normalizarCategorias();
     // si es el inicio de la página o el usuario borró la búsqueda, pongo los destacados
@@ -67,7 +73,7 @@ const filtrar = function (event) {
       removeAccents(categoria)
   );
   limpiarProductos(); // borro productos de la grilla
-  renderizarProductos(productosFiltrados); // renderizo los productos filtrados
+  renderizarEnGrilla(productosFiltrados); // renderizo los productos filtrados
 };
 
 //función subfiltrar
@@ -89,5 +95,5 @@ const subFiltrar = function (event) {
     );
   }
   limpiarProductos(); // limpio productos de la grilla
-  renderizarProductos(productosSubFiltrados); // renderizo
+  renderizarEnGrilla(productosSubFiltrados); // renderizo
 };

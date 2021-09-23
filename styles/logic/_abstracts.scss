@@ -52,7 +52,7 @@
   font-family: $nunito;
 }
 // mixins para búsqueda y filtros
-@mixin boxShadowBusqueda {
+@mixin boxShadowInput {
   border-color: $amarillo;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $amarillo;
 }
