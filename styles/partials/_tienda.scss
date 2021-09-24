@@ -25,6 +25,13 @@
       color: rgb(101, 133, 101);
     }
   }
+  .cajaCompraRealizada {
+    @include fondoVerde;
+  }
+  .compraRealizada {
+    @include flexColumn(0.2rem, center, center);
+    font-size: 1.2rem;
+  }
 }
 .hero {
   @include padding-y(7rem, 4rem);

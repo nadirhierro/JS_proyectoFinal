@@ -144,7 +144,6 @@ const renderizarTotalTabla = function () {
 // función para cargar formulario de finalizar compra
 const cargarFormulario = function () {
   $(".carritoYdatos").append(finalizarCompraFormulario);
-  $(".form-select");
 };
 const calcularCuotas = function () {
   let cuotas = [1, 3, 6, 12, 18];
@@ -397,4 +396,91 @@ const comprarCarrito = function (event) {
   escucharBotones();
   cargarFormulario();
   calcularCuotas();
+  $(".finalizarCompraForm").off().on("submit", finalizarCompra);
+};
+
+// funcion para enviar mensaje de compra realizada
+const compraRealizada = function (datos) {
+  let ultimos4tarjeta = datos.numeroTarjeta.substr(15);
+  let total = numberWithCommas(parseInt(datos.total).toFixed(2));
+  let notificacion = `
+    <div class="container-fluid cajaCompraRealizada">
+      <div class="col-md-12 compraRealizada">
+          <h2>¡Gracias por elegirnos, ${datos.nombre}!</h2>
+          <p>¡El pago fue realizado con éxito!</p>
+          <p>Hemos enviado tu factura y las instrucciones para el envío a tu correo <span class="negrita">${datos.email}</span></p>
+          <p>Pagaste $ ${total} en ${datos.cuotas}</p>
+          <p>Con la tarjeta número: **** - **** - **** - ${ultimos4tarjeta}</p>
+      </div>
+    </div>
+  `;
+
+  $(".main").append(notificacion);
+  $(".cajaCompraRealizada").hide();
+};
+// función para finalizar compra
+// tomo los valores de cada input y luego guardo el cliente y lo "posteo"
+const finalizarCompra = function (event) {
+  let nombre = event.target[0].value;
+  let email = event.target[1].value;
+  let telefono = event.target[2].value;
+  let calle = event.target[3].value;
+  let entre = event.target[4].value;
+  let localidad = event.target[5].value;
+  let provincia = event.target[6].value;
+  let codigoPostal = event.target[7].value;
+  let numeroTarjeta = event.target[8].value;
+  let nombreTarjeta = event.target[9].value;
+  let desde = event.target[10].value;
+  let hasta = event.target[11].value;
+  let cvc = event.target[12].value;
+  let cuotas = event.target[13].value.replaceAll(
+    "_",
+    " cuotas sin interés de $"
+  );
+  let url = "https://jsonplaceholder.typicode.com/posts";
+  clientes.push(
+    new Cliente(
+      nombre,
+      email,
+      telefono,
+      calle,
+      entre,
+      localidad,
+      provincia,
+      codigoPostal,
+      carrito,
+      precioTotal
+    )
+  );
+  $.ajax({
+    url: url,
+    type: "POST",
+    data: {
+      nombre: nombre,
+      email: email,
+      telefono: telefono,
+      cuotas: cuotas,
+      numeroTarjeta: numeroTarjeta,
+      nombreTarjeta: nombreTarjeta,
+      cvc: cvc,
+      desde: desde,
+      hasta: hasta,
+      carrito: carrito,
+      total: precioTotal,
+    },
+    beforeSend: function () {
+      $(".finalizarCompra").remove(); // saco el carrito y formulario
+      $(".main").append(loader); // pongo el loader
+      $(".loader").show();
+    },
+    success: function (data) {
+      compraRealizada(data); // pongo la notificaciones en hide
+    },
+    complete: function () {
+      $(".loader").fadeOut(200); // saco el loader
+      $(".cajaCompraRealizada").delay(201).fadeIn(200); // muestro el mensaje
+      localStorage.removeItem("carrito"); // borro el localStorage para una nueva compra
+    },
+  });
 };

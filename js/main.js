@@ -1,3 +1,64 @@
+// creo clase producto
+class Producto {
+  constructor(
+    id,
+    categoria,
+    subcategoria,
+    marca,
+    nombre,
+    precio,
+    destacado,
+    stock
+  ) {
+    this.id = id;
+    this.categoria = categoria;
+    this.subcategoria = subcategoria;
+    this.marca = marca;
+    this.nombre = nombre;
+    this.precio = precio;
+    this.destacado = destacado;
+    this.stock = stock;
+    this.cantidad = 0;
+  }
+  agregar() {
+    this.cantidad++;
+    this.stock--;
+  }
+  borrar() {
+    this.cantidad--;
+    this.stock++;
+  }
+}
+
+// Constructor para los datos del cliente
+class Cliente {
+  constructor(
+    nombreApellido,
+    email,
+    telefono,
+    calle,
+    entre,
+    localidad,
+    provincia,
+    codigoPostal,
+    carrito,
+    total
+  ) {
+    this.nombreApellido = nombreApellido;
+    this.email = email;
+    this.telefono = telefono;
+    this.calle = calle;
+    this.entre = entre;
+    this.localidad = localidad;
+    this.provincia = provincia;
+    this.codigoPostal = codigoPostal;
+    this.carrito = carrito;
+    this.total = total;
+  }
+}
+// inicializo array productos
+const productos = [];
+const clientes = [];
 // variables globales
 let carrito = [];
 let precioTotal = 0;
@@ -10,7 +71,7 @@ let productosBuscados = []; // inicializo array de productos buscados
 let loader = $(`
 <div class="container-fluid">
 <div class="row justify-content-center pt-5 loader">
-<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+<div class="col-12 lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
 </div>
 </div>
 `);
@@ -397,8 +458,24 @@ let finalizarCompraFormulario = $(`
 
 // función document ready
 $(function () {
-  iniciarTienda(); // inicio tienda
-  emparejarCarritoStorage(); // emparejo carrito y Storage
-  renderizarDestacados(); // renderizo destacados
-  animacionInicio(); // animación
+  $.when(getProductos()).done(() => {
+    iniciarTienda(); // inicio tienda
+    for (const producto of productosData) {
+      productos.push(
+        new Producto(
+          producto.id,
+          producto.categoria,
+          producto.subcategoria,
+          producto.marca,
+          producto.nombre,
+          producto.precio,
+          producto.destacado,
+          producto.stock
+        )
+      );
+    }
+    emparejarCarritoStorage(); // emparejo carrito y Storage
+    renderizarDestacados(); // renderizo destacados
+    animacionInicio(); // animación
+  });
 });

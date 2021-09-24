@@ -2,7 +2,7 @@
   "name": "js_proyectofinal",
   "version": "1.0.0",
   "description": "Proyecto Final del curso JS de Coderhouse",
-  "main": "index.js",
+  "main": "crearJson.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

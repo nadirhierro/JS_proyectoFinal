@@ -78,3 +78,18 @@ const limpiarProductos = function () {
   $(".sinProductos").remove();
   $(".tarjeta").remove();
 };
+
+// funcion para obtener productos con ajax
+const productosData = [];
+const getProductos = function () {
+  return $.ajax({
+    type: "GET",
+    url: "datos/data.json",
+    dataType: "json",
+    success: function (response) {
+      for (const data of response) {
+        productosData.push(data);
+      }
+    },
+  });
+};

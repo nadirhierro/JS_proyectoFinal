@@ -137,6 +137,20 @@
   color: #658565;
 }
 
+.main .cajaCompraRealizada {
+  background-color: #494c36;
+  color: #a9ac83;
+}
+
+.main .compraRealizada {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
 .hero {
   padding-top: 7rem;
   padding-bottom: 4rem;
