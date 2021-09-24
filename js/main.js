@@ -42,6 +42,9 @@ let filtros = $(`
     <h3>Filtros</h3>
     <div class="categorias">
     <ul class="categoriaContenedor">
+    <li class="categoria destacados">Destacados</li>
+    </ul>
+    <ul class="categoriaContenedor">
       <li class="categoria">Guitarras</li>
       <ul class="subcategorias">
         <li class="subcategoria">Guitarras Criollas</li>
@@ -86,7 +89,7 @@ let filtros = $(`
         <li class="subcategoria">Baterías Electrónicas</li>
         <li class="subcategoria">Percusión</li>
         <li class="subcategoria">Platillos</li>
-        <li class="subcategoria">Accesorios</li>
+        <li class="subcategoria">Accesorios para Bateristas</li>
       </ul>
     </ul>
     <ul class="categoriaContenedor">
@@ -96,7 +99,7 @@ let filtros = $(`
         <li class="subcategoria">Consolas</li>
         <li class="subcategoria">Micrófonos</li>
         <li class="subcategoria">Monitores</li>
-        <li class="subcategoria">Accesorios</li>
+        <li class="subcategoria">Accesorios para Estudio</li>
       </ul>
     </ul>
   </div>`);

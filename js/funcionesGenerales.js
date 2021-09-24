@@ -64,6 +64,7 @@ const renderizarDestacados = function () {
   );
   renderizarEnGrilla(productosDestacados);
   escucharBotones();
+  $(".destacados").css("font-weight", "bold");
 };
 
 //función para animación de inicio

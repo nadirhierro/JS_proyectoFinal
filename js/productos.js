@@ -431,3 +431,563 @@ productos.push(
     1
   )
 );
+productos.push(
+  new Producto(
+    34,
+    "guitarras",
+    "guitarras criollas",
+    "valencia",
+    "Guitarra Clasica Criolla Valencia Vc104 Tamaño 4/4 Estudio",
+    14500,
+    "no",
+    3
+  )
+);
+productos.push(
+  new Producto(
+    35,
+    "guitarras",
+    "guitarras criollas",
+    "texas",
+    "Guitarra-Clasica-Electro-Criolla-Texas-CG30-con-Funda",
+    32000,
+    "si",
+    2
+  )
+);
+productos.push(
+  new Producto(
+    36,
+    "teclados",
+    "digitales",
+    "yamaha",
+    "Teclado Portátil Yamaha 61 Teclas Sensitivas Psr E373",
+    45988,
+    "si",
+    3
+  )
+);
+productos.push(
+  new Producto(
+    37,
+    "teclados",
+    "digitales",
+    "casio",
+    "Teclado Portable Casio Lk-s450 61 Teclas Sensitivo Midi Usb",
+    65989,
+    "no",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    38,
+    "teclados",
+    "accesorios para teclados",
+    "monkeysell",
+    "Monkeysell 118-131. Funda protectora gruesa para piano",
+    10089,
+    "no",
+    2
+  )
+);
+productos.push(
+  new Producto(
+    39,
+    "teclados",
+    "pianos",
+    "yamaha",
+    "Piano de Cola Yamaha Acustico GB1K PE",
+    1500000,
+    "no",
+    2
+  )
+);
+productos.push(
+  new Producto(
+    40,
+    "teclados",
+    "sintetizadores",
+    "korg",
+    "Sintetizador Monofónico Korg Ms-20 Fs Green",
+    120000,
+    "no",
+    2
+  )
+);
+productos.push(
+  new Producto(
+    41,
+    "teclados",
+    "sintetizadores",
+    "korg",
+    "Teclado Sintetizador Monofónico Korg MS-20 FS Blue",
+    119999,
+    99,
+    "no",
+    2
+  )
+);
+productos.push(
+  new Producto(
+    42,
+    "teclados",
+    "sintetizadores",
+    "korg",
+    "Sintetizador FM Alterada 37 Teclas Korg OPSIX 6 Operadores",
+    130287.25,
+    "si",
+    2
+  )
+);
+productos.push(
+  new Producto(
+    43,
+    "teclados",
+    "amplificadores para teclados",
+    "laney",
+    "Amplificador Portatil Laney Multiproposito Ah Con Fx",
+    55287.25,
+    "si",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    44,
+    "teclados",
+    "amplificadores para teclados",
+    "vox",
+    "Combo Vox Vx50kb Para Teclado 50w Nutube-equipped",
+    40287.25,
+    "si",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    45,
+    "teclados",
+    "amplificadores para teclados",
+    "laney",
+    "Amplificador Multiproposito Laney Ah-series 150w 1x12 Ah150",
+    53287.25,
+    "si",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    46,
+    "teclados",
+    "accesorios para teclados",
+    "korg",
+    "Soporte Korg St-wl Con Patas Madera Para Sv-1 Sv-2 & D1",
+    53287.25,
+    "no",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    47,
+    "teclados",
+    "accesorios para teclados",
+    "skb",
+    "Estuche Semirigido Skb Teclado O Piano 88 Teclas Ruedas",
+    20287.25,
+    "no",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    48,
+    "teclados",
+    "accesorios para teclados",
+    "yamaha",
+    "Yamaha Pedal De Sustain Para Teclado O Piano Fc5",
+    3287.25,
+    "si",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    49,
+    "baterias",
+    "baterias acusticas",
+    "mapex",
+    "Bateria Mapex Mars Fusion 5 Cuerpos Bombo 20 Bloodwood",
+    112000,
+    "no",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    50,
+    "baterias",
+    "baterias acusticas",
+    "mapex",
+    "Estuche Semirigido Skb Teclado O Piano 88 Teclas Ruedas",
+    400999,
+    "no",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    51,
+    "baterias",
+    "baterias acusticas",
+    "sonor",
+    "Yamaha Pedal De Sustain Para Teclado O Piano Fc5",
+    645800,
+    "si",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    52,
+    "baterias",
+    "baterias electronicas",
+    "mapex",
+    "Bateria Electrónica Roland TD-07KV V-Drums kit",
+    300999,
+    "no",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    53,
+    "baterias",
+    "baterias electronicas",
+    "mapex",
+    "Bateria Electrónica Octapac Ringway TD78 c/Pedales y Baquetas",
+    100999,
+    "no",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    54,
+    "baterias",
+    "baterias electronicas",
+    "sonor",
+    "Batería Electrónica MultiPad Yamaha Dtxm12 Usb",
+    200000,
+    "si",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    55,
+    "baterias",
+    "percusion",
+    "sonor",
+    "Cajon Profesional Tineo Sonor CAJSTINEO C/Regulador Bordona",
+    18999,
+    "no",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    56,
+    "baterias",
+    "percusion",
+    "pearl",
+    "Redoblante Pearl Sensitone Series 14'' x 5'' 10 torres",
+    10999,
+    "no",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    57,
+    "baterias",
+    "percusion",
+    "knight",
+    "Pandereta KNIGHT 10'' de madera sin parche 8 pares de sonaja",
+    64000,
+    "si",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    58,
+    "baterias",
+    "platillos",
+    "sabian",
+    "Set De 5 Platillos Sabian B8x Performance 45003xg Bronce B8",
+    180999,
+    "no",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    59,
+    "baterias",
+    "platillos",
+    "zildjian",
+    "Set De Platillos Zildjian Zbt Crash 18 Y Hi Hat 13 Zbts3p",
+    25999,
+    "no",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    60,
+    "baterias",
+    "platillos",
+    "sabian",
+    "Set De 5 Platillos Sabian Serie Xsr Hi-hat Crash Ride + Free",
+    12000,
+    "si",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    61,
+    "baterias",
+    "accesorios para bateristas",
+    "vic firth",
+    "Palillos Vic Firth Signature Series Charlie Benante SBEN",
+    3000,
+    "no",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    62,
+    "baterias",
+    "accesorios para bateristas",
+    "rmv",
+    "Parche De Bateria Rmv Phc16 De 16 Pulgadas Hidraulico",
+    1200,
+    "no",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    63,
+    "baterias",
+    "accesorios para bateristas",
+    "zildjian",
+    "Palillos Bateria Zildjian Hickory 5a Punta De Nylon O Madera",
+    2300,
+    "si",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    64,
+    "estudio",
+    "auriculares",
+    "sennheiser",
+    "Auriculares Sennheiser HD407 Cerrados Over Ear",
+    6000,
+    "no",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    65,
+    "estudio",
+    "auriculares",
+    "sennheiser",
+    "Auriculares Inalambricos Sennheiser RS120 Bluetooth Cerrados",
+    23000,
+    "no",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    66,
+    "estudio",
+    "auriculares",
+    "sennheiser",
+    "Auriculares Sennheiser HD4.40 BT Bluetooth Cerrados",
+    46000,
+    "si",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    67,
+    "estudio",
+    "consolas",
+    "zoom pro",
+    "Consola Digital Zoom Grabación Multip. Simultenea 22 Canales",
+    226000,
+    "no",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    68,
+    "estudio",
+    "consolas",
+    "zoom pro",
+    "Consola Digital Zoom Grabación Simultanea 12 Canales",
+    80000,
+    "no",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    69,
+    "estudio",
+    "consolas",
+    "zoom pro",
+    "Consola Digital Zoom Grabación Multip Simultanea 12 Canales",
+    146000,
+    "si",
+    2
+  )
+);
+productos.push(
+  new Producto(
+    70,
+    "estudio",
+    "microfonos",
+    "proel",
+    "Microfono Vincha Inalambrico Uhf Proel Headset Profesional Frecuencias De 40hz A 18000 Hz Disponible En 3 Frecuencias.",
+    80000,
+    "no",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    71,
+    "estudio",
+    "microfonos",
+    "blue",
+    "Microfono Blue Encore 100 Dinamico Cardioide Para Voces",
+    146000,
+    "no",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    72,
+    "estudio",
+    "monitores",
+    "jbl",
+    "Monitor de estudio JBL LRS 305P MKII Woofer 5''",
+    46000,
+    "si",
+    2
+  )
+);
+productos.push(
+  new Producto(
+    73,
+    "estudio",
+    "monitores",
+    "mackie",
+    "Par Monitores Multimedia Mackie CR3-XBT 3'' Bluetooth",
+    20000,
+    "no",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    74,
+    "estudio",
+    "monitores",
+    "mackie",
+    "Monitor de estudio Mackie MR824 NEW 8'' Activo",
+    66000,
+    "no",
+    2
+  )
+);
+productos.push(
+  new Producto(
+    75,
+    "estudio",
+    "accesorios para estudio",
+    "ddrum",
+    "Cable Profesional Ddrum Xlr Plug 4,5 Metros Microfono Canon",
+    1500,
+    "si",
+    2
+  )
+);
+productos.push(
+  new Producto(
+    76,
+    "estudio",
+    "accesorios para estudio",
+    "hercules",
+    "Atril Hercules Bs311b P/director 48x 35 Cm",
+    14200,
+    "no",
+    2
+  )
+);
+
+productos.push(
+  new Producto(
+    77,
+    "estudio",
+    "accesorios para estudio",
+    "shure",
+    "Cable Lightning a Micro USB Shure AMV-LTG15 38cm Negro",
+    6099,
+    "no",
+    2
+  )
+);

@@ -31,10 +31,13 @@ const emparejarCarritoStorage = function () {
   }
 };
 const notificar = function (nombreFuncion, producto, productoCantidad) {
-  let precio = numberWithCommas(producto.precio.toFixed(2));
+  let precio = numberWithCommas(
+    (producto.precio * productoCantidad).toFixed(2)
+  );
   let total = numberWithCommas(precioTotal.toFixed(2));
   let notificacion = $(`
   <div class="notificacion animate__animated animate__bounceInLeft">
+    <p>Cantidad: ${productoCantidad}</p>
     <p class="nombre">${producto.nombre}</p>
     <p class="precio">Precio: $ ${precio}</p>
     <p class"total">Llevas un total de : $ ${total}</p>
@@ -44,11 +47,8 @@ const notificar = function (nombreFuncion, producto, productoCantidad) {
   if (nombreFuncion == "sumar") {
     $(notificacion).prepend(`<h4>Producto agregado al carrito!</h4>`);
     $(notificacion).addClass("sumar");
-  } else if (nombreFuncion == "restar") {
-    $(notificacion).prepend(`<h4>Producto restado del carrito!</h4>`);
-    $(notificacion).addClass("restar");
-  } else if (nombreFuncion == "eliminar") {
-    $(notificacion).prepend(`<h4>Productos eliminados del carrito!</h4>`);
+  } else if (nombreFuncion == "restar" || nombreFuncion == "eliminar") {
+    $(notificacion).prepend(`<h4>Productos restados del carrito!</h4>`);
     $(notificacion).addClass("restar");
   }
 
@@ -286,7 +286,7 @@ const agregarCarrito = function (event) {
       calcularTotal("sumar", producto.precio); // lo sumo al total
       actualizarTotal(precioTotal); // actualizo el total en el DOM carrito
       refreshContador("sumar"); // refresh al contador
-      notificar("sumar", producto);
+      notificar("sumar", producto, 1);
       calcularCuotas();
       // me fijo si el tag es DIV (de la grilla productos) para en tal caso agregarle animación
       if ($(this).prop("tagName") == "DIV") {
@@ -327,7 +327,7 @@ const restarCarrito = function (event) {
       calcularTotal("restar", producto.precio); // calculo el nuevo total
       actualizarTotal(precioTotal); // actualizo el total en el DOM carrito
       refreshContador("restar"); // refresh al contador
-      notificar("restar", producto);
+      notificar("restar", producto, 1);
       calcularCuotas();
       if (producto.cantidad >= 1) {
         // Si todavía hay cantidad en el carrito

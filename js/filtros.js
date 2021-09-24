@@ -47,7 +47,7 @@ const buscar = function (event) {
     limpiarProductos(); // limpio la grilla de productos
     if (productosBuscados.length == 0) {
       $(".grillaProductos").append(
-        `<h4 class="sinProductos" >No hay productos para tu búsqueda</h4>`
+        `<h4 class="sinProductos">No hay productos para tu búsqueda</h4>`
       );
     } else {
       renderizarEnGrilla(productosBuscados); // renderizo los buscados
@@ -67,11 +67,17 @@ const filtrar = function (event) {
   focoCategoria(this);
   let categoria = $(this).html().toLowerCase(); // me fijo qué tipo de categoria voy a aplicar
   // filtro los productos de la categoría seleccionada
-  productosFiltrados = productos.filter(
-    (producto) =>
-      removeAccents(producto.categoria.toLowerCase()) ==
-      removeAccents(categoria)
-  );
+  if (categoria == "destacados") {
+    productosFiltrados = productos.filter(
+      (producto) => producto.destacado == "si"
+    );
+  } else {
+    productosFiltrados = productos.filter(
+      (producto) =>
+        removeAccents(producto.categoria.toLowerCase()) ==
+        removeAccents(categoria)
+    );
+  }
   limpiarProductos(); // borro productos de la grilla
   renderizarEnGrilla(productosFiltrados); // renderizo los productos filtrados
 };
