@@ -211,7 +211,7 @@ let filaTotal = $(`
   </div>
   <div class="botonesCarrito">
     <button class="btn rounded-pill limpiarCarrito">Limpiar carrito</button>
-    <button class="btn rounded-pill comprarCarrito">Comprar</button>
+    <a href="#/FinalizarCompra" class="btn rounded-pill comprarCarrito">Comprar</a>
   </div>`);
 
 let carritoContador = $(`<span class="carritoContador"></span>`);
