@@ -1,6 +1,9 @@
 .ubicacion {
   .modal-body {
     @include flexColumn(0.5rem, center, center);
+    p {
+      text-align: center;
+    }
     .transporte {
       margin: 0;
     }

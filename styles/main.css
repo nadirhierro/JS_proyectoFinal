@@ -885,6 +885,10 @@
   align-items: center;
 }
 
+.ubicacion .modal-body p {
+  text-align: center;
+}
+
 .ubicacion .modal-body .transporte {
   margin: 0;
 }
