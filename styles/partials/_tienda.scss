@@ -143,6 +143,7 @@
 }
 .tienda {
   font-family: $nunito;
+  @include padding-y(0, 2rem);
   .barraBusqueda {
     @include padding(2rem);
     @include flexColumn(inherit, unset, center);

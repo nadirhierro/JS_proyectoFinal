@@ -68,10 +68,7 @@
               "
             >
               <li class="nav-item">
-                <a
-                  class="nav-link active"
-                  aria-current="page"
-                  href="./index.html"
+                <a class="nav-link" aria-current="page" href="./index.html"
                   >Tienda</a
                 >
               </li>
@@ -303,7 +300,63 @@
         </div>
       </div>
     </main>
-    <footer></footer>
+    <footer class="footer">
+      <!-- Container fluid -->
+      <div class="container-fluid">
+        <!-- Caja flex -->
+        <div class="footerFlex">
+          <!-- Logo footer con animación slideInDown de animate.css y WOW.js -->
+          <img class="footerLogo" src="./img/logo_white_large.png" alt="Logo" />
+          <!-- Nav de footer -->
+          <ul
+            class="nav flex-column align-content-center text-center footerNav"
+          >
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="./index.html"
+                >Tienda</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link animate__animated animate__fadeIn"
+                data-bs-toggle="modal"
+                data-bs-target="#nosotros"
+                >Nosotros</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link animate__animated animate__fadeIn"
+                data-bs-toggle="modal"
+                data-bs-target="#ubicacion"
+                >Ubicación</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link animate__animated animate__fadeIn"
+                data-bs-toggle="modal"
+                data-bs-target="#contacto"
+                >Contacto</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="row justify-content-around">
+          <div class="col-6 copyright">
+            <p>Copyright 2021</p>
+          </div>
+          <div class="col-6 text-end copyright">
+            <p>
+              Sitio por
+              <a href="https://github.com/nadirhierro/" target="_blank"
+                >Nadir Hierro</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
     <!-- Link a Script propio -->
     <script src="./js/jquery-3.6.0.min.js"></script>
     <script src="./js/estructurasEstaticas.js"></script>

@@ -326,6 +326,8 @@
 
 .tienda {
   font-family: "Nunito", sans-serif;
+  padding-top: 0;
+  padding-bottom: 2rem;
 }
 
 .tienda .barraBusqueda {
@@ -875,33 +877,6 @@
   color: #a9ac83;
 }
 
-.modal .modal-content {
-  background-color: #494c36;
-  color: #a9ac83;
-}
-
-.modal .modal-header {
-  border-bottom: 0;
-}
-
-.modal .modal-header button {
-  background-image: url("../img/btnClose.png");
-}
-
-.modal .modal-header button:focus {
-  box-shadow: none;
-}
-
-.modal .modal-footer {
-  border-top: 0;
-}
-
-.modal .modal-footer .btn-secondary {
-  background-color: #a9ac83;
-  color: #494c36;
-  border-color: transparent;
-}
-
 .ubicacion .modal-body {
   display: flex;
   flex-direction: column;
@@ -941,5 +916,68 @@
 .contacto .elemento a {
   text-decoration: none;
   color: #a9ac83;
+}
+
+.footer {
+  font-family: "Nunito", sans-serif;
+  background-color: #494c36;
+  color: #a9ac83;
+}
+
+.footerFlex {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+.footerLogo {
+  padding-top: 0;
+  padding-bottom: 1rem;
+  width: 20rem;
+}
+
+.footerNav li a {
+  font-size: 28px;
+  color: #a9ac83;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.footerNav li a:hover {
+  color: #a9ac83;
+  background-color: #181912;
+  transform: skewX(-10deg);
+  transition: 0.4s;
+}
+
+.footerNav li a:focus {
+  color: #a9ac83;
+}
+
+.copyright {
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.copyright a {
+  text-decoration: none;
+  color: #a9ac83;
+}
+
+@media (min-width: 768px) {
+  .copyright {
+    font-size: 0.5rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .copyright {
+    font-size: 1rem;
+  }
 }
 /*# sourceMappingURL=main.css.map */

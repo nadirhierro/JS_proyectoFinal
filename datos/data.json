@@ -406,8 +406,8 @@
     "marca": "korg",
     "nombre": "Teclado Sintetizador Monofónico Korg MS-20 FS Blue",
     "precio": 119999,
-    "destacado": "no",
-    "stock": 2
+    "destacado": 99,
+    "stock": "no"
   },
   {
     "id": 42,

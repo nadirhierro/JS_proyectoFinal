@@ -1,0 +1,52 @@
+.footer {
+  font-family: $nunito;
+  @include fondoVerde;
+}
+// Anidación del footer
+.footerFlex {
+  @include flexColumn(0, center, center);
+  @include padding-y(1rem, 2rem);
+}
+.footerLogo {
+  @include padding-y(0, 1rem);
+  width: 20rem;
+}
+// Anidación footer__nav
+.footerNav {
+  li {
+    a {
+      font-size: 28px;
+      color: $amarillo;
+      font-weight: bold;
+      cursor: pointer;
+      &:hover {
+        color: $amarillo;
+        background-color: $verdeOscuro;
+        transform: skewX(-10deg);
+        transition: 0.4s;
+      }
+      &:focus {
+        color: $amarillo;
+      }
+    }
+  }
+}
+.copyright {
+  font-family: $nunito;
+  font-size: 1rem;
+  font-weight: bold;
+  a {
+    text-decoration: none;
+    color: $amarillo;
+  }
+  @media (min-width: 768px) {
+    & {
+      font-size: 0.5rem;
+    }
+  }
+  @media (min-width: 992px) {
+    & {
+      font-size: 1rem;
+    }
+  }
+}
