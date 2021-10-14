@@ -37,6 +37,7 @@ function renderizarEnGrilla(arrayProductos) {
   escucharBotones();
 }
 
+// función que devuelve estructura de tabla para producto
 function tablaHtml(producto, subtotal) {
   return $(`
       <tr id="carrito-${producto.id}" class="fila">
@@ -56,6 +57,8 @@ function tablaHtml(producto, subtotal) {
       </tr>
     `);
 }
+
+// función que devuelve estructura de offcanvas para producto
 function offCanvasHtml(producto, subtotal) {
   return $(`
       <div
@@ -131,6 +134,7 @@ function renderizarDestacados() {
   $(".destacados").css("font-weight", "bold");
 }
 
+// funciones para renderizar la tabla
 function renderizarTabla() {
   carrito.productos.forEach((producto) => {
     let subtotal = numberWithCommas(
@@ -153,6 +157,7 @@ function renderizarTotalTabla() {
   $(".tbody").append(filaTotal);
 }
 
+// función para notificar los cambios, según se sume o reste/elimine
 function notificar(nombreFuncion, productoID, productoCantidad) {
   let producto = buscarProducto(productoID);
   let subtotal = numberWithCommas(
@@ -185,6 +190,7 @@ function notificar(nombreFuncion, productoID, productoCantidad) {
     $(notificacion).delay(3000).fadeOut(2000);
   }
 }
+// función para notificar sin stock
 function sinStock(productoID) {
   let nombreProducto = buscarProducto(productoID).nombre;
   let notificacion = $(`
@@ -210,6 +216,7 @@ function animacionGrilla(id) {
   }, 801);
 }
 
+// función para manejar los eventos de sumar, restar, eliminar y limpiar
 function onAdd(event) {
   let productoID = $(this).attr("name");
   let vendido = agregarCarrito(productoID, 1);
@@ -246,6 +253,8 @@ function onClean(event) {
   limpiarCarrito();
   limpiarDOMcarrito();
 }
+
+// función para escuchar los botones de los productos, tanto en el carrito como en la grilla
 function escucharBotones() {
   $(".botonAgregar").off().on("click", onAdd);
   $(`.botonSumar`).off().on("click", onAdd);
