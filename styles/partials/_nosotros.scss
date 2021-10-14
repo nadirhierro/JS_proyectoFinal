@@ -1,0 +1,21 @@
+.modal {
+  .modal-content {
+    @include fondoVerde;
+  }
+  .modal-header {
+    border-bottom: 0;
+    button {
+      background-image: url("../img/btnClose.png");
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+  .modal-footer {
+    border-top: 0;
+    .btn-secondary {
+      @include fondoAmarillo;
+      border-color: transparent;
+    }
+  }
+}

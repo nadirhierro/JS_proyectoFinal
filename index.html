@@ -78,21 +78,24 @@
               <li class="nav-item">
                 <a
                   class="nav-link animate__animated animate__fadeIn"
-                  href="#nosotros"
+                  data-bs-toggle="modal"
+                  data-bs-target="#nosotros"
                   >Nosotros</a
                 >
               </li>
               <li class="nav-item">
                 <a
                   class="nav-link animate__animated animate__fadeIn"
-                  href="#ubicacion"
+                  data-bs-toggle="modal"
+                  data-bs-target="#ubicacion"
                   >Ubicación</a
                 >
               </li>
               <li class="nav-item">
                 <a
                   class="nav-link animate__animated animate__fadeIn"
-                  href="#contacto"
+                  data-bs-toggle="modal"
+                  data-bs-target="#contacto"
                   >Contacto</a
                 >
               </li>
@@ -150,6 +153,152 @@
             <p>
               ¡Aprovechá todos nuestros productos con 18 cuotas sin interés!
             </p>
+          </div>
+        </div>
+      </div>
+      <!-- Modal -->
+      <div
+        class="modal fade nosotros"
+        id="nosotros"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Nosotros</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <p>
+                Somos una tienda de instrumentos musicales con más de 50 años de
+                trayectoria. Trabajamos productos nacionales e importados.
+              </p>
+              <p>
+                Somos exquisitos con la calidad y es por eso que manejamos las
+                mejores marcas: Fender, Ibanez, Yamaha, Sonor, entre otros.
+              </p>
+              <p>
+                Nuestra atención personalizada te garantiza que vas a llevarte
+                el mejor producto para tus posibilidades.
+              </p>
+              <p>
+                ¡Si tenés alguna duda o consulta, escribinos a nuestro correo,
+                por WhatsApp o llamanos!
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="modal fade ubicacion"
+        id="ubicacion"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Ubicación</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <p>Estamos ubicados en Paraguay 1483 (CABA)</p>
+              <p>
+                ¡No dudes en venir a probar nuestros instrumentos y equipos!
+              </p>
+              <p class="transporte">Subtes: B y D</p>
+              <p class="transporte">Colectivos: 39, 140, 5, 111, 141</p>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.2357941654427!2d-58.390194584294896!3d-34.59819856471405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccab8bc31e9cf%3A0x70ae50d3540ea2f5!2sParaguay%201483%2C%20C1061ABA%20CABA!5e0!3m2!1ses-419!2sar!4v1634249402531!5m2!1ses-419!2sar"
+                class="mapa"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+              ></iframe>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="modal fade contacto"
+        id="contacto"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Contacto</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="elemento">
+                <img src="./img/call.png" alt="" />
+                <p>(011) 4825-3296</p>
+              </div>
+              <div class="elemento">
+                <img src="./img/whatsapp.png" alt="" />
+                <p>(011) 15-2433-5269</p>
+              </div>
+              <div class="elemento">
+                <img src="./img/email.png" alt="" />
+                <a href="mailto:sincopado@sincopado.com.ar"
+                  >sincopado@sincopado.com.ar</a
+                >
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cerrar
+              </button>
+            </div>
           </div>
         </div>
       </div>

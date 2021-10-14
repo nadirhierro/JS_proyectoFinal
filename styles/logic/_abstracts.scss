@@ -42,6 +42,10 @@
   background-color: $verde;
   color: $amarillo;
 }
+@mixin fondoAmarillo {
+  background-color: $amarillo;
+  color: $verde;
+}
 // mixin para el fondo del hero
 @mixin fondoHero {
   background-image: url("../img/heroFondo.jpg");

@@ -11,6 +11,33 @@
   display: none;
 }
 
+.modal .modal-content {
+  background-color: #494c36;
+  color: #a9ac83;
+}
+
+.modal .modal-header {
+  border-bottom: 0;
+}
+
+.modal .modal-header .btn {
+  background-image: url("../img/btnClose.png");
+}
+
+.modal .modal-header .btn:focus {
+  box-shadow: none;
+}
+
+.modal .modal-footer {
+  border-top: 0;
+}
+
+.modal .modal-footer .btn-secondary {
+  background-color: #a9ac83;
+  color: #494c36;
+  border-color: transparent;
+}
+
 .header--nav {
   font-family: "Nunito", sans-serif;
   max-height: 62px;
@@ -56,6 +83,7 @@
   font-size: 18px;
   color: #a9ac83;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .header--nav .container-fluid ul li a:hover {
@@ -844,6 +872,74 @@
 
 .cajaFormulario .finalizarCompraForm .btnFinalizarCompra {
   background-color: #181912;
+  color: #a9ac83;
+}
+
+.modal .modal-content {
+  background-color: #494c36;
+  color: #a9ac83;
+}
+
+.modal .modal-header {
+  border-bottom: 0;
+}
+
+.modal .modal-header button {
+  background-image: url("../img/btnClose.png");
+}
+
+.modal .modal-header button:focus {
+  box-shadow: none;
+}
+
+.modal .modal-footer {
+  border-top: 0;
+}
+
+.modal .modal-footer .btn-secondary {
+  background-color: #a9ac83;
+  color: #494c36;
+  border-color: transparent;
+}
+
+.ubicacion .modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.ubicacion .modal-body .transporte {
+  margin: 0;
+}
+
+.ubicacion .modal-body .mapa {
+  padding-top: 1rem;
+  width: 90%;
+  height: 300px;
+}
+
+.contacto .elemento {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: unset;
+  align-items: center;
+}
+
+.contacto .elemento img {
+  height: 2rem;
+}
+
+.contacto .elemento p {
+  margin: 0;
+  vertical-align: center;
+}
+
+.contacto .elemento a {
+  text-decoration: none;
   color: #a9ac83;
 }
 /*# sourceMappingURL=main.css.map */

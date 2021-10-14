@@ -1,1 +1,772 @@
-[{"id":1,"categoria":"guitarras","subcategoria":"guitarras eléctricas","marca":"fender","nombre":"Guitarra eléctrica Fender Stratocaster","precio":150000,"destacado":"si","stock":3},{"id":2,"categoria":"guitarras","subcategoria":"guitarras eléctricas","marca":"gibson","nombre":"Guitarra eléctrica Gibson Les Paul","precio":180000,"destacado":"si","stock":2},{"id":3,"categoria":"bajos","subcategoria":"bajos eléctricos","marca":"fender","nombre":"Bajo eléctrico Fender Jazz Bass","precio":120000,"destacado":"si","stock":5},{"id":4,"categoria":"bajos","subcategoria":"bajos eléctricos","marca":"fender","nombre":"Bajo eléctrico Fender Coronado","precio":190000,"destacado":"si","stock":4},{"id":5,"categoria":"teclados","subcategoria":"digitales","marca":"yamaha","nombre":"Piano Yamaha Digital P45 88 teclas","precio":92000,"destacado":"si","stock":3},{"id":6,"categoria":"estudio","subcategoria":"micrófonos","marca":"shure","nombre":"Micrófono Shure Glx","precio":7428.3,"destacado":"si","stock":2},{"id":7,"categoria":"guitarras","subcategoria":"encordados para guitarra","marca":"daddario","nombre":"Encordado guitarra eléctrica D'addario Exp110 Nickle W","precio":2739.45,"destacado":"si","stock":1},{"id":8,"categoria":"bajos","subcategoria":"encordados para bajo","marca":"daddario","nombre":"Encordado bajo eléctrico D'addario Nyxl50105 4c. Nickel W","precio":6640,"destacado":"si","stock":5},{"id":9,"categoria":"teclados","subcategoria":"pianos","marca":"yamaha","nombre":"Piano Vertical Yamaha Ju109","precio":800000,"destacado":"no","stock":4},{"id":10,"categoria":"bajos","subcategoria":"bajos acústicos","marca":"fender","nombre":"Bajo Acústico Fender CB-60SCE","precio":100000,"destacado":"no","stock":2},{"id":11,"categoria":"bajos","subcategoria":"bajos eléctricos","marca":"ibanez","nombre":"Bajo eléctrico 5 cuerdas Ibanez GSRM25BK","precio":157463.23,"destacado":"si","stock":2},{"id":12,"categoria":"guitarras","subcategoria":"accesorios para guitarra","marca":"dandrea","nombre":"Puas para guitarra D'Andrea 12 unidades Cool Plecs","precio":1200,"destacado":"si","stock":25},{"id":13,"categoria":"guitarras","subcategoria":"accesorios para guitarra","marca":"gibson","nombre":"Puas para guitarra Gibson six pack","precio":1500,"destacado":"no","stock":10},{"id":14,"categoria":"guitarras","subcategoria":"guitarras acústicas","marca":"fender","nombre":"Guitarra Acústica Fender Fa125","precio":51985.23,"destacado":"no","stock":4},{"id":15,"categoria":"guitarras","subcategoria":"guitarras acústicas","marca":"fender","nombre":"Fender CC-60SCE Concierto Guitarra Acústica - Natural - Zurdo","precio":157986.36,"destacado":2,"stock":"no"},{"id":16,"categoria":"guitarras","subcategoria":"guitarras acusticas","marca":"ovation","nombre":"Ovation CE44P-SM Guitarra Acústica-Eléctrica, Arce Espaltado","precio":259999.99,"destacado":1,"stock":"no"},{"id":17,"categoria":"guitarras","subcategoria":"guitarras electricas","marca":"ibanez","nombre":"Ibanez JEMJRWH Steve Vai Signature Guitarra Eléctrica de 6 Cuerdas - Blanco","precio":409898.25,"destacado":"si","stock":3},{"id":18,"categoria":"guitarras","subcategoria":"guitarras eléctricas","marca":"ibanez","nombre":"Ibanez Artcore AS73 guitarra eléctrica semihueca","precio":200987.3,"destacado":"no","stock":4},{"id":19,"categoria":"guitarras","subcategoria":"amplificadores para guitarra","marca":"vox","nombre":"Amplificador Guitarra eléctrica Vox Mini 3 G2 3 Watts Multiefecto","precio":119999.99,"destacado":"no","stock":2},{"id":20,"categoria":"guitarras","subcategoria":"amplificadores para guitarra","marca":"marshall","nombre":"Marshall Amplificador Guitarra Electrica 15 W Efecto Mg15cfx","precio":40263.99,"destacado":"no","stock":1},{"id":21,"categoria":"guitarras","subcategoria":"amplificadores para guitarra","marca":"marshall","nombre":"Amplificador Marshall Guitarra Electrica Mg102 Cfx 100 Watts 2x12 4 Canales","precio":125321.25,"destacado":"si","stock":3},{"id":22,"categoria":"guitarras","subcategoria":"amplificadores para guitarra","marca":"blackstar","nombre":"Amplificador Guitarra Acústica Blackstar Sonnet 60 1x6","precio":95999.99,"destacado":"no","stock":2},{"id":23,"categoria":"guitarras","subcategoria":"encordados para guitarra","marca":"fender","nombre":"Encordado Para Guitarra Fender Electrica Nickel 008","precio":1152.25,"destacado":"no","stock":5},{"id":24,"categoria":"guitarras","subcategoria":"encordados para guitarra","marca":"ernie ball","nombre":"Encordado Ernie Ball Guitarra Electrica P02221 10 46 Regular","precio":1450,"destacado":"no","stock":6},{"id":25,"categoria":"guitarras","subcategoria":"accesorios para guitarra","marca":"fender","nombre":"Microfonos Fender Stratocaster Vintage Noiseless (set X 3) - Guitarra electrica","precio":42999.99,"destacado":"no","stock":9},{"id":26,"categoria":"guitarras","subcategoria":"accesorios para guitarra","marca":"ibanez","nombre":"Afinador Cromatico Ibanez Pantalla Color Apagado Automatico para guitarra o bajo","precio":1200,"destacado":"no","stock":5},{"id":27,"categoria":"bajos","subcategoria":"bajos acusticos","marca":"ibanez","nombre":"Bajo Electro Acustico Ibanez Ewb20wnent","precio":100256.25,"destacado":"no","stock":3},{"id":28,"categoria":"bajos","subcategoria":"bajos acusticos","marca":"fender","nombre":"Bajo Electro Acustico Fender Cb-60sce Fishman Laurel","precio":88256.25,"destacado":"si","stock":2},{"id":29,"categoria":"bajos","subcategoria":"amplificadores para bajo","marca":"fender","nombre":"Amplificador Para Bajo Fender Rumble 100 V3 100w Combo 1x12","precio":90256.25,"destacado":"no","stock":3},{"id":30,"categoria":"bajos","subcategoria":"amplificadores para bajo","marca":"fender","nombre":"Amplificador para bajo Orange Crush Bass B50 12","precio":90256.25,"destacado":"si","stock":3},{"id":31,"categoria":"bajos","subcategoria":"amplificadores para bajo","marca":"blackstar","nombre":"Combo Amplificador Blackstar Unity 60 Para Bajo 60 W 1x10","precio":50256.25,"destacado":"no","stock":1},{"id":32,"categoria":"bajos","subcategoria":"encordados para bajo","marca":"ernie ball","nombre":"Encordado Ernie Ball Bajo Electrico P02835 040 Extra Slinky","precio":4999.99,"destacado":"no","stock":1},{"id":33,"categoria":"bajos","subcategoria":"encordados para bajo","marca":"daddario","nombre":"Encordado D'addario Para Bajo electrico 4 Cuerdas XTB45100 045 - 100","precio":5599.99,"destacado":"si","stock":1},{"id":34,"categoria":"guitarras","subcategoria":"guitarras criollas","marca":"valencia","nombre":"Guitarra Clasica Criolla Valencia Vc104 Tamaño 4/4 Estudio","precio":14500,"destacado":"no","stock":3},{"id":35,"categoria":"guitarras","subcategoria":"guitarras criollas","marca":"texas","nombre":"Guitarra-Clasica-Electro-Criolla-Texas-CG30-con-Funda","precio":32000,"destacado":"si","stock":2},{"id":36,"categoria":"teclados","subcategoria":"digitales","marca":"yamaha","nombre":"Teclado Portátil Yamaha 61 Teclas Sensitivas Psr E373","precio":45988,"destacado":"si","stock":3},{"id":37,"categoria":"teclados","subcategoria":"digitales","marca":"casio","nombre":"Teclado Portable Casio Lk-s450 61 Teclas Sensitivo Midi Usb","precio":65989,"destacado":"no","stock":2},{"id":38,"categoria":"teclados","subcategoria":"accesorios para teclados","marca":"monkeysell","nombre":"Monkeysell 118-131. Funda protectora gruesa para piano","precio":10089,"destacado":"no","stock":2},{"id":39,"categoria":"teclados","subcategoria":"pianos","marca":"yamaha","nombre":"Piano de Cola Yamaha Acustico GB1K PE","precio":1500000,"destacado":"no","stock":2},{"id":40,"categoria":"teclados","subcategoria":"sintetizadores","marca":"korg","nombre":"Sintetizador Monofónico Korg Ms-20 Fs Green","precio":120000,"destacado":"no","stock":2},{"id":41,"categoria":"teclados","subcategoria":"sintetizadores","marca":"korg","nombre":"Teclado Sintetizador Monofónico Korg MS-20 FS Blue","precio":119999,"destacado":99,"stock":"no"},{"id":42,"categoria":"teclados","subcategoria":"sintetizadores","marca":"korg","nombre":"Sintetizador FM Alterada 37 Teclas Korg OPSIX 6 Operadores","precio":130287.25,"destacado":"si","stock":2},{"id":43,"categoria":"teclados","subcategoria":"amplificadores para teclados","marca":"laney","nombre":"Amplificador Portatil Laney Multiproposito Ah Con Fx","precio":55287.25,"destacado":"si","stock":2},{"id":44,"categoria":"teclados","subcategoria":"amplificadores para teclados","marca":"vox","nombre":"Combo Vox Vx50kb Para Teclado 50w Nutube-equipped","precio":40287.25,"destacado":"si","stock":2},{"id":45,"categoria":"teclados","subcategoria":"amplificadores para teclados","marca":"laney","nombre":"Amplificador Multiproposito Laney Ah-series 150w 1x12 Ah150","precio":53287.25,"destacado":"si","stock":2},{"id":46,"categoria":"teclados","subcategoria":"accesorios para teclados","marca":"korg","nombre":"Soporte Korg St-wl Con Patas Madera Para Sv-1 Sv-2 & D1","precio":53287.25,"destacado":"no","stock":2},{"id":47,"categoria":"teclados","subcategoria":"accesorios para teclados","marca":"skb","nombre":"Estuche Semirigido Skb Teclado O Piano 88 Teclas Ruedas","precio":20287.25,"destacado":"no","stock":2},{"id":48,"categoria":"teclados","subcategoria":"accesorios para teclados","marca":"yamaha","nombre":"Yamaha Pedal De Sustain Para Teclado O Piano Fc5","precio":3287.25,"destacado":"si","stock":2},{"id":49,"categoria":"baterias","subcategoria":"baterias acusticas","marca":"mapex","nombre":"Bateria Mapex Mars Fusion 5 Cuerpos Bombo 20 Bloodwood","precio":112000,"destacado":"no","stock":2},{"id":50,"categoria":"baterias","subcategoria":"baterias acusticas","marca":"mapex","nombre":"Estuche Semirigido Skb Teclado O Piano 88 Teclas Ruedas","precio":400999,"destacado":"no","stock":2},{"id":51,"categoria":"baterias","subcategoria":"baterias acusticas","marca":"sonor","nombre":"Yamaha Pedal De Sustain Para Teclado O Piano Fc5","precio":645800,"destacado":"si","stock":2},{"id":52,"categoria":"baterias","subcategoria":"baterias electronicas","marca":"mapex","nombre":"Bateria Electrónica Roland TD-07KV V-Drums kit","precio":300999,"destacado":"no","stock":2},{"id":53,"categoria":"baterias","subcategoria":"baterias electronicas","marca":"mapex","nombre":"Bateria Electrónica Octapac Ringway TD78 c/Pedales y Baquetas","precio":100999,"destacado":"no","stock":2},{"id":54,"categoria":"baterias","subcategoria":"baterias electronicas","marca":"sonor","nombre":"Batería Electrónica MultiPad Yamaha Dtxm12 Usb","precio":200000,"destacado":"si","stock":2},{"id":55,"categoria":"baterias","subcategoria":"percusion","marca":"sonor","nombre":"Cajon Profesional Tineo Sonor CAJSTINEO C/Regulador Bordona","precio":18999,"destacado":"no","stock":2},{"id":56,"categoria":"baterias","subcategoria":"percusion","marca":"pearl","nombre":"Redoblante Pearl Sensitone Series 14'' x 5'' 10 torres","precio":10999,"destacado":"no","stock":2},{"id":57,"categoria":"baterias","subcategoria":"percusion","marca":"knight","nombre":"Pandereta KNIGHT 10'' de madera sin parche 8 pares de sonaja","precio":64000,"destacado":"si","stock":2},{"id":58,"categoria":"baterias","subcategoria":"platillos","marca":"sabian","nombre":"Set De 5 Platillos Sabian B8x Performance 45003xg Bronce B8","precio":180999,"destacado":"no","stock":2},{"id":59,"categoria":"baterias","subcategoria":"platillos","marca":"zildjian","nombre":"Set De Platillos Zildjian Zbt Crash 18 Y Hi Hat 13 Zbts3p","precio":25999,"destacado":"no","stock":2},{"id":60,"categoria":"baterias","subcategoria":"platillos","marca":"sabian","nombre":"Set De 5 Platillos Sabian Serie Xsr Hi-hat Crash Ride + Free","precio":12000,"destacado":"si","stock":2},{"id":61,"categoria":"baterias","subcategoria":"accesorios para bateristas","marca":"vic firth","nombre":"Palillos Vic Firth Signature Series Charlie Benante SBEN","precio":3000,"destacado":"no","stock":2},{"id":62,"categoria":"baterias","subcategoria":"accesorios para bateristas","marca":"rmv","nombre":"Parche De Bateria Rmv Phc16 De 16 Pulgadas Hidraulico","precio":1200,"destacado":"no","stock":2},{"id":63,"categoria":"baterias","subcategoria":"accesorios para bateristas","marca":"zildjian","nombre":"Palillos Bateria Zildjian Hickory 5a Punta De Nylon O Madera","precio":2300,"destacado":"si","stock":2},{"id":64,"categoria":"estudio","subcategoria":"auriculares","marca":"sennheiser","nombre":"Auriculares Sennheiser HD407 Cerrados Over Ear","precio":6000,"destacado":"no","stock":2},{"id":65,"categoria":"estudio","subcategoria":"auriculares","marca":"sennheiser","nombre":"Auriculares Inalambricos Sennheiser RS120 Bluetooth Cerrados","precio":23000,"destacado":"no","stock":2},{"id":66,"categoria":"estudio","subcategoria":"auriculares","marca":"sennheiser","nombre":"Auriculares Sennheiser HD4.40 BT Bluetooth Cerrados","precio":46000,"destacado":"si","stock":2},{"id":67,"categoria":"estudio","subcategoria":"consolas","marca":"zoom pro","nombre":"Consola Digital Zoom Grabación Multip. Simultenea 22 Canales","precio":226000,"destacado":"no","stock":2},{"id":68,"categoria":"estudio","subcategoria":"consolas","marca":"zoom pro","nombre":"Consola Digital Zoom Grabación Simultanea 12 Canales","precio":80000,"destacado":"no","stock":2},{"id":69,"categoria":"estudio","subcategoria":"consolas","marca":"zoom pro","nombre":"Consola Digital Zoom Grabación Multip Simultanea 12 Canales","precio":146000,"destacado":"si","stock":2},{"id":70,"categoria":"estudio","subcategoria":"microfonos","marca":"proel","nombre":"Microfono Vincha Inalambrico Uhf Proel Headset Profesional Frecuencias De 40hz A 18000 Hz Disponible En 3 Frecuencias.","precio":80000,"destacado":"no","stock":2},{"id":71,"categoria":"estudio","subcategoria":"microfonos","marca":"blue","nombre":"Microfono Blue Encore 100 Dinamico Cardioide Para Voces","precio":146000,"destacado":"no","stock":2},{"id":72,"categoria":"estudio","subcategoria":"monitores","marca":"jbl","nombre":"Monitor de estudio JBL LRS 305P MKII Woofer 5''","precio":46000,"destacado":"si","stock":2},{"id":73,"categoria":"estudio","subcategoria":"monitores","marca":"mackie","nombre":"Par Monitores Multimedia Mackie CR3-XBT 3'' Bluetooth","precio":20000,"destacado":"no","stock":2},{"id":74,"categoria":"estudio","subcategoria":"monitores","marca":"mackie","nombre":"Monitor de estudio Mackie MR824 NEW 8'' Activo","precio":66000,"destacado":"no","stock":2},{"id":75,"categoria":"estudio","subcategoria":"accesorios para estudio","marca":"ddrum","nombre":"Cable Profesional Ddrum Xlr Plug 4,5 Metros Microfono Canon","precio":1500,"destacado":"si","stock":2},{"id":76,"categoria":"estudio","subcategoria":"accesorios para estudio","marca":"hercules","nombre":"Atril Hercules Bs311b P/director 48x 35 Cm","precio":14200,"destacado":"no","stock":2},{"id":77,"categoria":"estudio","subcategoria":"accesorios para estudio","marca":"shure","nombre":"Cable Lightning a Micro USB Shure AMV-LTG15 38cm Negro","precio":6099,"destacado":"no","stock":2}]
+[
+  {
+    "id": 1,
+    "categoria": "guitarras",
+    "subcategoria": "guitarras eléctricas",
+    "marca": "fender",
+    "nombre": "Guitarra eléctrica Fender Stratocaster",
+    "precio": 150000,
+    "destacado": "si",
+    "stock": 3
+  },
+  {
+    "id": 2,
+    "categoria": "guitarras",
+    "subcategoria": "guitarras eléctricas",
+    "marca": "gibson",
+    "nombre": "Guitarra eléctrica Gibson Les Paul",
+    "precio": 180000,
+    "destacado": "si",
+    "stock": 2
+  },
+  {
+    "id": 3,
+    "categoria": "bajos",
+    "subcategoria": "bajos eléctricos",
+    "marca": "fender",
+    "nombre": "Bajo eléctrico Fender Jazz Bass",
+    "precio": 120000,
+    "destacado": "si",
+    "stock": 5
+  },
+  {
+    "id": 4,
+    "categoria": "bajos",
+    "subcategoria": "bajos eléctricos",
+    "marca": "fender",
+    "nombre": "Bajo eléctrico Fender Coronado",
+    "precio": 190000,
+    "destacado": "si",
+    "stock": 4
+  },
+  {
+    "id": 5,
+    "categoria": "teclados",
+    "subcategoria": "digitales",
+    "marca": "yamaha",
+    "nombre": "Piano Yamaha Digital P45 88 teclas",
+    "precio": 92000,
+    "destacado": "si",
+    "stock": 3
+  },
+  {
+    "id": 6,
+    "categoria": "estudio",
+    "subcategoria": "micrófonos",
+    "marca": "shure",
+    "nombre": "Micrófono Shure Glx",
+    "precio": 7428.3,
+    "destacado": "si",
+    "stock": 2
+  },
+  {
+    "id": 7,
+    "categoria": "guitarras",
+    "subcategoria": "encordados para guitarra",
+    "marca": "daddario",
+    "nombre": "Encordado guitarra eléctrica D'addario Exp110 Nickle W",
+    "precio": 2739.45,
+    "destacado": "si",
+    "stock": 1
+  },
+  {
+    "id": 8,
+    "categoria": "bajos",
+    "subcategoria": "encordados para bajo",
+    "marca": "daddario",
+    "nombre": "Encordado bajo eléctrico D'addario Nyxl50105 4c. Nickel W",
+    "precio": 6640,
+    "destacado": "si",
+    "stock": 5
+  },
+  {
+    "id": 9,
+    "categoria": "teclados",
+    "subcategoria": "pianos",
+    "marca": "yamaha",
+    "nombre": "Piano Vertical Yamaha Ju109",
+    "precio": 800000,
+    "destacado": "no",
+    "stock": 4
+  },
+  {
+    "id": 10,
+    "categoria": "bajos",
+    "subcategoria": "bajos acústicos",
+    "marca": "fender",
+    "nombre": "Bajo Acústico Fender CB-60SCE",
+    "precio": 100000,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 11,
+    "categoria": "bajos",
+    "subcategoria": "bajos eléctricos",
+    "marca": "ibanez",
+    "nombre": "Bajo eléctrico 5 cuerdas Ibanez GSRM25BK",
+    "precio": 157463.23,
+    "destacado": "si",
+    "stock": 2
+  },
+  {
+    "id": 12,
+    "categoria": "guitarras",
+    "subcategoria": "accesorios para guitarra",
+    "marca": "dandrea",
+    "nombre": "Puas para guitarra D'Andrea 12 unidades Cool Plecs",
+    "precio": 1200,
+    "destacado": "si",
+    "stock": 25
+  },
+  {
+    "id": 13,
+    "categoria": "guitarras",
+    "subcategoria": "accesorios para guitarra",
+    "marca": "gibson",
+    "nombre": "Puas para guitarra Gibson six pack",
+    "precio": 1500,
+    "destacado": "no",
+    "stock": 10
+  },
+  {
+    "id": 14,
+    "categoria": "guitarras",
+    "subcategoria": "guitarras acústicas",
+    "marca": "fender",
+    "nombre": "Guitarra Acústica Fender Fa125",
+    "precio": 51985.23,
+    "destacado": "no",
+    "stock": 4
+  },
+  {
+    "id": 15,
+    "categoria": "guitarras",
+    "subcategoria": "guitarras acústicas",
+    "marca": "fender",
+    "nombre": "Fender CC-60SCE Concierto Guitarra Acústica - Natural - Zurdo",
+    "precio": 157986.36,
+    "destacado": 2,
+    "stock": "no"
+  },
+  {
+    "id": 16,
+    "categoria": "guitarras",
+    "subcategoria": "guitarras acusticas",
+    "marca": "ovation",
+    "nombre": "Ovation CE44P-SM Guitarra Acústica-Eléctrica, Arce Espaltado",
+    "precio": 259999.99,
+    "destacado": 1,
+    "stock": "no"
+  },
+  {
+    "id": 17,
+    "categoria": "guitarras",
+    "subcategoria": "guitarras electricas",
+    "marca": "ibanez",
+    "nombre": "Ibanez JEMJRWH Steve Vai Signature Guitarra Eléctrica de 6 Cuerdas - Blanco",
+    "precio": 409898.25,
+    "destacado": "si",
+    "stock": 3
+  },
+  {
+    "id": 18,
+    "categoria": "guitarras",
+    "subcategoria": "guitarras eléctricas",
+    "marca": "ibanez",
+    "nombre": "Ibanez Artcore AS73 guitarra eléctrica semihueca",
+    "precio": 200987.3,
+    "destacado": "no",
+    "stock": 4
+  },
+  {
+    "id": 19,
+    "categoria": "guitarras",
+    "subcategoria": "amplificadores para guitarra",
+    "marca": "vox",
+    "nombre": "Amplificador Guitarra eléctrica Vox Mini 3 G2 3 Watts Multiefecto",
+    "precio": 119999.99,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 20,
+    "categoria": "guitarras",
+    "subcategoria": "amplificadores para guitarra",
+    "marca": "marshall",
+    "nombre": "Marshall Amplificador Guitarra Electrica 15 W Efecto Mg15cfx",
+    "precio": 40263.99,
+    "destacado": "no",
+    "stock": 1
+  },
+  {
+    "id": 21,
+    "categoria": "guitarras",
+    "subcategoria": "amplificadores para guitarra",
+    "marca": "marshall",
+    "nombre": "Amplificador Marshall Guitarra Electrica Mg102 Cfx 100 Watts 2x12 4 Canales",
+    "precio": 125321.25,
+    "destacado": "si",
+    "stock": 3
+  },
+  {
+    "id": 22,
+    "categoria": "guitarras",
+    "subcategoria": "amplificadores para guitarra",
+    "marca": "blackstar",
+    "nombre": "Amplificador Guitarra Acústica Blackstar Sonnet 60 1x6",
+    "precio": 95999.99,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 23,
+    "categoria": "guitarras",
+    "subcategoria": "encordados para guitarra",
+    "marca": "fender",
+    "nombre": "Encordado Para Guitarra Fender Electrica Nickel 008",
+    "precio": 1152.25,
+    "destacado": "no",
+    "stock": 5
+  },
+  {
+    "id": 24,
+    "categoria": "guitarras",
+    "subcategoria": "encordados para guitarra",
+    "marca": "ernie ball",
+    "nombre": "Encordado Ernie Ball Guitarra Electrica P02221 10 46 Regular",
+    "precio": 1450,
+    "destacado": "no",
+    "stock": 6
+  },
+  {
+    "id": 25,
+    "categoria": "guitarras",
+    "subcategoria": "accesorios para guitarra",
+    "marca": "fender",
+    "nombre": "Microfonos Fender Stratocaster Vintage Noiseless (set X 3) - Guitarra electrica",
+    "precio": 42999.99,
+    "destacado": "no",
+    "stock": 9
+  },
+  {
+    "id": 26,
+    "categoria": "guitarras",
+    "subcategoria": "accesorios para guitarra",
+    "marca": "ibanez",
+    "nombre": "Afinador Cromatico Ibanez Pantalla Color Apagado Automatico para guitarra o bajo",
+    "precio": 1200,
+    "destacado": "no",
+    "stock": 5
+  },
+  {
+    "id": 27,
+    "categoria": "bajos",
+    "subcategoria": "bajos acusticos",
+    "marca": "ibanez",
+    "nombre": "Bajo Electro Acustico Ibanez Ewb20wnent",
+    "precio": 100256.25,
+    "destacado": "no",
+    "stock": 3
+  },
+  {
+    "id": 28,
+    "categoria": "bajos",
+    "subcategoria": "bajos acusticos",
+    "marca": "fender",
+    "nombre": "Bajo Electro Acustico Fender Cb-60sce Fishman Laurel",
+    "precio": 88256.25,
+    "destacado": "si",
+    "stock": 2
+  },
+  {
+    "id": 29,
+    "categoria": "bajos",
+    "subcategoria": "amplificadores para bajo",
+    "marca": "fender",
+    "nombre": "Amplificador Para Bajo Fender Rumble 100 V3 100w Combo 1x12",
+    "precio": 90256.25,
+    "destacado": "no",
+    "stock": 3
+  },
+  {
+    "id": 30,
+    "categoria": "bajos",
+    "subcategoria": "amplificadores para bajo",
+    "marca": "fender",
+    "nombre": "Amplificador para bajo Orange Crush Bass B50 12",
+    "precio": 90256.25,
+    "destacado": "si",
+    "stock": 3
+  },
+  {
+    "id": 31,
+    "categoria": "bajos",
+    "subcategoria": "amplificadores para bajo",
+    "marca": "blackstar",
+    "nombre": "Combo Amplificador Blackstar Unity 60 Para Bajo 60 W 1x10",
+    "precio": 50256.25,
+    "destacado": "no",
+    "stock": 1
+  },
+  {
+    "id": 32,
+    "categoria": "bajos",
+    "subcategoria": "encordados para bajo",
+    "marca": "ernie ball",
+    "nombre": "Encordado Ernie Ball Bajo Electrico P02835 040 Extra Slinky",
+    "precio": 4999.99,
+    "destacado": "no",
+    "stock": 1
+  },
+  {
+    "id": 33,
+    "categoria": "bajos",
+    "subcategoria": "encordados para bajo",
+    "marca": "daddario",
+    "nombre": "Encordado D'addario Para Bajo electrico 4 Cuerdas XTB45100 045 - 100",
+    "precio": 5599.99,
+    "destacado": "si",
+    "stock": 1
+  },
+  {
+    "id": 34,
+    "categoria": "guitarras",
+    "subcategoria": "guitarras criollas",
+    "marca": "valencia",
+    "nombre": "Guitarra Clasica Criolla Valencia Vc104 Tamaño 4/4 Estudio",
+    "precio": 14500,
+    "destacado": "no",
+    "stock": 3
+  },
+  {
+    "id": 35,
+    "categoria": "guitarras",
+    "subcategoria": "guitarras criollas",
+    "marca": "texas",
+    "nombre": "Guitarra-Clasica-Electro-Criolla-Texas-CG30-con-Funda",
+    "precio": 32000,
+    "destacado": "si",
+    "stock": 2
+  },
+  {
+    "id": 36,
+    "categoria": "teclados",
+    "subcategoria": "digitales",
+    "marca": "yamaha",
+    "nombre": "Teclado Portátil Yamaha 61 Teclas Sensitivas Psr E373",
+    "precio": 45988,
+    "destacado": "si",
+    "stock": 3
+  },
+  {
+    "id": 37,
+    "categoria": "teclados",
+    "subcategoria": "digitales",
+    "marca": "casio",
+    "nombre": "Teclado Portable Casio Lk-s450 61 Teclas Sensitivo Midi Usb",
+    "precio": 65989,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 38,
+    "categoria": "teclados",
+    "subcategoria": "accesorios para teclados",
+    "marca": "monkeysell",
+    "nombre": "Monkeysell 118-131. Funda protectora gruesa para piano",
+    "precio": 10089,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 39,
+    "categoria": "teclados",
+    "subcategoria": "pianos",
+    "marca": "yamaha",
+    "nombre": "Piano de Cola Yamaha Acustico GB1K PE",
+    "precio": 1500000,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 40,
+    "categoria": "teclados",
+    "subcategoria": "sintetizadores",
+    "marca": "korg",
+    "nombre": "Sintetizador Monofónico Korg Ms-20 Fs Green",
+    "precio": 120000,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 41,
+    "categoria": "teclados",
+    "subcategoria": "sintetizadores",
+    "marca": "korg",
+    "nombre": "Teclado Sintetizador Monofónico Korg MS-20 FS Blue",
+    "precio": 119999,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 42,
+    "categoria": "teclados",
+    "subcategoria": "sintetizadores",
+    "marca": "korg",
+    "nombre": "Sintetizador FM Alterada 37 Teclas Korg OPSIX 6 Operadores",
+    "precio": 130287.25,
+    "destacado": "si",
+    "stock": 2
+  },
+  {
+    "id": 43,
+    "categoria": "teclados",
+    "subcategoria": "amplificadores para teclados",
+    "marca": "laney",
+    "nombre": "Amplificador Portatil Laney Multiproposito Ah Con Fx",
+    "precio": 55287.25,
+    "destacado": "si",
+    "stock": 2
+  },
+  {
+    "id": 44,
+    "categoria": "teclados",
+    "subcategoria": "amplificadores para teclados",
+    "marca": "vox",
+    "nombre": "Combo Vox Vx50kb Para Teclado 50w Nutube-equipped",
+    "precio": 40287.25,
+    "destacado": "si",
+    "stock": 2
+  },
+  {
+    "id": 45,
+    "categoria": "teclados",
+    "subcategoria": "amplificadores para teclados",
+    "marca": "laney",
+    "nombre": "Amplificador Multiproposito Laney Ah-series 150w 1x12 Ah150",
+    "precio": 53287.25,
+    "destacado": "si",
+    "stock": 2
+  },
+  {
+    "id": 46,
+    "categoria": "teclados",
+    "subcategoria": "accesorios para teclados",
+    "marca": "korg",
+    "nombre": "Soporte Korg St-wl Con Patas Madera Para Sv-1 Sv-2 & D1",
+    "precio": 53287.25,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 47,
+    "categoria": "teclados",
+    "subcategoria": "accesorios para teclados",
+    "marca": "skb",
+    "nombre": "Estuche Semirigido Skb Teclado O Piano 88 Teclas Ruedas",
+    "precio": 20287.25,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 48,
+    "categoria": "teclados",
+    "subcategoria": "accesorios para teclados",
+    "marca": "yamaha",
+    "nombre": "Yamaha Pedal De Sustain Para Teclado O Piano Fc5",
+    "precio": 3287.25,
+    "destacado": "si",
+    "stock": 2
+  },
+  {
+    "id": 49,
+    "categoria": "baterias",
+    "subcategoria": "baterias acusticas",
+    "marca": "mapex",
+    "nombre": "Bateria Mapex Mars Fusion 5 Cuerpos Bombo 20 Bloodwood",
+    "precio": 112000,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 50,
+    "categoria": "baterias",
+    "subcategoria": "baterias acusticas",
+    "marca": "mapex",
+    "nombre": "Estuche Semirigido Skb Teclado O Piano 88 Teclas Ruedas",
+    "precio": 400999,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 51,
+    "categoria": "baterias",
+    "subcategoria": "baterias acusticas",
+    "marca": "sonor",
+    "nombre": "Yamaha Pedal De Sustain Para Teclado O Piano Fc5",
+    "precio": 645800,
+    "destacado": "si",
+    "stock": 2
+  },
+  {
+    "id": 52,
+    "categoria": "baterias",
+    "subcategoria": "baterias electronicas",
+    "marca": "mapex",
+    "nombre": "Bateria Electrónica Roland TD-07KV V-Drums kit",
+    "precio": 300999,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 53,
+    "categoria": "baterias",
+    "subcategoria": "baterias electronicas",
+    "marca": "mapex",
+    "nombre": "Bateria Electrónica Octapac Ringway TD78 c/Pedales y Baquetas",
+    "precio": 100999,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 54,
+    "categoria": "baterias",
+    "subcategoria": "baterias electronicas",
+    "marca": "sonor",
+    "nombre": "Batería Electrónica MultiPad Yamaha Dtxm12 Usb",
+    "precio": 200000,
+    "destacado": "si",
+    "stock": 2
+  },
+  {
+    "id": 55,
+    "categoria": "baterias",
+    "subcategoria": "percusion",
+    "marca": "sonor",
+    "nombre": "Cajon Profesional Tineo Sonor CAJSTINEO C/Regulador Bordona",
+    "precio": 18999,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 56,
+    "categoria": "baterias",
+    "subcategoria": "percusion",
+    "marca": "pearl",
+    "nombre": "Redoblante Pearl Sensitone Series 14'' x 5'' 10 torres",
+    "precio": 10999,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 57,
+    "categoria": "baterias",
+    "subcategoria": "percusion",
+    "marca": "knight",
+    "nombre": "Pandereta KNIGHT 10'' de madera sin parche 8 pares de sonaja",
+    "precio": 64000,
+    "destacado": "si",
+    "stock": 2
+  },
+  {
+    "id": 58,
+    "categoria": "baterias",
+    "subcategoria": "platillos",
+    "marca": "sabian",
+    "nombre": "Set De 5 Platillos Sabian B8x Performance 45003xg Bronce B8",
+    "precio": 180999,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 59,
+    "categoria": "baterias",
+    "subcategoria": "platillos",
+    "marca": "zildjian",
+    "nombre": "Set De Platillos Zildjian Zbt Crash 18 Y Hi Hat 13 Zbts3p",
+    "precio": 25999,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 60,
+    "categoria": "baterias",
+    "subcategoria": "platillos",
+    "marca": "sabian",
+    "nombre": "Set De 5 Platillos Sabian Serie Xsr Hi-hat Crash Ride + Free",
+    "precio": 12000,
+    "destacado": "si",
+    "stock": 2
+  },
+  {
+    "id": 61,
+    "categoria": "baterias",
+    "subcategoria": "accesorios para bateristas",
+    "marca": "vic firth",
+    "nombre": "Palillos Vic Firth Signature Series Charlie Benante SBEN",
+    "precio": 3000,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 62,
+    "categoria": "baterias",
+    "subcategoria": "accesorios para bateristas",
+    "marca": "rmv",
+    "nombre": "Parche De Bateria Rmv Phc16 De 16 Pulgadas Hidraulico",
+    "precio": 1200,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 63,
+    "categoria": "baterias",
+    "subcategoria": "accesorios para bateristas",
+    "marca": "zildjian",
+    "nombre": "Palillos Bateria Zildjian Hickory 5a Punta De Nylon O Madera",
+    "precio": 2300,
+    "destacado": "si",
+    "stock": 2
+  },
+  {
+    "id": 64,
+    "categoria": "estudio",
+    "subcategoria": "auriculares",
+    "marca": "sennheiser",
+    "nombre": "Auriculares Sennheiser HD407 Cerrados Over Ear",
+    "precio": 6000,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 65,
+    "categoria": "estudio",
+    "subcategoria": "auriculares",
+    "marca": "sennheiser",
+    "nombre": "Auriculares Inalambricos Sennheiser RS120 Bluetooth Cerrados",
+    "precio": 23000,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 66,
+    "categoria": "estudio",
+    "subcategoria": "auriculares",
+    "marca": "sennheiser",
+    "nombre": "Auriculares Sennheiser HD4.40 BT Bluetooth Cerrados",
+    "precio": 46000,
+    "destacado": "si",
+    "stock": 2
+  },
+  {
+    "id": 67,
+    "categoria": "estudio",
+    "subcategoria": "consolas",
+    "marca": "zoom pro",
+    "nombre": "Consola Digital Zoom Grabación Multip. Simultenea 22 Canales",
+    "precio": 226000,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 68,
+    "categoria": "estudio",
+    "subcategoria": "consolas",
+    "marca": "zoom pro",
+    "nombre": "Consola Digital Zoom Grabación Simultanea 12 Canales",
+    "precio": 80000,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 69,
+    "categoria": "estudio",
+    "subcategoria": "consolas",
+    "marca": "zoom pro",
+    "nombre": "Consola Digital Zoom Grabación Multip Simultanea 12 Canales",
+    "precio": 146000,
+    "destacado": "si",
+    "stock": 2
+  },
+  {
+    "id": 70,
+    "categoria": "estudio",
+    "subcategoria": "microfonos",
+    "marca": "proel",
+    "nombre": "Microfono Vincha Inalambrico Uhf Proel Headset Profesional Frecuencias De 40hz A 18000 Hz Disponible En 3 Frecuencias.",
+    "precio": 80000,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 71,
+    "categoria": "estudio",
+    "subcategoria": "microfonos",
+    "marca": "blue",
+    "nombre": "Microfono Blue Encore 100 Dinamico Cardioide Para Voces",
+    "precio": 146000,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 72,
+    "categoria": "estudio",
+    "subcategoria": "monitores",
+    "marca": "jbl",
+    "nombre": "Monitor de estudio JBL LRS 305P MKII Woofer 5''",
+    "precio": 46000,
+    "destacado": "si",
+    "stock": 2
+  },
+  {
+    "id": 73,
+    "categoria": "estudio",
+    "subcategoria": "monitores",
+    "marca": "mackie",
+    "nombre": "Par Monitores Multimedia Mackie CR3-XBT 3'' Bluetooth",
+    "precio": 20000,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 74,
+    "categoria": "estudio",
+    "subcategoria": "monitores",
+    "marca": "mackie",
+    "nombre": "Monitor de estudio Mackie MR824 NEW 8'' Activo",
+    "precio": 66000,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 75,
+    "categoria": "estudio",
+    "subcategoria": "accesorios para estudio",
+    "marca": "ddrum",
+    "nombre": "Cable Profesional Ddrum Xlr Plug 4,5 Metros Microfono Canon",
+    "precio": 1500,
+    "destacado": "si",
+    "stock": 2
+  },
+  {
+    "id": 76,
+    "categoria": "estudio",
+    "subcategoria": "accesorios para estudio",
+    "marca": "hercules",
+    "nombre": "Atril Hercules Bs311b P/director 48x 35 Cm",
+    "precio": 14200,
+    "destacado": "no",
+    "stock": 2
+  },
+  {
+    "id": 77,
+    "categoria": "estudio",
+    "subcategoria": "accesorios para estudio",
+    "marca": "shure",
+    "nombre": "Cable Lightning a Micro USB Shure AMV-LTG15 38cm Negro",
+    "precio": 6099,
+    "destacado": "no",
+    "stock": 2
+  }
+]

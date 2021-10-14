@@ -1,0 +1,13 @@
+.ubicacion {
+  .modal-body {
+    @include flexColumn(0.5rem, center, center);
+    .transporte {
+      margin: 0;
+    }
+    .mapa {
+      padding-top: 1rem;
+      width: 90%;
+      height: 300px;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+.contacto {
+  .elemento {
+    @include padding-y(0.5rem, 0.5rem);
+    @include flex(0.5rem, unset, center);
+    img {
+      height: 2rem;
+    }
+    p {
+      margin: 0;
+      vertical-align: center;
+    }
+    a {
+      text-decoration: none;
+      color: $amarillo;
+    }
+  }
+}
