@@ -104,6 +104,7 @@ function guardarStorage(carrito) {
 }
 
 // función para agregar al carrito, contempla la cantidad y el stock
+// devuelve verdadero si se concreta la venta, falso si no hay stock
 function agregarCarrito(productoID, cantidad) {
   let productoSeleccionado = buscarProducto(productoID); // busco el producto en el array productos
   if (
@@ -138,13 +139,12 @@ function agregarCarrito(productoID, cantidad) {
     guardarStorage(carrito);
     return true;
   } else {
-    // si no hay stock, no sumo
-    alert("no hay stock");
     return false;
   }
 }
 
 // función para restar, contempla cantidad
+// elimina el producto del array del carrito si la cantidad queda en 0
 function restar(productoID, cantidad) {
   carrito.productos.forEach((producto) => {
     if (producto.id == productoID) {

@@ -85,6 +85,74 @@ function offCanvasHtml(producto, subtotal) {
       `);
 }
 
+// función para renderizar en el carrito
+// sirve tanto para cuando se está sumando, restando o eliminando (boton = 0 es restar, boton = 1 es sumar)
+// primero se fija si el producto ya estaba en el carrito
+// después, si la cantidad es mayor a uno o es uno y el boton de restar, entonces actualiza precio y cantidad
+// si la cantidad es uno y el botón es agregar, entonces renderiza el producto desde 0
+// si el producto ya no está en el carrito, lo desrenderiza
+function renderizarCarrito(productoID, boton) {
+  let productoEnCarrito = buscarEnCarrito(productoID);
+  console.log(productoEnCarrito);
+  if (productoEnCarrito) {
+    let subtotal = numberWithCommas(
+      (productoEnCarrito.precio * productoEnCarrito.cantidad).toFixed(2)
+    );
+    if (
+      productoEnCarrito.cantidad > 1 ||
+      (productoEnCarrito.cantidad == 1 && boton == 0)
+    ) {
+      $(`.${productoID}-cantidad`).html(productoEnCarrito.cantidad);
+      $(`.${productoID}-precio`).html(`$ ${subtotal}`);
+    } else if (productoEnCarrito.cantidad == 1 && boton == 1) {
+      $(`.carrito`).append(offCanvasHtml(productoEnCarrito, subtotal));
+      escucharBotones();
+    }
+  } else {
+    $(`#carrito-${productoID}`).remove();
+  }
+  if (carrito.total > 0) {
+    let precioTotalFixed = numberWithCommas(carrito.total.toFixed(2));
+    $(".totalPrecio").html(`$ ${precioTotalFixed}`);
+    $(".carritoContador").html(`${carrito.contador}`);
+  } else {
+    limpiarDOMcarrito();
+  }
+}
+
+// función para renderizar destacados
+function renderizarDestacados() {
+  // filtro productos destacados para renderizarlos al inicio
+  let productosDestacados = productos.filter(
+    (producto) => producto.destacado == "si"
+  );
+  renderizarEnGrilla(productosDestacados);
+  escucharBotones();
+  $(".destacados").css("font-weight", "bold");
+}
+
+function renderizarTabla() {
+  carrito.productos.forEach((producto) => {
+    let subtotal = numberWithCommas(
+      (producto.precio * producto.cantidad).toFixed(2)
+    );
+    $(".tbody").append(tablaHtml(producto, subtotal));
+  });
+}
+function renderizarTotalTabla() {
+  let total = numberWithCommas(carrito.total.toFixed(2));
+  let filaTotal = $(`
+    <tr class="total">
+      <td></td>
+      <td></td>
+      <td class="texto">TOTAL</td>
+      <td class="totalPrecio">$ ${total}</td>
+      <td></td>
+    </tr>
+  `);
+  $(".tbody").append(filaTotal);
+}
+
 function notificar(nombreFuncion, productoID, productoCantidad) {
   let producto = buscarProducto(productoID);
   let subtotal = numberWithCommas(
@@ -117,7 +185,17 @@ function notificar(nombreFuncion, productoID, productoCantidad) {
     $(notificacion).delay(3000).fadeOut(2000);
   }
 }
-
+function sinStock(productoID) {
+  let nombreProducto = buscarProducto(productoID).nombre;
+  let notificacion = $(`
+    <div class="notificacion animate__animated animate__bounceInLeft">
+      <h4>¡Producto sin stock!</h4>
+      <p class="nombre">${nombreProducto}</p>
+    </div>`);
+  $(".notificacionContainer").append(notificacion);
+  $(notificacion).addClass("restar");
+  $(notificacion).delay(3000).fadeOut(2000);
+}
 // función para animar producto en grilla
 function animacionGrilla(id) {
   $(`#${id}`).css({
@@ -143,6 +221,8 @@ function onAdd(event) {
     if ($(this).prop("tagName") == "DIV") {
       animacionGrilla(productoID);
     }
+  } else {
+    sinStock(productoID);
   }
 }
 function onSubstract(event) {
@@ -187,6 +267,13 @@ function iniciarTienda() {
   $(".subcategoria").off().on("click", subFiltrar); // escucho los filtros
   $("#input").off().on("input", buscar); // escucho la barra de búsqueda
 }
+
+//función para animación de inicio
+function animacionInicio() {
+  $(".loader").fadeOut(1000); // saco el loader con timing
+  $(".tienda").delay(1001).fadeIn(1200); // cuando se va el loader, visibilizo la tienda
+}
+
 //función para "iniciar" el carrito
 function iniciarCarrito() {
   $(".carritoContainer").append(filaTotal); // agrego fila de total
@@ -196,49 +283,12 @@ function iniciarCarrito() {
   $(".comprarCarrito").off().on("click", comprar);
 }
 
-// función para renderizar destacados
-function renderizarDestacados() {
-  // filtro productos destacados para renderizarlos al inicio
-  let productosDestacados = productos.filter(
-    (producto) => producto.destacado == "si"
-  );
-  renderizarEnGrilla(productosDestacados);
-  escucharBotones();
-  $(".destacados").css("font-weight", "bold");
-}
-
-function renderizarTabla() {
-  carrito.productos.forEach((producto) => {
-    let subtotal = numberWithCommas(
-      (producto.precio * producto.cantidad).toFixed(2)
-    );
-    $(".tbody").append(tablaHtml(producto, subtotal));
-  });
-}
-function renderizarTotalTabla() {
-  let total = numberWithCommas(carrito.total.toFixed(2));
-  let filaTotal = $(`
-    <tr class="total">
-      <td></td>
-      <td></td>
-      <td class="texto">TOTAL</td>
-      <td class="totalPrecio">$ ${total}</td>
-      <td></td>
-    </tr>
-  `);
-  $(".tbody").append(filaTotal);
-}
-//función para animación de inicio
-function animacionInicio() {
-  $(".loader").fadeOut(1000); // saco el loader con timing
-  $(".tienda").delay(1001).fadeIn(1200); // cuando se va el loader, visibilizo la tienda
-}
-
 // función para limpiar productos del DOM
 function limpiarProductos() {
   $(".sinProductos").remove();
   $(".tarjeta").remove();
 }
+
 function limpiarTienda() {
   $(".nav-itemCarrito").remove();
   $(".hero").remove();
@@ -247,6 +297,7 @@ function limpiarTienda() {
   $(".main").append(finalizarCompraContainer);
   $(".carritoYdatos").append(finalizarCompraCarrito);
 }
+
 // función para limpiar carrito dom
 function limpiarDOMcarrito() {
   $(".productoCarrito").remove(); // saco los productos del dom
@@ -258,34 +309,7 @@ function limpiarDOMcarrito() {
   $(".carrito").append(carritoVacio); // dejo mensaje de que está vacío
   $(".finalizarCompra").append(carritoVacioConBtn); // dejo botón para volver a la tienda en finalizar compra
 }
-function renderizarCarrito(productoID, boton) {
-  let productoEnCarrito = buscarEnCarrito(productoID);
-  console.log(productoEnCarrito);
-  if (productoEnCarrito) {
-    let subtotal = numberWithCommas(
-      (productoEnCarrito.precio * productoEnCarrito.cantidad).toFixed(2)
-    );
-    if (
-      productoEnCarrito.cantidad > 1 ||
-      (productoEnCarrito.cantidad == 1 && boton == 0)
-    ) {
-      $(`.${productoID}-cantidad`).html(productoEnCarrito.cantidad);
-      $(`.${productoID}-precio`).html(`$ ${subtotal}`);
-    } else if (productoEnCarrito.cantidad == 1 && boton == 1) {
-      $(`.carrito`).append(offCanvasHtml(productoEnCarrito, subtotal));
-      escucharBotones();
-    }
-  } else {
-    $(`#carrito-${productoID}`).remove();
-  }
-  if (carrito.total > 0) {
-    let precioTotalFixed = numberWithCommas(carrito.total.toFixed(2));
-    $(".totalPrecio").html(`$ ${precioTotalFixed}`);
-    $(".carritoContador").html(`${carrito.contador}`);
-  } else {
-    limpiarDOMcarrito();
-  }
-}
+
 // función para limpiar carrito dom
 function limpiarDOMcarrito() {
   $(".productoCarrito").remove(); // saco los productos del dom
@@ -310,6 +334,21 @@ function comprar(event) {
   $(".finalizarCompraForm").off().on("submit", finalizarCompra);
 }
 
+// funcion para calcular cuotas
+function calcularCuotas() {
+  let cuotas = [1, 3, 6, 12, 18];
+  for (let i = 0; i < cuotas.length; i++) {
+    precioDeCuotaFixeado = (carrito.total / cuotas[i]).toFixed(2);
+    let precioDeCuota = numberWithCommas(precioDeCuotaFixeado);
+    $(`.form-select option:nth-child(${i + 1})`).val(
+      `${cuotas[i]}_${precioDeCuotaFixeado}`
+    );
+    $(`.form-select option:nth-child(${i + 1})`).html(
+      `${cuotas[i]} cuotas sin interés de $${precioDeCuota}`
+    );
+  }
+}
+
 // funcion para enviar mensaje de compra realizada
 function compraRealizada(datos) {
   let ultimos4tarjeta = datos.numeroTarjeta.substr(15);
@@ -328,18 +367,4 @@ function compraRealizada(datos) {
 
   $(".main").append(notificacion);
   $(".cajaCompraRealizada").hide();
-}
-
-function calcularCuotas() {
-  let cuotas = [1, 3, 6, 12, 18];
-  for (let i = 0; i < cuotas.length; i++) {
-    precioDeCuotaFixeado = (carrito.total / cuotas[i]).toFixed(2);
-    let precioDeCuota = numberWithCommas(precioDeCuotaFixeado);
-    $(`.form-select option:nth-child(${i + 1})`).val(
-      `${cuotas[i]}_${precioDeCuotaFixeado}`
-    );
-    $(`.form-select option:nth-child(${i + 1})`).html(
-      `${cuotas[i]} cuotas sin interés de $${precioDeCuota}`
-    );
-  }
 }
