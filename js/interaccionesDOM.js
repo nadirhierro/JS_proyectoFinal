@@ -96,7 +96,6 @@ function offCanvasHtml(producto, subtotal) {
 // si el producto ya no está en el carrito, lo desrenderiza
 function renderizarCarrito(productoID, boton) {
   let productoEnCarrito = carrito.buscarProducto(productoID);
-  console.log(productoEnCarrito);
   if (productoEnCarrito) {
     let subtotal = numberWithCommas(
       (productoEnCarrito.precio * productoEnCarrito.cantidad).toFixed(2)
@@ -294,10 +293,8 @@ function onSubFilter(event) {
 
 function onSearch(event) {
   let inputUsuario = event.target.value; // tomo el input del usuario
-  console.log(inputUsuario);
   if (inputUsuario.length > 2) {
     buscar(inputUsuario);
-    console.log(productosBuscados);
     limpiarProductos(); // limpio la grilla de productos
     if (productosBuscados.length == 0) {
       $(".grillaProductos").append(
