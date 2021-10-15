@@ -216,6 +216,26 @@ function animacionGrilla(id) {
   }, 801);
 }
 
+// función para normalizar categorías
+function normalizarCategorias() {
+  $(".categoria").css("font-weight", "normal"); // pongo todas las categorías en fuente normal
+  $(".subcategoria").css("font-weight", "normal"); // lo mismo para las subcategorias
+  $(".subcategorias").css("display", "none"); // guardo todas las subcategorias
+}
+// función para normalizar subcategorias
+function normalizarSubcategorias() {
+  $(".subcategoria").css("font-weight", "normal"); // pongo las subcategorías en fuente normal (puede haber una seleccionada)
+}
+// función para poner en foco la categoría
+function focoCategoria(nodo) {
+  $(nodo).css("font-weight", "bold"); // le aplico negrita a la categoria seleccionada
+  $(nodo).next().css("display", "block"); // traigo sus subcategorías al DOM
+}
+// función para poner en foco la subcategoria
+function focoSubcategoria(nodo) {
+  $(nodo).css("font-weight", "bold"); // le aplico negrita a la categoria seleccionada
+}
+
 // función para manejar los eventos de sumar, restar, eliminar y limpiar
 function onAdd(event) {
   let productoID = $(this).attr("name");
@@ -254,6 +274,59 @@ function onClean(event) {
   limpiarDOMcarrito();
 }
 
+function onFilter(event) {
+  let categoria = $(this).html().toLowerCase(); // me fijo qué tipo de categoria voy a aplicar
+  filtrar(categoria);
+  normalizarCategorias();
+  focoCategoria(this);
+  limpiarProductos(); // borro productos de la grilla
+  renderizarEnGrilla(productosFiltrados); // renderizo los productos filtrados
+}
+function onSubFilter(event) {
+  let subcategoriaClass = $(this).attr("class"); // tomo el tipo de subcategoria (está escrito en la clase)
+  let subcategoria = $(this).html().toLowerCase(); // tomo el nombre de la subcategoría
+  subFiltrar(subcategoriaClass, subcategoria);
+  normalizarSubcategorias();
+  focoSubcategoria(this);
+  limpiarProductos(); // limpio productos de la grilla
+  renderizarEnGrilla(productosSubFiltrados); // renderizo
+}
+
+function onSearch(event) {
+  let inputUsuario = event.target.value; // tomo el input del usuario
+  console.log(inputUsuario);
+  if (inputUsuario.length > 2) {
+    buscar(inputUsuario);
+    console.log(productosBuscados);
+    limpiarProductos(); // limpio la grilla de productos
+    if (productosBuscados.length == 0) {
+      $(".grillaProductos").append(
+        `<h4 class="sinProductos">No hay productos para tu búsqueda</h4>`
+      );
+    } else {
+      renderizarEnGrilla(productosBuscados); // renderizo los buscados
+    }
+    productosBuscados = []; // reseteo el array de buscados para una próxima búsqueda
+    normalizarCategorias();
+    // si es el inicio de la página o el usuario borró la búsqueda, pongo los destacados
+  } else if (inputUsuario == "") {
+    limpiarProductos(); // limpio la grilla de productos
+    renderizarDestacados(); // renderizo destacados
+  }
+}
+
+// función para comprar
+function comprar(event) {
+  $("html, body").animate({ scrollTop: 0 });
+  limpiarTienda();
+  renderizarTabla();
+  renderizarTotalTabla();
+  escucharBotones();
+  $(".carritoYdatos").append(finalizarCompraFormulario);
+  calcularCuotas();
+  $(".finalizarCompraForm").off().on("submit", finalizarCompra);
+}
+
 // función para escuchar los botones de los productos, tanto en el carrito como en la grilla
 function escucharBotones() {
   $(".botonAgregar").off().on("click", onAdd);
@@ -272,9 +345,9 @@ function iniciarTienda() {
   $(".filtrosProductos").append(grillaProductos); // cargo grilla productos
   $(".tienda").append(carritoOffcanvas); // cargo off canvas
   $(".carrito").append(carritoVacio);
-  $(".categoria").off().on("click", filtrar); // escucho las categorias
-  $(".subcategoria").off().on("click", subFiltrar); // escucho los filtros
-  $("#input").off().on("input", buscar); // escucho la barra de búsqueda
+  $(".categoria").off().on("click", onFilter); // escucho las categorias
+  $(".subcategoria").off().on("click", onSubFilter); // escucho los filtros
+  $("#input").off().on("input", onSearch); // escucho la barra de búsqueda
 }
 
 //función para animación de inicio
@@ -317,30 +390,6 @@ function limpiarDOMcarrito() {
   $(".cajaFormulario").remove(); // saco el formulario de finalizar compra
   $(".carrito").append(carritoVacio); // dejo mensaje de que está vacío
   $(".finalizarCompra").append(carritoVacioConBtn); // dejo botón para volver a la tienda en finalizar compra
-}
-
-// función para limpiar carrito dom
-function limpiarDOMcarrito() {
-  $(".productoCarrito").remove(); // saco los productos del dom
-  $(".carritoContador").remove(); // saco el contador
-  $(".total").remove(); // saco la fila total del dom
-  $(".botonesCarrito").remove(); // saco los botones
-  $(".table").remove(); // saco la tabla en el caso de que se esté en finalizar compra
-  $(".cajaFormulario").remove(); // saco el formulario de finalizar compra
-  $(".carrito").append(carritoVacio); // dejo mensaje de que está vacío
-  $(".finalizarCompra").append(carritoVacioConBtn); // dejo botón para volver a la tienda en finalizar compra
-}
-
-// función para comprar
-function comprar(event) {
-  $("html, body").animate({ scrollTop: 0 });
-  limpiarTienda();
-  renderizarTabla();
-  renderizarTotalTabla();
-  escucharBotones();
-  $(".carritoYdatos").append(finalizarCompraFormulario);
-  calcularCuotas();
-  $(".finalizarCompraForm").off().on("submit", finalizarCompra);
 }
 
 // funcion para calcular cuotas
