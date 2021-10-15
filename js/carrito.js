@@ -5,6 +5,12 @@ class Carrito {
     this.contador = contador;
     this.total = total;
   }
+  actualizar(precio, cantidad) {
+    this.contador += cantidad;
+    let subtotal = parseFloat((precio * cantidad).toFixed(2));
+    let nuevoTotal = parseFloat((subtotal + this.total).toFixed(2));
+    this.total = nuevoTotal;
+  }
   // función para actualizar el Storage
   guardarStorage() {
     localStorage.removeItem("carrito"); // lo saco para volver a ponerlo
@@ -26,8 +32,7 @@ class Carrito {
           producto.agregar(cantidad);
         }
       });
-      this.contador += cantidad;
-      this.total += productoEnCarrito.precio * cantidad;
+      this.actualizar(productoEnCarrito.precio, cantidad);
       this.guardarStorage();
       return true;
     } else if (
@@ -43,8 +48,7 @@ class Carrito {
           cantidad
         )
       );
-      this.contador += cantidad;
-      this.total += productoSeleccionado.precio * cantidad;
+      this.actualizar(productoSeleccionado.precio, cantidad);
       this.guardarStorage();
       return true;
     } else {
@@ -60,8 +64,7 @@ class Carrito {
         producto.devolver(cantidad);
       }
     });
-    this.contador -= cantidad;
-    this.total -= productoEnCarrito.precio * cantidad;
+    this.actualizar(productoEnCarrito.precio, cantidad * -1);
     let indexEnCarrito = this.productos.indexOf(productoEnCarrito);
     if (productoEnCarrito.cantidad == 0) {
       this.productos.splice(indexEnCarrito, 1);
@@ -98,8 +101,7 @@ class Carrito {
                 productoCarrito.cantidad
               )
             );
-            this.contador += productoCarrito.cantidad;
-            this.total += producto.precio * productoCarrito.cantidad;
+            this.actualizar(producto.precio, productoCarrito.cantidad);
           } else if (
             producto.id == productoCarrito.id &&
             producto.stock < productoCarrito.cantidad &&
@@ -114,8 +116,7 @@ class Carrito {
                 producto.stock
               )
             );
-            this.contador += productoCarrito.cantidad;
-            this.total += producto.precio * productoCarrito.stock;
+            this.actualizar(producto.precio, producto.stock);
           }
         });
       });
