@@ -95,7 +95,7 @@ function offCanvasHtml(producto, subtotal) {
 // si la cantidad es uno y el botón es agregar, entonces renderiza el producto desde 0
 // si el producto ya no está en el carrito, lo desrenderiza
 function renderizarCarrito(productoID, boton) {
-  let productoEnCarrito = buscarEnCarrito(productoID);
+  let productoEnCarrito = carrito.buscarProducto(productoID);
   console.log(productoEnCarrito);
   if (productoEnCarrito) {
     let subtotal = numberWithCommas(
@@ -159,7 +159,7 @@ function renderizarTotalTabla() {
 
 // función para notificar los cambios, según se sume o reste/elimine
 function notificar(nombreFuncion, productoID, productoCantidad) {
-  let producto = buscarProducto(productoID);
+  let producto = buscarProducto(productoID, productos);
   let subtotal = numberWithCommas(
     (producto.precio * productoCantidad).toFixed(2)
   );
@@ -192,7 +192,7 @@ function notificar(nombreFuncion, productoID, productoCantidad) {
 }
 // función para notificar sin stock
 function sinStock(productoID) {
-  let nombreProducto = buscarProducto(productoID).nombre;
+  let nombreProducto = buscarProducto(productoID, productos).nombre;
   let notificacion = $(`
     <div class="notificacion animate__animated animate__bounceInLeft">
       <h4>¡Producto sin stock!</h4>
@@ -239,7 +239,7 @@ function focoSubcategoria(nodo) {
 // función para manejar los eventos de sumar, restar, eliminar y limpiar
 function onAdd(event) {
   let productoID = $(this).attr("name");
-  let vendido = agregarCarrito(productoID, 1);
+  let vendido = carrito.agregarProducto(productoID, 1);
   if (vendido) {
     iniciarCarrito();
     renderizarCarrito(productoID, 1);
@@ -254,7 +254,7 @@ function onAdd(event) {
 }
 function onSubstract(event) {
   let productoID = $(this).attr("name");
-  restar(productoID, 1);
+  carrito.restarProducto(productoID, 1);
   renderizarCarrito(productoID, 0);
   notificar("restar", productoID, 1);
   calcularCuotas();
@@ -263,14 +263,14 @@ function onRemove(event) {
   let eventID = $(this).parent().attr("ID");
   let productoID = eventID.replace("carrito-", "");
   let cantidad = $(`.${productoID}-cantidad`).html();
-  restar(productoID, cantidad);
+  carrito.restarProducto(productoID, cantidad);
   renderizarCarrito(productoID, 0);
   notificar("eliminar", productoID, cantidad);
   calcularCuotas();
 }
 
 function onClean(event) {
-  limpiarCarrito();
+  carrito.limpiarCarrito();
   limpiarDOMcarrito();
 }
 

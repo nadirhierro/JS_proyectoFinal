@@ -5,18 +5,121 @@ class Carrito {
     this.contador = contador;
     this.total = total;
   }
-  actualizarTotal(productoID, cantidad, operacion) {
+  // función para actualizar el Storage
+  guardarStorage() {
+    localStorage.removeItem("carrito"); // lo saco para volver a ponerlo
+    localStorage.setItem("carrito", JSON.stringify(this)); // guardo el carrito en sessionStorage
+  }
+  buscarProducto(productoID) {
+    return this.productos.find((producto) => producto.id == productoID);
+  }
+  agregarProducto(productoID, cantidad) {
+    let productoSeleccionado = buscarProducto(productoID, productos); // busco el producto en el array productos del catálogo
+    let productoEnCarrito = this.buscarProducto(productoID);
+    if (
+      // si el producto ya estaba en el carrito y la cantidad que va a sumar no hace superar el stock, entonces agrego
+      productoEnCarrito &&
+      productoEnCarrito.cantidad + cantidad <= productoSeleccionado.stock
+    ) {
+      carrito.productos.forEach((producto) => {
+        if (producto.id == productoID) {
+          producto.agregar(cantidad);
+        }
+      });
+      this.contador += cantidad;
+      this.total += productoEnCarrito.precio * cantidad;
+      this.guardarStorage();
+      return true;
+    } else if (
+      // si el producto no estaba y hay stock lo pusheo
+      productoEnCarrito == undefined &&
+      cantidad <= productoSeleccionado.stock
+    ) {
+      this.productos.push(
+        new ProductoCarrito(
+          productoSeleccionado.id,
+          productoSeleccionado.nombre,
+          productoSeleccionado.precio,
+          cantidad
+        )
+      );
+      this.contador += cantidad;
+      this.total += productoSeleccionado.precio * cantidad;
+      this.guardarStorage();
+      return true;
+    } else {
+      return false;
+    }
+  }
+  restarProducto(productoID, cantidad) {
+    let productoEnCarrito = this.productos.find(
+      (producto) => producto.id == productoID
+    );
     this.productos.forEach((producto) => {
       if (producto.id == productoID) {
-        if (operacion == "agregarProducto") {
-          this.contador += cantidad;
-          this.total += producto.precio * cantidad;
-        } else if (operacion == "restar") {
-          this.contador -= cantidad;
-          this.total -= producto.precio * cantidad;
-        }
+        producto.devolver(cantidad);
       }
     });
+    this.contador -= cantidad;
+    this.total -= productoEnCarrito.precio * cantidad;
+    let indexEnCarrito = this.productos.indexOf(productoEnCarrito);
+    if (productoEnCarrito.cantidad == 0) {
+      this.productos.splice(indexEnCarrito, 1);
+    }
+    this.guardarStorage();
+  }
+  // función para limpiar el carrito
+  limpiarCarrito() {
+    this.productos.splice(0, carrito.productos.length);
+    this.contador = 0;
+    this.total = 0;
+    localStorage.removeItem("carrito");
+  }
+  // función para emparejar el carrito con el Storage, tiene en cuenta cambios en los precios y stock
+  recuperarStorage() {
+    let carritoStorageString = localStorage.getItem("carrito"); // recupero el carrito del storage
+    let carritoStorage = JSON.parse(carritoStorageString); // lo parseo
+    if (carritoStorage != null) {
+      // si hay carrito en storage, emparejo
+      carritoStorage.productos.forEach((productoCarrito) => {
+        // itero los productos del storage
+        productos.forEach((producto) => {
+          // ahora itero los productos del catálogo, por si cambió precio o stock
+          if (
+            // si hay más stock que cantidad, entonces pusheo la cantidad del storage
+            producto.id == productoCarrito.id &&
+            producto.stock >= productoCarrito.cantidad
+          ) {
+            this.productos.push(
+              new ProductoCarrito(
+                producto.id,
+                producto.nombre,
+                producto.precio,
+                productoCarrito.cantidad
+              )
+            );
+            this.contador += productoCarrito.cantidad;
+            this.total += producto.precio * productoCarrito.cantidad;
+          } else if (
+            producto.id == productoCarrito.id &&
+            producto.stock < productoCarrito.cantidad &&
+            producto.stock != 0
+          ) {
+            // si hay menos stock que la cantidad del carrito y el stock es distinto de 0, pusheo el stock
+            this.productos.push(
+              new ProductoCarrito(
+                producto.id,
+                producto.nombre,
+                producto.precio,
+                producto.stock
+              )
+            );
+            this.contador += productoCarrito.cantidad;
+            this.total += producto.precio * productoCarrito.stock;
+          }
+        });
+      });
+    }
   }
 }
 
@@ -37,133 +140,6 @@ class ProductoCarrito {
 }
 
 // funciones para buscar en array productos de productos y carrito
-function buscarProducto(productoID) {
-  return productos.find((producto) => producto.id == productoID);
-}
-function buscarEnCarrito(productoID) {
-  return carrito.productos.find((producto) => producto.id == productoID);
-}
-
-// función para emparejar el carrito con el Storage, tiene en cuenta cambios en los precios y stock
-function emparejarCarritoStorage() {
-  let carritoStorageString = localStorage.getItem("carrito"); // recupero el carrito del storage
-  let carritoStorage = JSON.parse(carritoStorageString); // lo parseo
-  if (carritoStorage != null) {
-    // si hay carrito en storage, emparejo
-    carritoStorage.productos.forEach((productoCarrito) => {
-      // itero los productos del storage
-      productos.forEach((producto) => {
-        // ahora itero los productos del catálogo, por si cambió precio o stock
-        if (
-          // si hay más stock que cantidad, entonces pusheo la cantidad del storage
-          producto.id == productoCarrito.id &&
-          producto.stock >= productoCarrito.cantidad
-        ) {
-          carrito.productos.push(
-            new ProductoCarrito(
-              producto.id,
-              producto.nombre,
-              producto.precio,
-              productoCarrito.cantidad
-            )
-          );
-          carrito.actualizarTotal(
-            producto.id,
-            productoCarrito.cantidad,
-            "agregarProducto"
-          );
-        } else if (
-          producto.id == productoCarrito.id &&
-          producto.stock < productoCarrito.cantidad &&
-          producto.stock != 0
-        ) {
-          // si hay menos stock que la cantidad del carrito y el stock es distinto de 0, pusheo el stock
-          carrito.productos.push(
-            new ProductoCarrito(
-              producto.id,
-              producto.nombre,
-              producto.precio,
-              producto.stock
-            )
-          );
-          carrito.actualizarTotal(
-            producto.id,
-            producto.stock,
-            "agregarProducto"
-          );
-        }
-      });
-    });
-  }
-}
-
-// función para actualizar el Storage
-function guardarStorage(carrito) {
-  localStorage.removeItem("carrito"); // lo saco para volver a ponerlo
-  localStorage.setItem("carrito", JSON.stringify(carrito)); // guardo el carrito en sessionStorage
-}
-
-// función para agregar al carrito, contempla la cantidad y el stock
-// devuelve verdadero si se concreta la venta, falso si no hay stock
-function agregarCarrito(productoID, cantidad) {
-  let productoSeleccionado = buscarProducto(productoID); // busco el producto en el array productos
-  if (
-    // si el producto ya estaba en el carrito y la cantidad que va a sumar no hace superar el stock, entonces agrego
-    buscarEnCarrito(productoID) &&
-    buscarEnCarrito(productoID).cantidad + cantidad <=
-      productoSeleccionado.stock
-  ) {
-    carrito.productos.forEach((producto) => {
-      if (producto.id == productoID) {
-        producto.agregar(cantidad);
-      }
-    });
-    carrito.actualizarTotal(productoID, cantidad, "agregarProducto");
-    guardarStorage(carrito);
-    return true;
-  } else if (
-    // si el producto no estaba y hay stock lo pusheo
-    buscarEnCarrito(productoID) == undefined &&
-    cantidad <= productoSeleccionado.stock
-  ) {
-    carrito.productos.push(
-      new ProductoCarrito(
-        productoSeleccionado.id,
-        productoSeleccionado.nombre,
-        productoSeleccionado.precio,
-        cantidad
-      )
-    );
-    console.log(carrito.productos);
-    carrito.actualizarTotal(productoID, cantidad, "agregarProducto");
-    guardarStorage(carrito);
-    return true;
-  } else {
-    return false;
-  }
-}
-
-// función para restar, contempla cantidad
-// elimina el producto del array del carrito si la cantidad queda en 0
-function restar(productoID, cantidad) {
-  carrito.productos.forEach((producto) => {
-    if (producto.id == productoID) {
-      producto.devolver(cantidad);
-    }
-  });
-  carrito.actualizarTotal(productoID, cantidad, "restar");
-  let productoEnCarrito = buscarEnCarrito(productoID);
-  let indexEnCarrito = carrito.productos.indexOf(productoEnCarrito);
-  if (productoEnCarrito.cantidad == 0) {
-    carrito.productos.splice(indexEnCarrito, 1);
-  }
-  guardarStorage(carrito);
-}
-
-// función para limpiar el carrito
-function limpiarCarrito() {
-  carrito.productos.splice(0, carrito.productos.length);
-  carrito.contador = 0;
-  carrito.total = 0;
-  localStorage.removeItem("carrito");
+function buscarProducto(productoID, arrayProductos) {
+  return arrayProductos.find((producto) => producto.id == productoID);
 }

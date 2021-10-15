@@ -71,7 +71,7 @@ $(function () {
         )
       );
     }
-    emparejarCarritoStorage(); // emparejo carrito y Storage
+    carrito.recuperarStorage(); // emparejo carrito y Storage
     if (carrito.productos.length > 0) {
       iniciarCarrito();
       carrito.productos.forEach((producto) => {
